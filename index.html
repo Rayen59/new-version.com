@@ -110,9 +110,40 @@
             border-radius: 0 0 8px 8px;
             border-top: 1px solid #ffc107;
         }
+
+        /* Nouveau style pour l'overlay */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Fond sombre transparent */
+            z-index: 8;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .sliding-panel.inactive {
+            left: -250px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sliding-panel.active {
+            left: 0;
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
+
+    <!-- Ajoutez l'overlay -->
+    <div id="overlay" class="overlay" onclick="togglePanel()"></div>
 
     <div class="menu-icon" onclick="togglePanel()">
         <div></div>
@@ -120,111 +151,138 @@
         <div></div>
     </div>
 
-    <div id="slidingPanel" class="sliding-panel">
+    <div id="slidingPanel" class="sliding-panel inactive">
         <a href="#">Link 1</a>
         <a href="#">Link 2</a>
         <a href="#">Link 3</a>
+        <a href="#">Link 1</a>
+        <a href="#">Link 1</a>
+        <a href="#">Link 1</a>
+        <a href="#">Link 1</a>
+        <a href="#">Link 1</a>
+        <a href="#">Link 1</a>
+        <a href="#">Link 1</a>
+        <a href="#">Link 1</a>
         <!-- Ajoutez d'autres liens ici -->
     </div>
+
     <div class="container">
-        <div class="header">Number Theory</div>
+        <div class="header">About</div>
         <div class="content">
-            <h3>Solutions acceptées du vendredi 4 janvier 2019 à 16h00 au samedi 5 janvier 2019 à 12h00 (heures belges)</h3>
+            <h3>This page is online on 22/7/2024</h3>
             <div class="box">
-                
-                <a href="#">Lien vers l'énoncé 2</a>
-                
+                <a href="#">About Our new version </a>
                 <!-- Ajoutez d'autres liens ici -->
             </div>
         </div>
+    </div>
+
     <div class="container">
-        <div class="header">Number Theory</div>
+        <div class="header">Privacy rule</div>
         <div class="content">
-            <h3>Solutions acceptées du vendredi 4 janvier 2019 à 16h00 au samedi 5 janvier 2019 à 12h00 (heures belges)</h3>
+            <h3>This page is online on 22/7/2024</h3>
             <div class="box">
-                
-                <a href="#">Lien vers l'énoncé 2</a>
-                
+                <a href="#">Privacy role</a>
                 <!-- Ajoutez d'autres liens ici -->
             </div>
         </div>
+    </div>
+
+    <div class="container">
+        <div class="header">Install our application</div>
+        <div class="content">
+            <h3>This page is online on 22/7/2024</h3>
+            <div class="box">
+                <a href="#">Install our application</a>
+                <!-- Ajoutez d'autres liens ici -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="header">New problems make a challenge with yourself!</div>
+        <div class="content">
+            <h3>This page is online on 22/7/2024</h3>
+            <div class="box">
+                <a href="#">Challemge problems with score try to get full marks!</a>
+                <!-- Ajoutez d'autres liens ici -->
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <div class="header">Number Theory</div>
         <div class="content">
-            <h3>Solutions acceptées du vendredi 4 janvier 2019 à 16h00 au samedi 5 janvier 2019 à 12h00 (heures belges)</h3>
+            <h3>This page is online on 22/7/2024</h3>
             <div class="box">
-                
-                <a href="#">Lien vers l'énoncé 2</a>
-                
+                <a href="#">Number Theory</a>
                 <!-- Ajoutez d'autres liens ici -->
             </div>
         </div>
         <div class="statistics">
-            <p>Tenté par 26 personnes</p>
-            <p>Scores parfaits : 21</p>
+            <p></p>
+            <p></p>
         </div>
     </div>
 
     <div class="container">
         <div class="header">Combinatorics</div>
         <div class="content">
-            <h3>Solutions acceptées du vendredi 4 janvier 2019 à 16h00 au samedi 5 janvier 2019 à 12h00 (heures belges)</h3>
+            <h3>This page is online on 22/7/2024</h3>
             <div class="box">
-               
-                <a href="#">Lien vers l'énoncé 2</a>
-                
+                <a href="#">Combinatorics</a>
                 <!-- Ajoutez d'autres liens ici -->
             </div>
         </div>
         <div class="statistics">
-            <p>Tenté par 30 personnes</p>
-            <p>Scores parfaits : 24</p>
+            <p></p>
+            <p></p>
         </div>
     </div>
 
     <div class="container">
         <div class="header">Geometry</div>
         <div class="content">
-            <h3>Solutions acceptées du vendredi 4 janvier 2019 à 16h00 au samedi 5 janvier 2019 à 12h00 (heures belges)</h3>
+            <h3>This page is online on 22/7/2024</h3>
             <div class="box">
-                
-                <a href="#">Lien vers l'énoncé 2</a>
-                
+                <a href="#">Geometry</a>
                 <!-- Ajoutez d'autres liens ici -->
             </div>
         </div>
         <div class="statistics">
-            <p>Tenté par 28 personnes</p>
-            <p>Scores parfaits : 22</p>
+            <p></p>
+            <p></p>
         </div>
     </div>
 
     <div class="container">
         <div class="header">Functional Equations</div>
         <div class="content">
-            <h3>Solutions acceptées du vendredi 4 janvier 2019 à 16h00 au samedi 5 janvier 2019 à 12h00 (heures belges)</h3>
+            <h3>This page is online on 22/7/2024</h3>
             <div class="box">
-
-                <a href="#">Lien vers l'énoncé 2</a>
-               
+                <a href="#">Functionnal equation</a>
                 <!-- Ajoutez d'autres liens ici -->
             </div>
         </div>
         <div class="statistics">
-            <p>Tenté par 32 personnes</p>
-            <p>Scores parfaits : 26</p>
+            <p></p>
+            <p></p>
         </div>
     </div>
 
     <script>
-        // Fonction pour le panneau coulissant
         function togglePanel() {
             var panel = document.getElementById("slidingPanel");
-            if (panel.style.left === "0px") {
-                panel.style.left = "-250px";
+            var overlay = document.getElementById("overlay");
+            
+            if (panel.classList.contains("active")) {
+                panel.classList.remove("active");
+                panel.classList.add("inactive");
+                overlay.classList.remove("active");
             } else {
-                panel.style.left = "0px";
+                panel.classList.remove("inactive");
+                panel.classList.add("active");
+                overlay.classList.add("active");
             }
         }
     </script>
