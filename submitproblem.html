@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LaTeX Editor</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f4a261, #2a9d8f);
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+            animation: backgroundAnimation 10s infinite alternate;
+        }
+
+        @keyframes backgroundAnimation {
+            from {
+                background: linear-gradient(135deg, #f4a261, #2a9d8f);
+            }
+            to {
+                background: linear-gradient(135deg, #2a9d8f, #f4a261);
+            }
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 80%;
+            height: 120px;
+            font-size: 16px;
+            padding: 10px;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            background-color: #fff;
+            color: #333;
+        }
+
+        #output {
+            padding: 15px;
+            background-color: #fff;
+            border: 2px solid #fff;
+            border-radius: 8px;
+            min-height: 60px;
+            font-size: 18px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            display: inline-block;
+            width: 80%;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 2px solid #2a9d8f;
+            border-radius: 8px;
+            box-sizing: border-box;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #2a9d8f;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #1f7a6d;
+        }
+
+        #poem {
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: red;
+            border: 2px solid #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="https://i.ibb.co/3WG8717/c89c54ab-d47c-44b4-9b6f-f69f66d7ea47.jpg" alt="Reflection Image" border="0">
+
+    <h1>LaTeX Editor</h1>
+    <p>Write your LaTeX code below(Please write the name of the section of the problem):</p>
+    <textarea id="latex-input" oninput="renderMath()">$$ \frac{a}{b} $$</textarea>
+
+    <h2>Mathematical Render:</h2>
+    <div id="output"></div>
+
+    <form action="mailto:rayenbouazizi336@gmail.com" method="post" enctype="text/plain">
+        <div class="form-group">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="latex">LaTeX Code:</label>
+            <textarea id="latex" name="latex" rows="5" readonly></textarea>
+        </div>
+        <input type="submit" value="Send Solution">
+    </form>
+
+    <div id="poem">
+        <p>Welcome to the canvas where ideas dance like vibrant brushstrokes on a boundless horizon.</p>
+        <p>Your thoughts are stars that light up the night sky, weaving constellations of brilliance.</p>
+        <p>Like a river carving its path through rugged mountains, let your ideas flow and reshape the landscape of knowledge.</p>
+        <p>In this realm of creativity, each word you write is a note in a symphony, composing melodies of discovery and insight.</p>
+        <p>Embrace this journey, where every challenge is a stepping stone towards the pinnacle of understanding and achievement.</p>
+    </div>
+
+    <script>
+        function renderMath() {
+            const input = document.getElementById('latex-input').value;
+            document.getElementById('output').innerHTML = input;
+            MathJax.typesetPromise([document.getElementById('output')]);
+            document.getElementById('latex').value = input; // Update the LaTeX field in the form
+        }
+
+        window.onload = renderMath; // Display the output area on page load
+    </script>
+
+</body>
+</html>
