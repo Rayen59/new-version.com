@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FS9YCCEDT9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-FS9YCCEDT9');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functional Equations Problems - International Olympiad</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f2f5, #e0e3e8);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            transition: background 0.5s ease;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #333, #444);
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.5s ease, box-shadow 0.5s ease;
+            animation: headerColorShift 5s infinite alternate;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        @keyframes headerColorShift {
+            0% { background: linear-gradient(135deg, #333, #444); }
+            50% { background: linear-gradient(135deg, #444, #555); }
+            100% { background: linear-gradient(135deg, #333, #444); }
+        }
+
+        .problems {
+            background: #e9ecef;
+            margin: 30px 0;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: background 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .problem {
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            background: linear-gradient(135deg, #ffffff, #f9f9f9);
+            border: 1px solid #ddd;
+            animation: problemColorShift 8s infinite alternate;
+        }
+
+        .problem:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes problemColorShift {
+            0% { background: linear-gradient(135deg, #ffffff, #f9f9f9); }
+            50% { background: linear-gradient(135deg, #f9f9f9, #f0f0f0); }
+            100% { background: linear-gradient(135deg, #ffffff, #f9f9f9); }
+        }
+
+        .problem h3 {
+            margin-bottom: 10px;
+            color: #333;
+            font-size: 1.8em;
+        }
+
+        .problem p {
+            color: #555;
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #333, #555);
+            color: #fff;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2em;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+            animation: buttonColorShift 6s infinite alternate;
+        }
+
+        button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes buttonColorShift {
+            0% { background: linear-gradient(135deg, #333, #555); }
+            50% { background: linear-gradient(135deg, #555, #777); }
+            100% { background: linear-gradient(135deg, #333, #555); }
+        }
+
+        button a {
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Mathematics Olympiad - Functional Equations</h1>
+        </div>
+    </header>
+
+    <section id="problems" class="container">
+        <div class="problems">
+            <div class="problem">
+                <h3>Problem 1</h3>
+                <p>Find all functions \( f: \mathbb{R} \to \mathbb{R} \) such that for all \( x, y \in \mathbb{R} \), 
+                \[
+                f(x+y) = f(x) + f(y) + xy.
+                \]</p>
+            </div>
+            <div class="problem">
+                <h3>Problem 2</h3>
+                <p>Find all functions \( f: \mathbb{R} \to \mathbb{R} \) such that for all \( x, y \in \mathbb{R} \), 
+                \[
+                f(f(x) + y) = f(f(x) - y) + 4f(x)y.
+                \]</p>
+            </div>
+            <div class="problem">
+                <h3>Problem 3</h3>
+                <p>Find all functions \( f: \mathbb{R} \to \mathbb{R} \) such that for all \( x, y \in \mathbb{R} \), 
+                \[
+                f(x^2 + f(y)) = y + f(x)^2.
+                \]</p>
+            </div>
+            <div class="problem">
+                <h3>Problem 4</h3>
+                <p>Find all functions \( f: \mathbb{R} \to \mathbb{R} \) such that for all \( x, y \in \mathbb{R} \), 
+                \[
+                f(x+y) = f(x)f(y).
+                \]</p>
+            </div>
+            <div class="problem">
+                <h3>Problem 5</h3>
+                <p>Find all functions \( f: \mathbb{R} \to \mathbb{R} \) such that for all \( x, y \in \mathbb{R} \), 
+                \[
+                f(f(x) + y) = f(x + f(y)).
+                \]</p>
+            </div>
+            <div class="problem">
+                <h3>Problem 6</h3>
+                <p>Find all functions \( f: \mathbb{R} \to \mathbb{R} \) such that for all \( x, y \in \mathbb{R} \), 
+                \[
+                f(x^2 + y) = f(x)^2 + f(y).
+                \]</p>
+            </div>
+            <div class="problem">
+                <h3>Problem 7</h3>
+                <p>Find all functions \( f: \mathbb{R} \to \mathbb{R} \) such that for all \( x, y \in \mathbb{R} \), 
+                \[
+                f(x + f(y)) = y + f(x).
+                \]</p>
+            </div>
+        </div>
+    </section>
+    <div class="container">
+        <button><a href="formulaire de contact.html">Submit Your Solutions</a></button>
+    </div>
+</body>
+</html>
