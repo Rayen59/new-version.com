@@ -1,162 +1,156 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LaTeX Editor</title>
+    <title>Page de Soumission</title>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #f4a261, #2a9d8f);
+            background-color: #f4f4f4;
             padding: 20px;
-            color: #fff;
-            text-align: center;
-            animation: backgroundAnimation 10s infinite alternate;
         }
-
-        @keyframes backgroundAnimation {
-            from {
-                background: linear-gradient(135deg, #f4a261, #2a9d8f);
-            }
-            to {
-                background: linear-gradient(135deg, #2a9d8f, #f4a261);
-            }
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        textarea {
-            width: 80%;
-            height: 120px;
+        textarea, input[type="text"] {
+            width: 100%;
             font-size: 16px;
             padding: 10px;
-            border: 2px solid #fff;
-            border-radius: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             box-sizing: border-box;
             margin-bottom: 20px;
-            background-color: #fff;
-            color: #333;
         }
-
         #output {
             padding: 15px;
             background-color: #fff;
-            border: 2px solid #fff;
-            border-radius: 8px;
-            min-height: 60px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            min-height: 50px;
             font-size: 18px;
-            color: #333;
-            margin-top: 20px;
         }
-
-        form {
-            margin-top: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 8px;
-            display: inline-block;
-            width: 80%;
-            text-align: left;
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group textarea {
-            width: calc(100% - 20px);
+        #submissions {
             padding: 10px;
-            border: 2px solid #2a9d8f;
-            border-radius: 8px;
-            box-sizing: border-box;
-        }
-
-        .form-group input[type="submit"] {
-            background-color: #2a9d8f;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        .form-group input[type="submit"]:hover {
-            background-color: #1f7a6d;
-        }
-
-        #poem {
-            font-size: 18px;
-            line-height: 1.6;
-            text-align: center;
-            margin-top: 30px;
-            padding: 15px;
-            border-radius: 8px;
-            background-color: red;
-            border: 2px solid #fff;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
         }
     </style>
 </head>
 <body>
-
-    <img src="https://i.ibb.co/3WG8717/c89c54ab-d47c-44b4-9b6f-f69f66d7ea47.jpg" alt="Reflection Image" border="0">
-
-    <h1>LaTeX Editor</h1>
-    <p>Write your LaTeX code below(Please write the name of the section of the problem):</p>
-    <textarea id="latex-input" oninput="renderMath()">$$ \frac{a}{b} $$</textarea>
-
-    <h2>Mathematical Render:</h2>
-    <div id="output"></div>
-
-    <form action="mailto:rayenbouazizi336@gmail.com" method="post" enctype="text/plain">
-        <div class="form-group">
-            <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-            <label for="email">Your Email:</label>
-            <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-            <label for="latex">LaTeX Code:</label>
-            <textarea id="latex" name="latex" rows="5" readonly></textarea>
-        </div>
-        <input type="submit" value="Send Solution">
-    </form>
-
-    <div id="poem">
-        <p>Welcome to the canvas where ideas dance like vibrant brushstrokes on a boundless horizon.</p>
-        <p>Your thoughts are stars that light up the night sky, weaving constellations of brilliance.</p>
-        <p>Like a river carving its path through rugged mountains, let your ideas flow and reshape the landscape of knowledge.</p>
-        <p>In this realm of creativity, each word you write is a note in a symphony, composing melodies of discovery and insight.</p>
-        <p>Embrace this journey, where every challenge is a stepping stone towards the pinnacle of understanding and achievement.</p>
+    <h1>Page de Soumission</h1>
+    
+    <div id="user-info">
+        <h2>Informations Utilisateur</h2>
+        <label for="first-name">Prénom :</label>
+        <input type="text" id="first-name" placeholder="Votre prénom" required><br><br>
+        
+        <label for="last-name">Nom :</label>
+        <input type="text" id="last-name" placeholder="Votre nom" required><br><br>
+        
+        <button onclick="saveUserInfo()">Enregistrer Informations</button>
+    </div>
+    
+    <div id="submission-form">
+        <h2>Soumettre un Message</h2>
+        <label for="latex-input">Écrivez votre code LaTeX ci-dessous :</label><br>
+        <textarea id="latex-input" oninput="renderMath()">$$ \frac{a}{b} $$</textarea><br><br>
+        
+        <button onclick="submitMessage()">Envoyer</button>
     </div>
 
+    <h2>Rendu Mathématique :</h2>
+    <div id="output"></div>
+    
+    <h2>Mes Soumissions et Réponses</h2>
+    <div id="submissions"></div>
+
     <script>
+        let userInfo = JSON.parse(localStorage.getItem('userInfo')) || {};
+
         function renderMath() {
             const input = document.getElementById('latex-input').value;
             document.getElementById('output').innerHTML = input;
             MathJax.typesetPromise([document.getElementById('output')]);
-            document.getElementById('latex').value = input; // Update the LaTeX field in the form
         }
 
-        window.onload = renderMath; // Display the output area on page load
-    </script>
+        function saveUserInfo() {
+            const firstName = document.getElementById('first-name').value;
+            const lastName = document.getElementById('last-name').value;
+            
+            if (firstName && lastName) {
+                userInfo = { firstName, lastName };
+                localStorage.setItem('userInfo', JSON.stringify(userInfo));
+                document.getElementById('user-info').style.display = 'none';
+                loadSubmissions();
+            }
+        }
 
+        function submitMessage() {
+            if (!userInfo.firstName || !userInfo.lastName) {
+                alert('Veuillez entrer vos informations utilisateur.');
+                return;
+            }
+
+            const latexInput = document.getElementById('latex-input').value;
+            const submission = {
+                firstName: userInfo.firstName,
+                lastName: userInfo.lastName,
+                latex: latexInput,
+                date: new Date().toISOString(),
+                response: null
+            };
+            
+            let submissions = JSON.parse(localStorage.getItem('submissions') || '[]');
+            submissions.push(submission);
+            localStorage.setItem('submissions', JSON.stringify(submissions));
+            
+            document.getElementById('latex-input').value = '';
+            document.getElementById('output').innerHTML = '';
+            MathJax.typesetPromise();
+            loadSubmissions();
+        }
+
+        function loadSubmissions() {
+            const submissions = JSON.parse(localStorage.getItem('submissions') || '[]');
+            const submissionsDiv = document.getElementById('submissions');
+            submissionsDiv.innerHTML = '';
+            
+            submissions.forEach(submission => {
+                const responseHtml = submission.response ? `
+                    <div>
+                        <div class="latex-input">${submission.response.latex}</div>
+                        <p><strong>Réponse :</strong> ${submission.response.text}</p>
+                        <p><strong>Date :</strong> ${new Date(submission.response.date).toLocaleString()}</p>
+                    </div>
+                ` : '';
+
+                const submissionHtml = `
+                    <div>
+                        <h3>Message de ${submission.firstName} ${submission.lastName}</h3>
+                        <div class="latex-input">${submission.latex}</div>
+                        <p><strong>Date :</strong> ${new Date(submission.date).toLocaleString()}</p>
+                        ${responseHtml}
+                    </div>
+                `;
+                submissionsDiv.innerHTML += submissionHtml;
+            });
+
+            renderMath();
+        }
+
+        window.onload = function() {
+            if (!userInfo.firstName || !userInfo.lastName) {
+                document.getElementById('user-info').style.display = 'block';
+            } else {
+                document.getElementById('user-info').style.display = 'none';
+            }
+            loadSubmissions();
+        };
+    </script>
 </body>
 </html>
+
