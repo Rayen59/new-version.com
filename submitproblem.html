@@ -74,7 +74,9 @@
         function renderMath() {
             const input = document.getElementById('latex-input').value;
             document.getElementById('output').innerHTML = input;
-            MathJax.typesetPromise([document.getElementById('output')]);
+            MathJax.typesetPromise([document.getElementById('output')])
+                .then(() => console.log('MathJax has finished rendering.'))
+                .catch((err) => console.error('MathJax error:', err));
         }
 
         function saveUserInfo() {
@@ -96,10 +98,12 @@
             }
 
             const latexInput = document.getElementById('latex-input').value;
+            const renderedLatex = `<div>${latexInput}</div>`; // Utilisation des backticks
             const submission = {
                 firstName: userInfo.firstName,
                 lastName: userInfo.lastName,
                 latex: latexInput,
+                renderedLatex: renderedLatex,
                 date: new Date().toISOString(),
                 response: null
             };
@@ -110,7 +114,6 @@
             
             document.getElementById('latex-input').value = '';
             document.getElementById('output').innerHTML = '';
-            MathJax.typesetPromise();
             loadSubmissions();
         }
 
@@ -123,7 +126,7 @@
                 const responseHtml = submission.response ? `
                     <div>
                         <div class="latex-input">${submission.response.latex}</div>
-                        <p><strong>Réponse :</strong> ${submission.response.text}</p>
+                        <p><strong>Réponse :</strong> <span class="response-output">${submission.response.text}</span></p>
                         <p><strong>Date :</strong> ${new Date(submission.response.date).toLocaleString()}</p>
                     </div>
                 ` : '';
@@ -131,7 +134,7 @@
                 const submissionHtml = `
                     <div>
                         <h3>Message de ${submission.firstName} ${submission.lastName}</h3>
-                        <div class="latex-input">${submission.latex}</div>
+                        <div class="latex-input">${submission.renderedLatex}</div>
                         <p><strong>Date :</strong> ${new Date(submission.date).toLocaleString()}</p>
                         ${responseHtml}
                     </div>
@@ -139,7 +142,9 @@
                 submissionsDiv.innerHTML += submissionHtml;
             });
 
-            renderMath();
+            MathJax.typesetPromise()
+                .then(() => console.log('MathJax has finished rendering.'))
+                .catch((err) => console.error('MathJax error:', err));
         }
 
         window.onload = function() {
@@ -153,4 +158,5 @@
     </script>
 </body>
 </html>
+
 
