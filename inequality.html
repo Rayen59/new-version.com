@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Course: Inequalities of Means (AM, GM, QM, HM)</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+        }
+        p, .equation {
+            margin: 20px 0;
+            font-size: 1.2em;
+        }
+        .equation {
+            background-color: #e7e7eb;
+            padding: 10px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .box {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .exercise {
+            background-color: #ececec;
+            border-left: 6px solid #ff5722;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+        }
+        .solution {
+            background-color: #dff0d8;
+            border-left: 6px solid #4caf50;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "\\(", right: "\\)", display: false},
+                    {left: "\\[", right: "\\]", display: true}
+                ]
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Inequalities of Means: AM, GM, QM, HM</h1>
+        
+        <div class="box">
+            <h2>Introduction</h2>
+            <p>The inequalities of means are fundamental in mathematics and provide powerful tools for comparing different types of averages. These inequalities establish relationships between the arithmetic mean (AM), geometric mean (GM), quadratic mean (QM), and harmonic mean (HM) of a set of positive real numbers.</p>
+            <p>The general relationship between these means is expressed as follows:</p>
+            <p class="equation">
+                \[
+                H_n \leq G_n \leq A_n \leq Q_n
+                \]
+            </p>
+            <p>where \( H_n \), \( G_n \), \( A_n \), and \( Q_n \) are the harmonic, geometric, arithmetic, and quadratic means, respectively. Equality holds if and only if all the numbers in the set are equal.</p>
+        </div>
+
+        <div class="box">
+            <h2>Definitions</h2>
+            <p>Given a set of positive real numbers \( a_1, a_2, \dots, a_n \), the means are defined as follows:</p>
+            <ul>
+                <li><strong>Arithmetic Mean (AM):</strong> 
+                \[
+                A_n = \frac{a_1 + a_2 + \dots + a_n}{n}
+                \]
+                The arithmetic mean is the simple average of the numbers.</li>
+
+                <li><strong>Geometric Mean (GM):</strong> 
+                \[
+                G_n = \sqrt[n]{a_1 \cdot a_2 \cdot \dots \cdot a_n}
+                \]
+                The geometric mean is the \(n\)th root of the product of the numbers.</li>
+
+                <li><strong>Quadratic Mean (QM):</strong> 
+                \[
+                Q_n = \sqrt{\frac{a_1^2 + a_2^2 + \dots + a_n^2}{n}}
+                \]
+                The quadratic mean, also known as the root mean square, is the square root of the average of the squares of the numbers.</li>
+
+                <li><strong>Harmonic Mean (HM):</strong> 
+                \[
+                H_n = \frac{n}{\frac{1}{a_1} + \frac{1}{a_2} + \dots + \frac{1}{a_n}}
+                \]
+                The harmonic mean is the reciprocal of the average of the reciprocals of the numbers.</li>
+            </ul>
+        </div>
+
+        <div class="box">
+            <h2>Relationship Between the Means</h2>
+            <p>The inequalities among these means can be summarized as follows:</p>
+            <p class="equation">
+                \[
+                H_n \leq G_n \leq A_n \leq Q_n
+                \]
+            </p>
+            <p>These inequalities hold for any set of positive real numbers. The proofs of these inequalities can be derived using various methods, including algebraic manipulations, the Cauchy-Schwarz inequality, and Jensen's inequality.</p>
+
+            <h3>Proof of AM-GM Inequality</h3>
+            <p>The AM-GM inequality states that for any set of positive real numbers \( a_1, a_2, \dots, a_n \), we have:</p>
+            <p class="equation">
+                \[
+                A_n \geq G_n
+                \]
+            </p>
+            <p>That is, the arithmetic mean is always greater than or equal to the geometric mean. The equality holds if and only if all the numbers are equal.</p>
+
+            <h4>Proof for \( n = 2 \) (Simple Case)</h4>
+            <p>Consider two positive real numbers \( a \) and \( b \). The AM-GM inequality states:</p>
+            <p class="equation">
+                \[
+                \frac{a + b}{2} \geq \sqrt{ab}
+                \]
+            </p>
+            <p>Squaring both sides:</p>
+            <p class="equation">
+                \[
+                \left(\frac{a + b}{2}\right)^2 \geq ab
+                \]
+            </p>
+            <p>Expanding and simplifying:</p>
+            <p class="equation">
+                \[
+                \frac{a^2 + 2ab + b^2}{4} \geq ab \implies a^2 - 2ab + b^2 \geq 0 \implies (a - b)^2 \geq 0
+                \]
+            </p>
+            <p>Since \( (a - b)^2 \) is always non-negative, the inequality holds.</p>
+
+            <h3>Proof of QM-AM Inequality</h3>
+            <p>The QM-AM inequality states that the quadratic mean is always greater than or equal to the arithmetic mean:</p>
+            <p class="equation">
+                \[
+                Q_n \geq A_n
+                \]
+            </p>
+            <p>We prove this using the Cauchy-Schwarz inequality. For any set of positive real numbers \( a_1, a_2, \dots, a_n \), we have:</p>
+            <p class="equation">
+                \[
+                \left( \sum_{i=1}^n a_i^2 \right) \cdot n \geq \left( \sum_{i=1}^n a_i \right)^2
+                \]
+            </p>
+            <p>Dividing both sides by \( n^2 \) and taking the square root gives the QM-AM inequality:</p>
+            <p class="equation">
+                \[
+                \sqrt{\frac{\sum_{i=1}^n a_i^2}{n}} \geq \frac{\sum_{i=1}^n a_i}{n}
+                \]
+            </p>
+        </div>
+
+        <div class="box">
+            <h2>General Proof Using Jensen's Inequality</h2>
+            <p>Jensen's inequality provides a more general approach to proving inequalities of means. Let \( f(x) \) be a convex function. Then for any positive weights \( \lambda_1, \lambda_2, \dots, \lambda_n \) such that \( \lambda_1 + \lambda_2 + \dots + \lambda_n = 1 \), we have:</p>
+            <p class="equation">
+                \[
+                f\left( \lambda_1 a_1 + \lambda_2 a_2 + \dots + \lambda_n a_n \right) \leq \lambda_1 f(a_1) + \lambda_2 f(a_2) + \dots + \lambda_n f(a_n)
+                \]
+            </p>
+            <p>For the specific case of \( f(x) = -\log(x) \), this leads to the AM-GM inequality. Similarly, using \( f(x) = x^2 \), we derive the QM-AM inequality.</p>
+        </div>
+
+        <div class="exercise">
+            <h2>Exercise: Proving HM-AM Inequality</h2>
+            <p>Prove that for any set of positive real numbers \( a_1, a_2, \dots, a_n \), the harmonic mean is less than or equal to the arithmetic mean:</p>
+            <p class="equation">
+                \[
+                H_n \leq A_n
+                \]
+            </p>
+            <p>Provide a complete proof and discuss the conditions for equality.</p>
+        </div>
+
+        <div class="solution">
+            <h2>Solution</h2>
+            <p>To prove the HM-AM inequality, consider the definition of the harmonic mean:</p>
+            <p class="equation">
+                \[
+                H_n = \frac{n}{\frac{1}{a_1} + \frac{1}{a_2} + \dots + \frac{1}{a_n}}
+                \]
+            </p>
+            <p>By the AM-GM inequality applied to the reciprocals \( \frac{1}{a_1}, \frac{1}{a_2}, \dots, \frac{1}{a_n} \), we have:</p>
+            <p class="equation">
+                \[
+                \frac{\frac{1}{a_1} + \frac{1}{a_2} + \dots + \frac{1}{a_n}}{n} \geq \sqrt[n]{\frac{1}{a_1} \cdot \frac{1}{a_2} \cdot \dots \cdot \frac{1}{a_n}} = \frac{1}{A_n}
+                \]
+            </p>
+            <p>Taking the reciprocal of both sides gives:</p>
+            <p class="equation">
+                \[
+                H_n \leq A_n
+                \]
+            </p>
+            <p>Equality holds if and only if all the numbers \( a_1, a_2, \dots, a_n \) are equal.</p>
+        </div>
+    </div>
+</body>
+</html>
