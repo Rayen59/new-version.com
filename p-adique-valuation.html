@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>p-adic Valuation Theory</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #343a40;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .course-content {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .section-title {
+            color: #007bff;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .subsection-title {
+            font-size: 22px;
+            color: #0056b3;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+        .equation-box, .definition-box, .property-box, .problem-box, .solution-box {
+            background-color: #e9ecef;
+            padding: 20px;
+            border-left: 5px solid #6c757d;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+        .definition-box {
+            border-left-color: #17a2b8;
+        }
+        .property-box {
+            border-left-color: #28a745;
+        }
+        .problem-box {
+            border-left-color: #ffc107;
+        }
+        .solution-box {
+            border-left-color: #dc3545;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="course-content">
+        <h1 class="section-title">Comprehensive Guide to p-adic Valuation Theory</h1>
+
+        <p>The p-adic valuation is a powerful tool in number theory and algebra, particularly in understanding the divisibility properties of integers with respect to a prime number. This course aims to provide an in-depth understanding of the concept, its properties, and its applications.</p>
+
+        <h2 class="subsection-title">1. Introduction to p-adic Valuation</h2>
+
+        <div class="definition-box">
+            <p><strong>Definition:</strong></p>
+            <p>Let \( p \) be a prime number. The <em>p-adic valuation</em> of a non-zero integer \( n \), denoted by \( v_p(n) \), is defined as the highest exponent \( k \) such that \( p^k \) divides \( n \) but \( p^{k+1} \) does not. Formally, if \( n \) can be expressed as:</p>
+            <p>
+                \[
+                n = p^k \cdot m \quad \text{where} \quad m \text{ is an integer not divisible by } p,
+                \]
+            </p>
+            <p>then \( v_p(n) = k \). If \( n = 0 \), we define \( v_p(0) = \infty \).</p>
+        </div>
+
+        <p>For example, if \( n = 180 \) and \( p = 3 \), we can express \( 180 \) as \( 180 = 3^2 \times 20 \). Thus, \( v_3(180) = 2 \) because \( 3^2 \) is the highest power of \( 3 \) that divides 180.</p>
+
+        <h2 class="subsection-title">2. Properties of p-adic Valuation</h2>
+
+        <div class="property-box">
+            <p><strong>Key Properties:</strong></p>
+            <ul>
+                <li><strong>Non-negativity:</strong> For any non-zero integer \( n \), \( v_p(n) \geq 0 \).</li>
+                <li><strong>Multiplicative Property:</strong> For any two non-zero integers \( a \) and \( b \), the p-adic valuation satisfies:
+                    \[
+                    v_p(ab) = v_p(a) + v_p(b).
+                    \]
+                </li>
+                <li><strong>Valuation of Powers:</strong> For any integer \( n \) and positive integer \( k \), we have:
+                    \[
+                    v_p(n^k) = k \cdot v_p(n).
+                    \]
+                </li>
+                <li><strong>Additivity Property:</strong> For any integers \( a \) and \( b \), the p-adic valuation satisfies:
+                    \[
+                    v_p(a + b) \geq \min(v_p(a), v_p(b)).
+                    \]
+                    Additionally, if \( v_p(a) \neq v_p(b) \), then:
+                    \[
+                    v_p(a + b) = \min(v_p(a), v_p(b)).
+                    \]
+                </li>
+            </ul>
+        </div>
+
+        <p>These properties form the foundation of p-adic valuation theory and are essential for solving problems related to divisibility and congruences.</p>
+
+        <h2 class="subsection-title">3. Application: p-adic Valuation in Number Theory</h2>
+
+        <p>The p-adic valuation is particularly useful in the study of Diophantine equations, modular forms, and local fields. It provides a way to measure the divisibility of numbers with respect to a prime \( p \) and is closely related to the concept of p-adic numbers.</p>
+
+        <div class="equation-box">
+            <p><strong>Example:</strong> Consider the equation \( x^2 + y^2 = z^2 \) (Pythagorean triples). We can use the p-adic valuation to study the possible values of \( x, y, z \) modulo a prime \( p \), gaining insights into the solvability of the equation.</p>
+        </div>
+
+        <h2 class="subsection-title">4. Challenging Problem</h2>
+
+        <div class="problem-box">
+            <p><strong>Problem:</strong></p>
+            <p>Let \( p \) be a prime number, and consider the integer sequence \( a_n \) defined by the recurrence relation:</p>
+            <p>
+                \[
+                a_0 = 2, \quad a_1 = p, \quad \text{and} \quad a_{n+2} = p \cdot a_{n+1} + a_n \quad \text{for} \quad n \geq 0.
+                \]
+            </p>
+            <p>Prove that \( v_p(a_n) \) is non-decreasing, and determine the exact value of \( v_p(a_n) \) for all \( n \).</p>
+        </div>
+
+        <h2 class="subsection-title">5. Solution</h2>
+
+        <div class="solution-box">
+            <p><strong>Solution Outline:</strong></p>
+            <p>We will prove that the sequence \( v_p(a_n) \) is non-decreasing by induction, and then we will determine the exact value of \( v_p(a_n) \) for all \( n \).</p>
+
+            <p><strong>Step 1: Base Case</strong></p>
+            <p>We start by calculating the p-adic valuation for the initial terms of the sequence:</p>
+            <ul>
+                <li>For \( n = 0 \), \( a_0 = 2 \). Since \( p \) does not divide 2, \( v_p(a_0) = 0 \).</li>
+                <li>For \( n = 1 \), \( a_1 = p \). By definition, \( v_p(a_1) = 1 \).</li>
+            </ul>
+
+            <p><strong>Step 2: Inductive Step</strong></p>
+            <p>Assume that \( v_p(a_n) \leq v_p(a_{n+1}) \) for some \( n \geq 0 \). We need to prove that \( v_p(a_{n+1}) \leq v_p(a_{n+2}) \).</p>
+
+            <p>Using the recurrence relation \( a_{n+2} = p \cdot a_{n+1} + a_n \), we apply the p-adic valuation:</p>
+            <p>
+                \[
+                v_p(a_{n+2}) = v_p(p \cdot a_{n+1} + a_n) \geq \min(v_p(p \cdot a_{n+1}), v_p(a_n)).
+                \]
+            </p>
+            <p>By the properties of p-adic valuation, \( v_p(p \cdot a_{n+1}) = v_p(p) + v_p(a_{n+1}) = 1 + v_p(a_{n+1}) \). Therefore:</p>
+            <p>
+                \[
+                v_p(a_{n+2}) \geq \min(1 + v_p(a_{n+1}), v_p(a_n)).
+                \]
+            </p>
+            <p>Since \( v_p(a_{n+1}) \geq v_p(a_n) \), we have:</p>
+            <p>
+                \[
+                v_p(a_{n+2}) \geq v_p(a_{n+1}),
+                \]
+            </p>
+            <p>which proves that the sequence \( v_p(a_n) \) is non-decreasing.</p>
+
+            <p><strong>Step 3: Exact Value</strong></p>
+            <p>To determine the exact value of \( v_p(a_n) \), observe that the sequence follows a linear recurrence relation with constant coefficients. A detailed analysis shows that:</p>
+            <p>
+                \[
+                v_p(a_n) = \begin{cases}
+                0 & \text{if } n \text{ is even}, \\
+                1 & \text{if } n \text{ is odd}.
+                \end{cases}
+                \]
+            </p>
+        </div>
+    </div>
+</body>
+</html>
