@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <title>Math Problems</title>
+    <script src="https://cdn.jsdelivr.net/npm/latex.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1e1e1e;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .problem {
+            margin: 20px 0;
+            padding: 10px;
+            border: 1px solid #444;
+            border-radius: 5px;
+        }
+        .problem input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #555;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .problem button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .problem button:hover {
+            background-color: #0056b3;
+        }
+        .charisma {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .charisma span {
+            font-size: 24px;
+            padding: 10px;
+            border-radius: 50%;
+            background-color: #28a745;
+            color: #fff;
+            display: inline-block;
+        }
+        .charisma span.red {
+            background-color: #dc3545;
+        }
+        .score {
+            text-align: center;
+            font-size: 20px;
+        }
+        .feedback {
+            text-align: center;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Math Problems</h1>
+    <div id="score" class="score">Score: 0</div>
+    <div id="charisma" class="charisma"><span id="charisma-circle"></span></div>
+
+    <div class="problem">
+        <p>1. By how many zeros does the number \(460^{1500} - 216000^{500}\) end in decimal notation?</p>
+        <input type="number" id="answer1" placeholder="Enter your answer">
+        <button onclick="checkAnswer(1, 1504)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>2. What is the largest value of \(k\) such that \(2^k\) divides \(23^{2^{2016}} + 7^{2^{2016}}\)?</p>
+        <input type="number" id="answer2" placeholder="Enter your answer">
+        <button onclick="checkAnswer(2, 1)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>3. How many pairs \((a, b)\) of strictly positive integers satisfy \(a > b\) and \((a - b)^9 = a^8 - b^8\)?</p>
+        <input type="number" id="answer3" placeholder="Enter your answer">
+        <button onclick="checkAnswer(3, 0)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>4. What is the difference between the quadratic mean and the harmonic mean of 1, 10, 100, and 1000?</p>
+        <input type="number" id="answer4" placeholder="Enter your answer">
+        <button onclick="checkAnswer(4, 498.919)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>5. Consider three numbers \(a, b, c > 0\) with an arithmetic mean of 14. Suppose the geometric mean of \(a\) and \(b\) is 6, the geometric mean of \(a\) and \(c\) is 9, and the geometric mean of \(b\) and \(c\) is 18. What is the quadratic mean of the three numbers?</p>
+        <input type="number" id="answer5" placeholder="Enter your answer">
+        <button onclick="checkAnswer(5, 17.14)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>6. Find the number of zeros at the end of \(10^{2000} - 5^{1999}\) in decimal representation.</p>
+        <input type="number" id="answer6" placeholder="Enter your answer">
+        <button onclick="checkAnswer(6, 1999)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>7. What is the largest integer \(k\) such that \(3^k\) divides \(7^{2^{2015}} + 5^{2^{2015}}\)?</p>
+        <input type="number" id="answer7" placeholder="Enter your answer">
+        <button onclick="checkAnswer(7, 1)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>8. How many positive integer solutions \((x, y)\) satisfy \(x^3 - y^3 = 8\)?</p>
+        <input type="number" id="answer8" placeholder="Enter your answer">
+        <button onclick="checkAnswer(8, 1)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>9. What is the value of \(\sqrt{a^2 + b^2}\) if \(a\) and \(b\) are such that \(a^2 + b^2 = 10^4\) and \(a \geq b\)?</p>
+        <input type="number" id="answer9" placeholder="Enter your answer">
+        <button onclick="checkAnswer(9, 100)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>10. Find the number of positive integers \(n\) such that \(2^n + 1\) is divisible by \(n\).</p>
+        <input type="number" id="answer10" placeholder="Enter your answer">
+        <button onclick="checkAnswer(10, 1)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>11. Determine the largest integer \(k\) for which \(4^k\) divides \(5^{2^{2017}} - 3^{2^{2017}}\).</p>
+        <input type="number" id="answer11" placeholder="Enter your answer">
+        <button onclick="checkAnswer(11, 2)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>12. How many positive integers \(m\) satisfy \(m^3 - m = 2^k\) for some integer \(k\)?</p>
+        <input type="number" id="answer12" placeholder="Enter your answer">
+        <button onclick="checkAnswer(12, 1)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>13. What is the difference between the arithmetic mean and the geometric mean of \(2, 3, 7, 21\)?</p>
+        <input type="number" id="answer13" placeholder="Enter your answer">
+        <button onclick="checkAnswer(13, 8.86)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>14. Find the largest integer \(k\) such that \(5^k\) divides \(6^{2^{2018}} + 4^{2^{2018}}\).</p>
+        <input type="number" id="answer14" placeholder="Enter your answer">
+        <button onclick="checkAnswer(14, 2)">Submit</button>
+    </div>
+
+    <div class="problem">
+        <p>15. Determine the number of distinct solutions to the equation \(x^4 - 4x^2 + 4 = 0\).</p>
+        <input type="number" id="answer15" placeholder="Enter your answer">
+        <button onclick="checkAnswer(15, 2)">Submit</button>
+    </div>
+
+    <div class="feedback" id="feedback"></div>
+
+    <script>
+        let score = 0;
+        let answeredProblems = new Set();
+
+        // Load previous score and charisma from local storage
+        window.onload = () => {
+            score = localStorage.getItem('score') || 0;
+            document.getElementById('score').innerText = `Score: ${score}`;
+            document.getElementById('charisma-circle').innerText = score > 50 ? "🎉" : "😐";
+        };
+
+        function checkAnswer(problemNumber, correctAnswer) {
+            const userAnswer = parseFloat(document.getElementById(`answer${problemNumber}`).value);
+            const feedback = document.getElementById('feedback');
+
+            if (answeredProblems.has(problemNumber)) {
+                feedback.innerText = 'This problem has already been answered.';
+                return;
+            }
+
+            if (userAnswer === correctAnswer) {
+                feedback.innerText = 'Correct! 🎉';
+                score += 10;
+                localStorage.setItem('score', score);
+                document.getElementById('score').innerText = `Score: ${score}`;
+                document.getElementById('charisma-circle').classList.remove('red');
+                document.getElementById('charisma-circle').innerText = "🎉";
+            } else {
+                feedback.innerText = 'Incorrect. Try again!';
+                document.getElementById('charisma-circle').classList.add('red');
+                document.getElementById('charisma-circle').innerText = "😐";
+            }
+
+            answeredProblems.add(problemNumber);
+            localStorage.setItem('answeredProblems', JSON.stringify(Array.from(answeredProblems)));
+        }
+
+        // Load answered problems from local storage
+        window.onload = () => {
+            const savedProblems = JSON.parse(localStorage.getItem('answeredProblems')) || [];
+            answeredProblems = new Set(savedProblems);
+        };
+    </script>
+</body>
+</html>
