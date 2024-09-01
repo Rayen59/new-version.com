@@ -43,6 +43,10 @@
         .problem button:hover {
             background-color: #0056b3;
         }
+        .problem button:disabled {
+            background-color: #6c757d;
+            cursor: not-allowed;
+        }
         .charisma {
             text-align: center;
             margin: 20px 0;
@@ -73,12 +77,11 @@
     <div id="score" class="score">Score: 0</div>
     <div id="charisma" class="charisma"><span id="charisma-circle"></span></div>
 
-    <div class="problem">
+    <div class="problem" id="problem1">
         <p>1. By how many zeros does the number \(460^{1500} - 216000^{500}\) end in decimal notation?</p>
         <input type="number" id="answer1" placeholder="Enter your answer">
         <button onclick="checkAnswer(1, 1504)">Submit</button>
     </div>
-
     <div class="problem">
         <p>2. What is the largest value of \(k\) such that \(2^k\) divides \(23^{2^{2016}} + 7^{2^{2016}}\)?</p>
         <input type="number" id="answer2" placeholder="Enter your answer">
@@ -163,50 +166,43 @@
         <button onclick="checkAnswer(15, 2)">Submit</button>
     </div>
 
-    <div class="feedback" id="feedback"></div>
-
     <script>
-        let score = 0;
-        let answeredProblems = new Set();
+        // Initialisation du score
+        let score = parseInt(localStorage.getItem('score')) || 0;
+        document.getElementById('score').innerText = 'Score: ' + score;
 
-        // Load previous score and charisma from local storage
-        window.onload = () => {
-            score = localStorage.getItem('score') || 0;
-            document.getElementById('score').innerText = `Score: ${score}`;
-            document.getElementById('charisma-circle').innerText = score > 50 ? "🎉" : "😐";
-        };
-
+        // Fonction pour vérifier la réponse et mettre à jour le score
         function checkAnswer(problemNumber, correctAnswer) {
-            const userAnswer = parseFloat(document.getElementById(`answer${problemNumber}`).value);
-            const feedback = document.getElementById('feedback');
+            const userAnswer = parseFloat(document.getElementById('answer' + problemNumber).value);
 
-            if (answeredProblems.has(problemNumber)) {
-                feedback.innerText = 'This problem has already been answered.';
+            // Vérifier si le problème a déjà été résolu
+            if (localStorage.getItem('solvedProblem' + problemNumber)) {
+                alert("You have already answered this problem.");
                 return;
             }
 
-            if (userAnswer === correctAnswer) {
-                feedback.innerText = 'Correct! 🎉';
-                score += 10;
+            if (userAnswer.toFixed(2) == correctAnswer.toFixed(2)) {
+                score++;
                 localStorage.setItem('score', score);
-                document.getElementById('score').innerText = `Score: ${score}`;
+                document.getElementById('charisma-circle').innerText = '✔️';
                 document.getElementById('charisma-circle').classList.remove('red');
-                document.getElementById('charisma-circle').innerText = "🎉";
             } else {
-                feedback.innerText = 'Incorrect. Try again!';
+                document.getElementById('charisma-circle').innerText = '❌';
                 document.getElementById('charisma-circle').classList.add('red');
-                document.getElementById('charisma-circle').innerText = "😐";
             }
 
-            answeredProblems.add(problemNumber);
-            localStorage.setItem('answeredProblems', JSON.stringify(Array.from(answeredProblems)));
+            document.getElementById('score').innerText = 'Score: ' + score;
+            localStorage.setItem('solvedProblem' + problemNumber, true);  // Marquer le problème comme résolu
+            document.querySelector('#problem' + problemNumber + ' button').disabled = true; // Désactiver le bouton
         }
 
-        // Load answered problems from local storage
-        window.onload = () => {
-            const savedProblems = JSON.parse(localStorage.getItem('answeredProblems')) || [];
-            answeredProblems = new Set(savedProblems);
-        };
+        // Désactiver les boutons pour les problèmes déjà résolus
+        for (let i = 1; i <= 15; i++) { // 15 est le nombre de problèmes
+            if (localStorage.getItem('solvedProblem' + i)) {
+                document.querySelector('#problem' + i + ' button').disabled = true;
+            }
+        }
     </script>
 </body>
 </html>
+
