@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyclic Points and Power of a Point</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .content {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+        .equation {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        svg {
+            border: 1px solid #000;
+        }
+        .point {
+            fill: red;
+            stroke: black;
+            stroke-width: 2px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>How to Prove Points are Cyclic and the Power of a Point</h1>
+        
+        <div class="section">
+            <h2>Proving Points are Cocyclic</h2>
+            <p>To prove that points \( A \), \( B \), \( C \), and \( D \) are cocyclic, we can use the inscribed angle theorem, the central angle theorem, the power of a point theorem, or the exterior angle criterion.</p>
+            <p class="equation">
+                \[
+                \text{If } \angle ABC = \angle ADC, \text{ then } A, B, C, D \text{ are cocyclic.}
+                \]
+            </p>
+            <p class="equation">
+                \[
+                \text{If } PA \times PC = PB \times PD, \text{ then } A, B, C, D \text{ are cocyclic.}
+                \]
+            </p>
+        </div>
+        <div class="container">
+            <svg width="500" height="500">
+                <!-- Cercle -->
+                <circle cx="250" cy="250" r="200" fill="none" stroke="black" stroke-width="2"/>
+    
+                <!-- Points sur le cercle -->
+                <circle cx="250" cy="50" r="5" class="point"/>
+                <circle cx="450" cy="250" r="5" class="point"/>
+                <circle cx="250" cy="450" r="5" class="point"/>
+                <circle cx="50" cy="250" r="5" class="point"/>
+    
+                <!-- Lignes reliant les points -->
+                <line x1="250" y1="50" x2="450" y2="250" stroke="black" stroke-width="1"/>
+                <line x1="450" y1="250" x2="250" y2="450" stroke="black" stroke-width="1"/>
+                <line x1="250" y1="450" x2="50" y2="250" stroke="black" stroke-width="1"/>
+                <line x1="50" y1="250" x2="250" y2="50" stroke="black" stroke-width="1"/>
+            </svg>
+        </div>
+
+        <div class="diagram">
+            <h2>Illustrative Diagram</h2>
+            <p>In this diagram, points \( A \), \( B \), \( C \), and \( D \) are shown to be on the same circle, proving they are cyclic.</p>
+        </div>
+
+        <div class="section">
+            <h2>Power of a Point</h2>
+            <p>The power of a point \( P \) relative to a circle with center \( O \) and radius \( r \) is defined as the squared distance from \( P \) to \( O \), minus the square of the radius:</p>
+            <p class="equation">
+                \[
+                \text{Power of } P = PO^2 - r^2
+                \]
+            </p>
+            <p>If \( P \) lies on the circle, the power of \( P \) is zero. Otherwise, the power is positive if \( P \) is outside the circle and negative if \( P \) is inside.</p>
+        </div>
+
+        <div class="exercise">
+            <h2>Exercise 1: Proving Points are Cocyclic</h2>
+            <p>Given four points \( A \), \( B \), \( C \), and \( D \) in a plane, prove that these points are cocyclic if the following condition holds:</p>
+            <p class="equation">
+                \[
+                \angle BAC + \angle BDC = 180^\circ
+                \]
+            </p>
+        </div>
+
+        <div class="solution">
+            <h2>Solution to Exercise 1</h2>
+            <p>By the inscribed angle theorem, \( \angle BAC + \angle BDC = 180^\circ \) implies that the points \( A \), \( B \), \( C \), and \( D \) lie on the same circle. Hence, they are cocyclic.</p>
+        </div>
+
+        <div class="exercise">
+            <h2>Exercise 2: Power of a Point</h2>
+            <p>Given a circle with center \( O \) and a point \( P \) outside the circle, show that the power of \( P \) with respect to the circle equals the product of the lengths of the tangents from \( P \) to the circle.</p>
+        </div>
+
+        <div class="solution">
+            <h2>Solution to Exercise 2</h2>
+            <p>The power of \( P \) is given by:</p>
+            <p class="equation">
+                \[
+                \text{Power of } P = PT_1 \times PT_2
+                \]
+            </p>
+            <p>where \( T_1 \) and \( T_2 \) are the points of tangency. This shows that the power of \( P \) is equal to the product of the lengths of the tangents from \( P \) to the circle.</p>
+        </div>
+    </div>
+</body>
+</html>
