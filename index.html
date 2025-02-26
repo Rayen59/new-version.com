@@ -3,356 +3,369 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Nexus Labs - Advanced AI Ecosystem</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Dark Web Style</title>
     <style>
-        /* Reset CSS */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #0a0c12;
-            color: #e0e0e0;
-            line-height: 1.6;
+            font-family: "Courier New", monospace;
+            background-color: #0d0d0d;
+            color: #00ff41; /* Vert fluorescent style "Matrix" */
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden;
         }
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #1e40af, #0f172a);
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        header h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #60a5fa;
-        }
-
-        header p {
-            font-size: 1.2rem;
-            margin-top: 0.5rem;
-            color: #f8fafc;
-        }
-
-        /* Navigation */
-        nav {
-            display: flex;
-            justify-content: center;
-            background: #1e293b;
-            padding: 1rem;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        nav a {
-            color: #60a5fa;
-            text-decoration: none;
-            margin: 0 1.5rem;
-            font-size: 1.1rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #2563eb;
-        }
-
-        /* Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 1rem;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 cartes par ligne */
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: #1e293b;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .menu-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
             cursor: pointer;
+            z-index: 10;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+        .menu-icon div {
+            width: 100%;
+            height: 5px;
+            background-color: #ff0000; /* Rouge agressif */
+            margin: 6px 0;
         }
 
-        .feature-card h3 {
-            font-size: 1.5rem;
-            color: #60a5fa;
-            margin-bottom: 1rem;
+        .sliding-panel {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #1a1a1a; /* Noir cassé */
+            color: #ff0000; /* Rouge menaçant */
+            transition: 0.3s ease;
+            box-shadow: 2px 0 10px rgba(255, 0, 0, 0.8);
+            z-index: 9;
+            padding: 20px;
         }
 
-        .feature-card p {
-            font-size: 1rem;
-            color: #f8fafc;
-        }
-
-        .feature-card a {
+        .sliding-panel a {
+            display: block;
+            padding: 10px;
             color: #ff0000;
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
+            font-size: 18px;
+            margin: 10px 0;
         }
 
-        .feature-card a:hover {
+        .sliding-panel a:hover {
+            background-color: #2a0000; /* Rouge très sombre */
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            background-color: #1a1a1a; /* Fond sombre */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); /* Éclat rouge inquiétant */
+        }
+
+        .header {
+            background-color: #2a0000; /* Rouge très sombre */
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff0000; /* Rouge vif */
+        }
+
+        .content {
+            padding: 15px;
+        }
+
+        .content h3 {
+            margin-top: 0;
+            color: #00ff41; /* Vert fluorescent */
+        }
+
+        .box {
+            background-color: #1a1a1a; /* Noir cassé */
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ff0000; /* Rouge vif */
+        }
+
+        .box a {
+            display: block;
+            color: #ff0000; /* Rouge vif */
+            font-weight: bold;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+
+        .box a:hover {
+            color: #00ff41; /* Vert fluorescent */
+        }
+
+        .statistics {
+            background-color: #2a0000;
+            padding: 10px;
+            text-align: center;
+            border-radius: 0 0 8px 8px;
+            border-top: 1px solid #ff0000;
+            color: #ff0000; /* Texte en rouge */
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9); /* Fond noir opaque */
+            z-index: 8;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        .sliding-panel.inactive {
+            left: -250px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sliding-panel.active {
+            left: 0;
+            opacity: 1;
+        }
+
+        .ai-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .ai-table, .ai-table th, .ai-table td {
+            border: 1px solid #ff0000;
+        }
+
+        .ai-table th, .ai-table td {
+            padding: 15px;
+            text-align: left;
+            color: #ff0000;
+        }
+
+        .ai-table th {
+            background-color: #2a0000;
+        }
+
+        .ai-table tr:nth-child(even) {
+            background-color: #1a1a1a;
+        }
+
+        .ai-table tr:hover {
+            background-color: #2a0000;
+        }
+
+        .ai-question {
+            cursor: pointer;
             color: #00ff41;
         }
 
-        /* Footer */
-        footer {
-            background: #1e293b;
-            padding: 2rem;
-            text-align: center;
-            margin-top: 4rem;
-            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+        .answer {
+            display: none;
+            color: #ff0000;
         }
-
-        footer p {
-            font-size: 1rem;
-            color: #f8fafc;
-        }
-
-        footer a {
-            color: #60a5fa;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #2563eb;
-        }
-        /* Sliding Panel */
-    .sliding-panel {
-        position: fixed;
-        top: 0;
-        left: -250px;
-        width: 250px;
-        height: 100%;
-        background: #1e293b;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
-        transition: 0.3s ease;
-        z-index: 1000;
-        padding: 20px;
-    }
-
-    .sliding-panel.active {
-        left: 0;
-    }
-
-    .sliding-panel a {
-        display: block;
-        padding: 10px;
-        color: #60a5fa;
-        text-decoration: none;
-        font-size: 1.1rem;
-        margin: 10px 0;
-        transition: color 0.3s ease;
-    }
-
-    .sliding-panel a:hover {
-        color: #2563eb;
-    }
-
-    .menu-icon {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        width: 30px;
-        cursor: pointer;
-        z-index: 1001;
-    }
-
-    .menu-icon div {
-        width: 100%;
-        height: 3px;
-        background-color: #60a5fa;
-        margin: 6px 0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .menu-icon.active div:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-    }
-
-    .menu-icon.active div:nth-child(2) {
-        opacity: 0;
-    }
-
-    .menu-icon.active div:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-    }
-
-    .overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.8);
-        z-index: 999;
-        transition: opacity 0.3s ease;
-    }
-
-    .overlay.active {
-        display: block;
-    }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <h1>Quantum Nexus Labs</h1>
-        <p>Innovating the Future with AI and Quantum Computing</p>
-    </header>
-<!-- Sliding Panel -->
-<div class="menu-icon" onclick="togglePanel()">
-    <div></div>
-    <div></div>
-    <div></div>
-</div>
+    <div id="overlay" class="overlay" onclick="togglePanel()"></div>
 
-<div id="slidingPanel" class="sliding-panel">
-    <a href="rayen.html">About me</a>
-    <a href="admin1.html">Admin profile</a>
-    <a href="foruser.html">Disclaimer</a>
-    <a href="send.html">Contact Us</a>
-    <a href="statistique.html">Problems review</a>
-    <a href="game2.html">Destructive game</a>
-    <a href="play1.html">Intellectual game</a>
-    <a href="log.in.html">Log in to receive news</a>
-    <a href="news.html">News of Quantum Nexus Labs</a>
-</div>
+    <div class="menu-icon" onclick="togglePanel()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 
-<!-- Overlay -->
-<div id="overlay" class="overlay" onclick="togglePanel()"></div>
-
-    <!-- Navigation -->
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="container">
-        <div class="features">
-            <!-- Feature Card 1 -->
-            <div class="feature-card">
-                <h3>Rayen IA</h3>
-                <p>This page is online on 23/2/2025</p>
+    <div id="slidingPanel" class="sliding-panel inactive">
+        <a href="rayen.html">About me</a>
+        <a href="admin1.html">Admin profile</a>
+        <a href="foruser.html">Disclaimer</a>
+        <a href="send.html">Contact Us</a>
+        <a href="statistique.html">Problems review</a>
+        <a href="game2.html">Destructive game</a>
+        <a href="play1.html">Intellectual game</a>
+        <a href="log.in.html">Log in to receive news</a>
+        <a href="news.html">News of Quantum Nexus Labs</a>
+    </div>
+<div class="container">
+        <div class="header">Rayen IA</div>
+        <div class="content">
+            <h3>This page is online on 23/2/2025</h3>
+            <div class="box">
                 <a href="gbt.html">Rayen IA</a>
-            </div>
-
-            <!-- Feature Card 2 -->
-            <div class="feature-card">
-                <h3>About</h3>
-                <p>This page is online on 22/7/2024</p>
-                <a href="aboutversion.html">About Our new version</a>
-            </div>
-
-            <!-- Feature Card 3 -->
-            <div class="feature-card">
-                <h3>Privacy rule</h3>
-                <p>This page is online on 22/7/2024</p>
-                <a href="confidelity.html">Privacy rule</a>
-            </div>
-
-            <!-- Feature Card 4 -->
-            <div class="feature-card">
-                <h3>Install our application</h3>
-                <p>This page is online on 22/7/2024</p>
-                <a href="install application.html">Install our application</a>
-            </div>
-
-            <!-- Feature Card 5 -->
-            <div class="feature-card">
-                <h3>Courses and problems</h3>
-                <p>This page is online on 1/8/2024</p>
-                <a href="courses and problems.html">Courses and problems</a>
-            </div>
-
-            <!-- Feature Card 6 -->
-            <div class="feature-card">
-                <h3>New problems make a challenge with yourself!</h3>
-                <p>This page is online on 22/7/2024</p>
-                <a href="probleme.html">Challenge problems with score try to get full marks!</a>
-            </div>
-
-            <!-- Feature Card 7 -->
-            <div class="feature-card">
-                <h3>Number Theory</h3>
-                <p>This page is online on 22/7/2024</p>
-                <a href="number theory.html">Number Theory</a>
-            </div>
-
-            <!-- Feature Card 8 -->
-            <div class="feature-card">
-                <h3>Combinatorics</h3>
-                <p>This page is online on 22/7/2024</p>
-                <a href="combinatoire.html">Combinatorics</a>
-            </div>
-
-            <!-- Feature Card 9 -->
-            <div class="feature-card">
-                <h3>Geometry</h3>
-                <p>This page is online on 22/7/2024</p>
-                <a href="geometry.html">Geometry</a>
-            </div>
-
-            <!-- Feature Card 10 -->
-            <div class="feature-card">
-                <h3>Functional Equations</h3>
-                <p>This page is online on 22/7/2024</p>
-                <a href="functionnal equation.html">Functional equation</a>
-            </div>
-
-            <!-- Feature Card 11 -->
-            <div class="feature-card">
-                <h3>Forum</h3>
-                <p>This page is online on 22/7/2024</p>
-                <a href="forum.html">Forum</a>
-            </div>
-
-            <!-- Feature Card 12 -->
-            <div class="feature-card">
-                <h3>Send your solution.</h3>
-                <p>This page is online on 22/7/2024</p>
-                <a href="submitproblem.html">Send your solution</a>
+                <!-- Ajoutez d'autres liens ici -->
             </div>
         </div>
     </div>
+    
+    <div class="container">
+        <div class="header">About</div>
+        <div class="content">
+            <h3>This page is online on 22/7/2024</h3>
+            <div class="box">
+                <a href="aboutversion.html">About Our new version </a>
+                <!-- Ajoutez d'autres liens ici -->
+            </div>
+        </div>
+    </div>
+  
+    <div class="container">
+        <div class="header">Privacy rule</div>
+        <div class="content">
+            <h3>This page is online on 22/7/2024</h3>
+            <div class="box">
+                <a href="confidelity.html">Privacy rule</a>
+                <!-- Ajoutez d'autres liens ici -->
+            </div>
+        </div>
+    </div>
+  
+    <div class="container">
+        <div class="header">Install our application</div>
+        <div class="content">
+            <h3>This page is online on 22/7/2024</h3>
+            <div class="box">
+                <a href="install application.html">Install our application</a>
+                <!-- Ajoutez d'autres liens ici -->
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="header">Courses and problems </div>
+        <div class="content">
+            <h3>This page is online on 1/8/2024</h3>
+            <div class="box">
+                <a href="courses and problems.html">courses and problems</a>
+                <!-- Ajoutez d'autres liens ici -->
+            </div>
+        </div>
+    </div>
+  
+    <div class="container">
+        <div class="header">New problems make a challenge with yourself!</div>
+        <div class="content">
+            <h3>This page is online on 22/7/2024</h3>
+            <div class="box">
+                <a href="probleme.html">Challenge problems with score try to get full marks!</a>
+                <!-- Ajoutez d'autres liens ici -->
+            </div>
+        </div>
+    </div>
+  
+    <div class="container">
+        <div class="header">Number Theory</div>
+        <div class="content">
+            <h3>This page is online on 22/7/2024</h3>
+            <div class="box">
+                <a href="number theory.html">Number Theory</a>
+                <!-- Ajoutez d'autres liens ici -->
+            </div>
+        </div>
+        <div class="statistics">
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+  
+    <div class="container">
+        <div class="header">Combinatorics</div>
+        <div class="content">
+            <h3>This page is online on 22/7/2024</h3>
+            <div class="box">
+                <a href="combinatoire.html">Combinatorics</a>
+                <!-- Ajoutez d'autres liens ici -->
+            </div>
+        </div>
+        <div class="statistics">
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+  
+    <div class="container">
+        <div class="header">Geometry</div>
+        <div class="content">
+            <h3>This page is online on 22/7/2024</h3>
+            <div class="box">
+                <a href="geometry.html">Geometry</a>
+                <!-- Ajoutez d'autres liens ici -->
+            </div>
+        </div>
+        <div class="statistics">
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+  
+    <div class="container">
+        <div class="header">Functional Equations</div>
+        <div class="content">
+            <h3>This page is online on 22/7/2024</h3>
+            <div class="box">
+                <a href="functionnal equation.html">Functionnal equation</a>
+                <!-- Ajoutez d'autres liens ici -->
+            </div>
+        </div>
+        <div class="statistics">
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+  <div class="container">
+        <div class="header">Forum</div>
+        <div class="content">
+            <h3>This page is online on 22/7/2024</h3>
+            <div class="box">
+                <a href="forum.html">Forum</a>
+                <!-- Ajoutez d'autres liens ici -->
+            </div>
+        </div>
+        <div class="statistics">
+            <p></p>
+            <p></p>
+        </div>
+    <div class="container">
+        <div class="header">Send your solution.</div>
+        <div class="content">
+            <h3>This page is online on 22/7/2024</h3>
+            <div class="box">
+                <a href="submitproblem.html">Send your solution</a>
+                <!-- Ajoutez d'autres liens ici -->
+            </div>
+        </div>
+    </div>
+  </div>
     <script>
-      // Toggle Sliding Panel
-    function togglePanel() {
-        const panel = document.getElementById("slidingPanel");
-        const overlay = document.getElementById("overlay");
-        const menuIcon = document.querySelector(".menu-icon");
+        function togglePanel() {
+            var panel = document.getElementById("slidingPanel");
+            var overlay = document.getElementById("overlay");
+            if (panel.classList.contains("inactive")) {
+                panel.classList.remove("inactive");
+                panel.classList.add("active");
+                overlay.classList.add("active");
+            } else {
+                panel.classList.remove("active");
+                panel.classList.add("inactive");
+                overlay.classList.remove("active");
+            }
+        }
 
-        panel.classList.toggle("active");
-        overlay.classList.toggle("active");
-        menuIcon.classList.toggle("active");
-    }
+        function toggleAnswer(id) {
+            var answer = document.getElementById("answer" + id);
+            answer.style.display = answer.style.display === "none" || answer.style.display === "" ? "block" : "none";
+        }
     </script>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 Quantum Nexus Labs. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
-    </footer>
 </body>
-</html>
+</ht
