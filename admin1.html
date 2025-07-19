@@ -1,172 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-FS9YCCEDT9"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FS9YCCEDT9"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-  gtag('config', 'G-FS9YCCEDT9');
-</script>
+      gtag('config', 'G-FS9YCCEDT9');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Profile</title>
+    <title>Admin Profile - Quantum Nexus Labs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        @keyframes gradientAnimation {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        :root {
+            --primary-bg: #0a0a0f; /* Deep, dark space-like background */
+            --secondary-bg: #1a1a2e; /* Slightly lighter, deep blue-purple for containers */
+            --accent-color: #00bcd4; /* Cyan/Teal for primary highlights */
+            --accent-glow: #00e5ff; /* Brighter cyan for glow effects */
+            --text-color: #e0e0e0; /* Soft white for general text */
+            --heading-color: #a7e0e3; /* Muted cyan for headings */
+            --border-color: #0d47a1; /* Darker blue for subtle borders */
+            --hover-color: #00bcd4; /* Accent color for interactive elements */
+            --menu-bg: #1c1c3a; /* Darker blue-purple for menu */
+            --menu-item-hover: #2a2a4b; /* Lighter shade for menu item hover */
+            --shadow-strong: rgba(0, 229, 255, 0.25); /* Stronger glow shadow */
+            --shadow-light: rgba(0, 188, 212, 0.15); /* Lighter glow shadow */
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4, #fad0c4, #ff9a9e);
-            background-size: 400% 400%;
-            animation: gradientAnimation 10s ease infinite;
-            color: #333;
+            font-family: 'Roboto', sans-serif;
+            background: var(--primary-bg) radial-gradient(circle at center, rgba(13, 23, 49, 0.5) 0%, rgba(10, 10, 15, 1) 70%);
+            color: var(--text-color);
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 200vh;
+            min-height: 100vh; /* Use min-height to ensure it covers the viewport but allows scrolling */
+            animation: backgroundFadeIn 2s ease-out;
+        }
+
+        @keyframes backgroundFadeIn {
+            from { background-color: #000; opacity: 0; }
+            to { background-color: var(--primary-bg); opacity: 1; }
         }
 
         .profile-container {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: var(--secondary-bg);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px var(--shadow-strong);
             max-width: 600px;
-            width: 100%;
+            width: 90%; /* Make it slightly more responsive */
             overflow: hidden;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid var(--border-color);
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            margin: 40px 0; /* Add margin for spacing on smaller screens */
         }
 
         .profile-container:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px) scale(1.005);
+            box-shadow: 0 15px 50px var(--shadow-strong), 0 0 35px var(--accent-glow);
+            border-color: var(--accent-color);
         }
 
         .profile-header {
-            background: linear-gradient(135deg, #6a11cb, #2575fc);
-            color: #fff;
-            padding: 20px;
+            background: linear-gradient(135deg, var(--accent-color), var(--accent-glow));
+            color: var(--primary-bg); /* Dark text on bright gradient */
+            padding: 30px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-header::before { /* Subtle glow effect for header */
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 229, 255, 0.1);
+            filter: blur(10px);
+            z-index: -1;
+            border-radius: 15px 15px 0 0;
         }
 
         .profile-header img {
-            width: 150px;
-            height: 150px;
+            width: 160px; /* Slightly larger image */
+            height: 160px;
             border-radius: 50%;
-            border: 4px solid #fff;
-            margin-bottom: 10px;
+            border: 5px solid var(--primary-bg); /* Dark border for contrast */
+            margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Shadow for image */
+            object-fit: cover; /* Ensure image covers the circle */
         }
 
+        /* Styling for the anonymous avatar */
+        .profile-header .anonymous-avatar {
+            /* This is a common way to represent a generic person icon */
+            background-color: #f0f0f0; /* White background for the person */
+            color: #ccc; /* Light grey for the icon itself */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px; /* Adjust size of the icon */
+            width: 160px; /* Match image dimensions */
+            height: 160px;
+            border-radius: 50%;
+            border: 5px solid var(--primary-bg);
+            margin: 0 auto 15px auto;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .profile-header .anonymous-avatar i {
+            /* You might need to adjust icon size within the div */
+            font-size: 100px; /* Adjust font-size to make the icon fit nicely */
+            color: #a0a0a0; /* Darker grey for the silhouette */
+        }
+
+
         .profile-header h2 {
+            font-family: 'Orbitron', sans-serif;
             margin: 10px 0;
+            font-size: 2.2em;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
         }
 
         .profile-header p {
-            font-size: 16px;
+            font-size: 1.1em;
+            color: var(--primary-bg);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-details {
+            padding: 25px 20px;
+            background-color: var(--menu-bg); /* Slightly different background for details */
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--heading-color);
+        }
+
+        .profile-details p {
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05em;
+        }
+
+        .profile-details img {
+            vertical-align: middle;
+            margin-right: 12px;
+            width: 25px; /* Larger icons */
+            height: 25px;
+            filter: drop-shadow(0 0 5px var(--accent-glow)); /* Glow for icons */
+        }
+
+        .profile-details span {
+            color: var(--accent-glow);
+            font-weight: bold;
+        }
+        .profile-details p:last-child {
+            color: var(--text-color); /* For the 'Quantum Nexus Labs' text */
+            margin-top: 15px;
+            font-size: 1em;
         }
 
         .profile-content {
-            padding: 20px;
+            padding: 30px;
         }
 
         .profile-content h3 {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--heading-color);
             margin-top: 0;
+            font-size: 1.6em;
+            margin-bottom: 25px;
+            text-shadow: 0 0 8px rgba(167, 224, 227, 0.4);
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 10px;
         }
 
         .btn {
             display: block;
             width: calc(100% - 40px);
-            margin: 10px auto;
-            padding: 15px;
-            font-size: 16px;
-            color: #fff;
-            background-color: #007bff;
+            margin: 15px auto;
+            padding: 18px; /* Larger padding for better touch targets */
+            font-size: 1.1em;
+            color: var(--primary-bg);
+            background-color: var(--accent-color);
             border: none;
-            border-radius: 5px;
+            border-radius: 8px; /* Slightly more rounded */
             cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
             text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px var(--shadow-strong);
         }
 
         .btn:hover {
-            background-color: #0056b3;
-            transform: scale(1.05);
+            background-color: var(--accent-glow);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px var(--shadow-strong), 0 0 20px var(--accent-glow);
         }
 
         .report-container {
-            margin-top: 20px;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px dashed var(--border-color);
         }
 
-        .report-container select {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
+        .report-container select,
         .report-container textarea {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            resize: vertical;
+            width: calc(100% - 20px); /* Adjust width for padding */
+            padding: 12px;
+            font-size: 1em;
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: var(--primary-bg);
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
+            box-shadow: inset 0 0 8px rgba(0, 188, 212, 0.1);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .report-container select:focus,
+        .report-container textarea:focus {
+            outline: none;
+            border-color: var(--accent-glow);
+            box-shadow: inset 0 0 15px var(--accent-glow);
+        }
+
+        .report-container option {
+            background-color: var(--primary-bg);
+            color: var(--text-color);
         }
 
         .social-media {
             display: flex;
             justify-content: center;
-            gap: 10px;
-            margin-top: 20px;
+            gap: 20px; /* More space between icons */
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed var(--border-color);
         }
 
         .social-media a {
-            color: #fff;
-            font-size: 24px;
-            transition: color 0.3s ease;
+            color: var(--heading-color); /* Muted color for icons normally */
+            font-size: 32px; /* Larger icons */
+            transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
         }
 
         .social-media a:hover {
-            color: #007bff;
+            color: var(--accent-glow);
+            text-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-5px) scale(1.1);
         }
 
-        .profile-details {
-            margin-top: 20px;
-            text-align: center;
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .profile-container {
+                width: 95%;
+                margin: 20px 0;
+            }
+            .profile-header h2 {
+                font-size: 2em;
+            }
+            .profile-header p {
+                font-size: 1em;
+            }
+            .profile-header img, .profile-header .anonymous-avatar { /* Apply to anonymous too */
+                width: 140px;
+                height: 140px;
+            }
+            .profile-header .anonymous-avatar i {
+                font-size: 80px;
+            }
+            .profile-details p, .profile-details span {
+                font-size: 0.95em;
+            }
+            .profile-content {
+                padding: 20px;
+            }
+            .profile-content h3 {
+                font-size: 1.4em;
+            }
+            .btn {
+                padding: 15px;
+                font-size: 1em;
+            }
+            .social-media a {
+                font-size: 28px;
+            }
         }
 
-        .profile-details img {
-            vertical-align: middle;
-            margin-right: 10px;
-            width: 20px;
-            height: 20px;
-        }
-
-        .profile-details span {
-            font-size: 16px;
-            color: #007bff;
+        @media (max-width: 480px) {
+            .profile-header h2 {
+                font-size: 1.8em;
+            }
+            .profile-header img, .profile-header .anonymous-avatar { /* Apply to anonymous too */
+                width: 120px;
+                height: 120px;
+            }
+            .profile-header .anonymous-avatar i {
+                font-size: 70px; /* Adjust for smaller screens */
+            }
+            .profile-details p, .profile-details span {
+                font-size: 0.9em;
+            }
+            .profile-content h3 {
+                font-size: 1.2em;
+            }
+            .btn {
+                padding: 12px;
+                font-size: 0.9em;
+            }
+            .social-media a {
+                font-size: 24px;
+            }
+            .report-container select, .report-container textarea {
+                padding: 10px;
+                font-size: 0.9em;
+            }
         }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 
 <div class="profile-container">
     <div class="profile-header">
-        <img src="https://blog-media.byjusfutureschool.com/bfs-blog/2023/03/13104229/Article-Image-7.jpg" alt="Admin Profile Picture">
+        <div class="anonymous-avatar">
+            <i class="fas fa-user"></i>
+        </div>
         <h2>Admin</h2>
-        <p>Welcome to the admin profile</p>
+        <p>Welcome to the Quantum Nexus Labs admin profile:Med Rayen Bouazizi</p>
     </div>
 
     <div class="profile-details">
