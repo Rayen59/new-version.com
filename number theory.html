@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FS9YCCEDT9"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -11,121 +10,249 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number Theory</title>
+    <title>Mastering Number Theory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
-        /* Base Styles */
-        body {
-            font-family: 'Georgia', serif;
-            background: #1a1a1a; /* Dark background */
-            color: #f0f0f0; /* Light text */
-            margin: 0;
-            padding: 0;
-            line-height: 1.8;
+        /* Define a dark, sophisticated color palette with CSS variables */
+        :root {
+            --primary-bg: #111827; /* Dark slate blue */
+            --secondary-bg: #1f2937; /* Slightly lighter slate blue for elements */
+            --accent-color: #6366f1; /* Vibrant indigo/purple for accents (buttons, headers) */
+            --highlight-color: #a855f7; /* Lighter purple for glow effects */
+            --text-light: #e5e7eb; /* Off-white for general text */
+            --text-dark: #cbd5e1; /* Slightly darker light text for subtle contrast */
+            --border-color: #374151; /* Dark grey for borders */
+            --table-header-bg: #4a5568; /* Dark grey for table header */
+            --table-row-hover: #313c4c; /* Darker grey for row hover */
+            --shadow-dark: rgba(0, 0, 0, 0.4);
+            --shadow-light: rgba(0, 0, 0, 0.15);
         }
 
-        /* Title */
+        /* Base Styles */
+        body {
+            font-family: 'Roboto', sans-serif; /* Clean, modern sans-serif */
+            background: var(--primary-bg);
+            color: var(--text-light);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7; /* Improved readability */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Full viewport height */
+        }
+
+        /* Main Title */
         .title {
+            font-family: 'Playfair Display', serif; /* Elegant serif for title */
             text-align: center;
-            margin-top: 50px;
-            font-size: 48px;
-            font-weight: bold;
-            color: #ff6f61; /* Coral accent */
-            animation: glow 2s infinite alternate;
+            padding: 60px 20px 40px; /* More vertical padding */
+            font-size: 4.5em; /* Larger, more impactful title */
+            font-weight: 700;
+            color: var(--accent-color);
+            letter-spacing: 0.05em; /* Subtle letter spacing */
+            text-shadow: 0 0 20px var(--highlight-color), 0 0 40px var(--accent-color); /* Enhanced glow */
+            animation: glow 2.5s infinite alternate ease-in-out; /* Slower, smoother glow */
+            background: linear-gradient(180deg, var(--primary-bg) 0%, rgba(31, 41, 55, 0.5) 100%);
+            border-bottom: 2px solid var(--border-color);
+            position: relative;
+            z-index: 1;
         }
 
         @keyframes glow {
-            0% { text-shadow: 0 0 10px #ff6f61, 0 0 20px #ff6f61; }
-            100% { text-shadow: 0 0 20px #ff6f61, 0 0 40px #ff6f61; }
+            0% { text-shadow: 0 0 15px var(--highlight-color), 0 0 30px var(--accent-color), 0 0 50px var(--accent-color); }
+            100% { text-shadow: 0 0 25px var(--highlight-color), 0 0 50px var(--accent-color), 0 0 80px var(--accent-color); }
         }
 
         /* Container */
         .container {
             max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
+            margin: 50px auto; /* More vertical margin */
+            padding: 30px; /* More padding */
+            flex-grow: 1; /* Allows container to take available space */
         }
 
         /* Table Styling */
         table {
             width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 40px;
-            background: #2a2a2a; /* Dark table background */
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            border-collapse: separate; /* Use separate to allow border-radius on cells */
+            border-spacing: 0; /* Remove default spacing */
+            margin-bottom: 50px; /* More space below table */
+            background: var(--secondary-bg);
+            border-radius: 15px; /* Softer, larger border-radius */
+            overflow: hidden; /* Ensures content respects border-radius */
+            box-shadow: 0 10px 30px var(--shadow-dark); /* Deeper shadow */
+            border: 1px solid var(--border-color);
         }
 
         th, td {
-            padding: 20px;
+            padding: 22px 25px; /* More padding */
             text-align: left;
-            border-bottom: 1px solid #444;
+            border-bottom: 1px solid var(--border-color); /* Darker border */
+            vertical-align: top; /* Align text to top in cells */
         }
 
         th {
-            background: #ff6f61; /* Coral header */
-            color: #1a1a1a;
-            font-size: 20px;
-            font-weight: bold;
+            background: var(--table-header-bg);
+            color: var(--text-accent); /* Pure white for header text */
+            font-size: 1.3em; /* Larger header font */
+            font-weight: 600;
+            text-transform: uppercase; /* Uppercase for a clean look */
+            letter-spacing: 0.03em;
         }
 
+        /* Rounded corners for first/last cells */
+        thead tr:first-child th:first-child { border-top-left-radius: 15px; }
+        thead tr:first-child th:last-child { border-top-right-radius: 15px; }
+        tbody tr:last-child td:first-child { border-bottom-left-radius: 15px; }
+        tbody tr:last-child td:last-child { border-bottom-right-radius: 15px; border-bottom: none; } /* No bottom border for last row */
+
+
         tr:hover {
-            background: #3a3a3a; /* Hover effect */
+            background: var(--table-row-hover);
             transition: background 0.3s ease;
         }
 
         /* Problem Statement */
         .enonce {
-            font-size: 18px;
-            color: #f0f0f0;
+            font-size: 1.15em; /* Slightly larger problem text */
+            color: var(--text-dark); /* Slightly softer text color */
+        }
+
+        /* MathJax equations within problems */
+        .enonce .MathJax {
+            font-family: 'Fira Code', monospace !important; /* Ensure Fira Code for equations */
+            font-size: 1.05em !important; /* Adjust MathJax font size relative to text */
+            color: var(--text-light) !important; /* Consistent light text for equations */
+        }
+        .enonce .MathJax_Display {
+            margin: 1.2em 0 !important; /* More breathing room for block equations */
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.1); /* Subtle dark background for block equations */
+            border-radius: 6px;
+            overflow-x: auto; /* Ensure horizontal scroll for very long equations */
         }
 
         /* Button */
         button {
             display: block;
-            width: 100%;
-            padding: 20px;
-            font-size: 22px;
-            font-weight: bold;
-            color: #1a1a1a;
-            background: linear-gradient(135deg, #ff6f61, #ffcc5c); /* Gradient button */
+            margin: 0 auto; /* Center the button */
+            width: 80%; /* Slightly less than 100% for better aesthetics */
+            max-width: 400px; /* Max width for large screens */
+            padding: 20px 30px; /* More padding */
+            font-size: 1.5em; /* Larger button text */
+            font-weight: 700;
+            color: var(--primary-bg); /* Dark text on button */
+            background: linear-gradient(135deg, var(--accent-color), var(--highlight-color)); /* Gradient button */
             border: none;
             border-radius: 12px;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 6px 20px var(--shadow-dark); /* Initial button shadow */
+            letter-spacing: 0.02em;
         }
 
         button a {
             text-decoration: none;
             color: inherit;
+            display: block; /* Make the link fill the button */
         }
 
         button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(255, 111, 97, 0.4);
+            transform: translateY(-5px) scale(1.02); /* Lift and slight scale on hover */
+            box-shadow: 0 12px 30px var(--shadow-dark); /* Deeper shadow on hover */
+        }
+
+        button:active {
+            transform: translateY(0); /* Press effect */
+            box-shadow: 0 4px 10px var(--shadow-dark);
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            margin-top: 40px;
-            font-size: 16px;
-            color: #888;
+            margin-top: 60px; /* More space from button */
+            padding: 30px;
+            font-size: 0.95em;
+            color: var(--text-dark);
+            background: var(--secondary-bg);
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3em;
+                padding: 40px 15px 30px;
+            }
+            .container {
+                margin: 30px auto;
+                padding: 15px;
+            }
+            th, td {
+                padding: 15px 18px;
+                font-size: 0.95em;
+            }
+            th {
+                font-size: 1.1em;
+            }
+            .enonce {
+                font-size: 1em;
+            }
+            button {
+                width: 90%;
+                font-size: 1.3em;
+                padding: 15px 20px;
+            }
+            .footer {
+                margin-top: 40px;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.2em;
+                padding: 30px 10px 20px;
+                letter-spacing: 0.02em;
+            }
+            .container {
+                margin: 20px auto;
+                padding: 10px;
+            }
+            th, td {
+                padding: 12px 15px;
+            }
+            th {
+                font-size: 1em;
+            }
+            .enonce {
+                font-size: 0.95em;
+            }
+            button {
+                width: 95%;
+                font-size: 1.1em;
+                padding: 12px 15px;
+            }
+            .footer {
+                margin-top: 30px;
+                padding: 15px;
+                font-size: 0.85em;
+            }
         }
     </style>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <div class="title">
-        Number Theory
+        Mastering Number Theory
     </div>
 
     <div class="container">
         <table>
             <thead>
                 <tr>
-                    <th>Problem</th>
+                    <th>Problem Statement</th>
                 </tr>
             </thead>
             <tbody>
@@ -255,7 +382,7 @@
     </div>
 
     <div class="footer">
-        © 2023 Number Theory. All rights reserved.
+        © 2023 Mastering Number Theory. All rights reserved.
     </div>
 </body>
 </html>
