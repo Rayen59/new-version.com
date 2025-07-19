@@ -3,114 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dark Web Style</title>
+    <title>Quantum Nexus Labs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-bg: #0a0a0f; /* Deep, dark space-like background */
+            --secondary-bg: #1a1a2e; /* Slightly lighter, deep blue-purple for containers */
+            --accent-color: #00bcd4; /* Cyan/Teal for primary highlights */
+            --accent-glow: #00e5ff; /* Brighter cyan for glow effects */
+            --text-color: #e0e0e0; /* Soft white for general text */
+            --heading-color: #a7e0e3; /* Muted cyan for headings */
+            --border-color: #0d47a1; /* Darker blue for subtle borders */
+            --hover-color: #00bcd4; /* Accent color for interactive elements */
+            --menu-bg: #1c1c3a; /* Darker blue-purple for menu */
+            --menu-item-hover: #2a2a4b; /* Lighter shade for menu item hover */
+            --shadow-strong: rgba(0, 229, 255, 0.25); /* Stronger glow shadow */
+            --shadow-light: rgba(0, 188, 212, 0.15); /* Lighter glow shadow */
+            --new-badge-bg: #ff7043; /* Vibrant orange for new badge */
+            --new-badge-shadow: rgba(255, 112, 67, 0.4);
+        }
+
         body {
-            font-family: "Courier New", monospace;
-            background-color: #0d0d0d;
-            color: #00ff41; /* Vert fluorescent style "Matrix" */
+            font-family: 'Roboto', sans-serif;
+            background: var(--primary-bg) radial-gradient(circle at center, rgba(13, 23, 49, 0.5) 0%, rgba(10, 10, 15, 1) 70%);
+            color: var(--text-color);
             margin: 0;
-            padding: 20px;
+            padding: 0;
             overflow-x: hidden;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+            animation: backgroundFadeIn 2s ease-out;
+        }
+
+        @keyframes backgroundFadeIn {
+            from { background-color: #000; opacity: 0; }
+            to { background-color: var(--primary-bg); opacity: 1; }
+        }
+
+        /* --- Header / Navigation --- */
+        .top-bar {
+            background-color: rgba(26, 26, 46, 0.8); /* Semi-transparent for depth */
+            backdrop-filter: blur(8px); /* Frosted glass effect */
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px var(--shadow-strong);
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Ensure it's always on top */
+        }
+
+        .site-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            color: var(--accent-glow);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-color);
+            transition: text-shadow 0.3s ease-in-out;
+        }
+
+        .site-title:hover {
+            text-shadow: 0 0 15px var(--accent-glow), 0 0 30px var(--accent-color), 0 0 40px var(--accent-glow);
         }
 
         .menu-icon {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 30px;
+            width: 38px;
+            height: 28px;
+            position: relative;
             cursor: pointer;
-            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1010;
         }
 
         .menu-icon div {
             width: 100%;
-            height: 5px;
-            background-color: #ff0000; /* Rouge agressif */
-            margin: 6px 0;
+            height: 4px;
+            background-color: var(--accent-glow);
+            transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 2px;
+            box-shadow: 0 0 5px var(--accent-glow);
+        }
+
+        .menu-icon.active .bar1 {
+            transform: rotate(-45deg) translate(-8px, 8px);
+        }
+
+        .menu-icon.active .bar2 {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        .menu-icon.active .bar3 {
+            transform: rotate(45deg) translate(-8px, -8px);
         }
 
         .sliding-panel {
             position: fixed;
             top: 0;
-            left: -250px;
-            width: 250px;
+            left: -320px; /* Hidden by default */
+            width: 300px;
             height: 100%;
-            background-color: #1a1a1a; /* Noir cassé */
-            color: #ff0000; /* Rouge menaçant */
-            transition: 0.3s ease;
-            box-shadow: 2px 0 10px rgba(255, 0, 0, 0.8);
-            z-index: 9;
-            padding: 20px;
+            background-color: var(--menu-bg);
+            color: var(--text-color);
+            transition: left 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Springy transition */
+            box-shadow: 4px 0 20px var(--shadow-strong);
+            z-index: 1005;
+            padding: 80px 0 20px; /* Space for top bar */
+            overflow-y: auto;
+            border-right: 2px solid var(--border-color);
+        }
+
+        .sliding-panel.active {
+            left: 0;
         }
 
         .sliding-panel a {
             display: block;
-            padding: 10px;
-            color: #ff0000;
+            padding: 18px 40px;
+            color: var(--text-color);
             text-decoration: none;
             font-size: 18px;
-            margin: 10px 0;
+            border-left: 5px solid transparent;
+            transition: background-color 0.3s ease, color 0.3s ease, border-left-color 0.3s ease, text-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sliding-panel a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 188, 212, 0.1), transparent);
+            transition: left 0.4s ease;
+        }
+
+        .sliding-panel a:hover::before {
+            left: 0;
         }
 
         .sliding-panel a:hover {
-            background-color: #2a0000; /* Rouge très sombre */
-        }
-
-        .container {
-            max-width: 500px;
-            margin: 20px auto;
-            background-color: #1a1a1a; /* Fond sombre */
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5); /* Éclat rouge inquiétant */
-        }
-
-        .header {
-            background-color: #2a0000; /* Rouge très sombre */
-            padding: 15px;
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff0000; /* Rouge vif */
-        }
-
-        .content {
-            padding: 15px;
-        }
-
-        .content h3 {
-            margin-top: 0;
-            color: #00ff41; /* Vert fluorescent */
-        }
-
-        .box {
-            background-color: #1a1a1a; /* Noir cassé */
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            border: 1px solid #ff0000; /* Rouge vif */
-        }
-
-        .box a {
-            display: block;
-            color: #ff0000; /* Rouge vif */
-            font-weight: bold;
-            text-decoration: none;
-            margin-bottom: 10px;
-        }
-
-        .box a:hover {
-            color: #00ff41; /* Vert fluorescent */
-        }
-
-        .statistics {
-            background-color: #2a0000;
-            padding: 10px;
-            text-align: center;
-            border-radius: 0 0 8px 8px;
-            border-top: 1px solid #ff0000;
-            color: #ff0000; /* Texte en rouge */
+            background-color: var(--menu-item-hover);
+            color: var(--accent-glow);
+            border-left-color: var(--accent-glow);
+            text-shadow: 0 0 8px var(--accent-glow);
         }
 
         .overlay {
@@ -120,252 +163,590 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9); /* Fond noir opaque */
-            z-index: 8;
-            transition: opacity 0.3s ease;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1004;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
         .overlay.active {
             display: block;
-        }
-
-        .sliding-panel.inactive {
-            left: -250px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .sliding-panel.active {
-            left: 0;
             opacity: 1;
         }
 
+        /* --- Main Content Containers --- */
+        .main-content {
+            padding: 40px 20px;
+            max-width: 1400px;
+            margin: 40px auto;
+            animation: fadeInScale 1s ease-out forwards;
+            opacity: 0;
+            transform: scale(0.98);
+        }
+
+        @keyframes fadeInScale {
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .container {
+            background-color: var(--secondary-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 25px var(--shadow-strong);
+            border: 2px solid var(--border-color);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease-in-out;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slideUpFadeIn 0.8s ease-out forwards;
+        }
+
+        .container:nth-child(even) { animation-delay: 0.1s; }
+        .container:nth-child(3n) { animation-delay: 0.2s; }
+        /* Add more delays for staggered animation */
+
+        @keyframes slideUpFadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container:hover {
+            transform: translateY(-8px) scale(1.01);
+            box-shadow: 0 12px 40px var(--shadow-strong), 0 0 30px var(--accent-glow);
+            border-color: var(--accent-color);
+        }
+
+        .header {
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-glow));
+            padding: 18px 25px;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-bg); /* Dark text on bright background */
+            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+
+        .content {
+            padding: 25px;
+        }
+
+        .content h3 {
+            margin-top: 0;
+            color: var(--heading-color);
+            font-size: 19px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+            font-family: 'Share Tech Mono', monospace; /* Techy monospace font */
+            text-shadow: 0 0 5px rgba(167, 224, 227, 0.3);
+        }
+
+        .box {
+            background-color: var(--primary-bg);
+            padding: 18px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            box-shadow: inset 0 0 10px var(--shadow-light);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            box-shadow: inset 0 0 15px var(--shadow-strong);
+        }
+
+        .box a {
+            display: block;
+            color: var(--accent-color);
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 17px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .box a::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent-glow);
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1.2em;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .box a:hover::before {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .box a:hover {
+            color: var(--accent-glow);
+            text-shadow: 0 0 12px var(--accent-glow);
+        }
+
+        .statistics {
+            background-color: var(--menu-bg);
+            padding: 15px 25px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-color);
+            font-size: 15px;
+            border-radius: 0 0 15px 15px;
+            font-family: 'Share Tech Mono', monospace;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .statistics p {
+            margin: 0;
+            color: var(--text-color);
+        }
+        
+        .statistics p span {
+            color: var(--accent-glow);
+            font-weight: bold;
+        }
+
+        /* --- New Badge --- */
+        .new-badge {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            background-color: var(--new-badge-bg);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 0 15px 0 15px; /* Angled top-right corner */
+            font-size: 14px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transform: rotate(3deg); /* Slightly rotated for dynamic feel */
+            transform-origin: top right;
+            box-shadow: 0 4px 10px var(--new-badge-shadow);
+            animation: newBadgePop 1s ease-out infinite alternate;
+        }
+
+        @keyframes newBadgePop {
+            0% { transform: scale(1) rotate(3deg); opacity: 1; }
+            50% { transform: scale(1.05) rotate(5deg); opacity: 1; }
+            100% { transform: scale(1) rotate(3deg); opacity: 1; }
+        }
+
+        /* --- AI Table (if present) --- */
         .ai-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 20px;
+            margin-top: 40px;
+            background-color: var(--secondary-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 25px var(--shadow-strong);
         }
 
         .ai-table, .ai-table th, .ai-table td {
-            border: 1px solid #ff0000;
+            border: 1px solid var(--border-color);
         }
 
         .ai-table th, .ai-table td {
-            padding: 15px;
+            padding: 18px;
             text-align: left;
-            color: #ff0000;
+            color: var(--text-color);
+            font-family: 'Roboto', sans-serif;
         }
 
         .ai-table th {
-            background-color: #2a0000;
+            background-color: var(--accent-color);
+            color: var(--primary-bg);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            font-size: 1.1em;
         }
 
         .ai-table tr:nth-child(even) {
-            background-color: #1a1a1a;
+            background-color: rgba(26, 26, 46, 0.8); /* Slightly different shade for rows */
         }
 
         .ai-table tr:hover {
-            background-color: #2a0000;
+            background-color: var(--menu-item-hover);
         }
 
         .ai-question {
             cursor: pointer;
-            color: #00ff41;
+            color: var(--heading-color);
+            font-weight: bold;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .ai-question:hover {
+            text-decoration: underline;
+            color: var(--accent-glow);
+            text-shadow: 0 0 10px var(--accent-glow);
         }
 
         .answer {
             display: none;
-            color: #ff0000;
+            color: var(--text-color);
+            margin-top: 15px;
+            padding-left: 20px;
+            border-left: 4px solid var(--accent-color);
+            background-color: rgba(10, 10, 15, 0.5); /* Slightly transparent for the answer box */
+            padding: 15px;
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--secondary-bg);
+            padding: 30px;
+            text-align: center;
+            margin-top: 80px;
+            border-top: 2px solid var(--border-color);
+            color: var(--text-color);
+            font-size: 15px;
+            box-shadow: 0 -4px 15px var(--shadow-strong);
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .footer p {
+            margin: 8px 0;
+            color: var(--heading-color);
+        }
+
+        .footer p:last-child {
+            color: var(--text-color);
+            font-size: 0.9em;
+        }
+
+        /* --- Scroll to top button --- */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--accent-glow);
+            color: var(--primary-bg);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.3s ease;
+            box-shadow: 0 4px 15px var(--shadow-strong);
+            z-index: 990;
+        }
+
+        .scroll-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px var(--accent-glow);
+        }
+
+        /* --- Responsive adjustments --- */
+        @media (max-width: 992px) {
+            .section-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            .site-title {
+                font-size: 28px;
+            }
+            .sliding-panel {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-grid {
+                grid-template-columns: 1fr; /* Single column on smaller screens */
+            }
+            .site-title {
+                font-size: 24px;
+                letter-spacing: 2px;
+            }
+            .top-bar {
+                padding: 10px 20px;
+            }
+            .sliding-panel {
+                width: 260px;
+            }
+            .sliding-panel a {
+                padding: 15px 30px;
+                font-size: 17px;
+            }
+            .container {
+                border-radius: 10px;
+            }
+            .header {
+                font-size: 20px;
+                padding: 15px;
+            }
+            .content h3 {
+                font-size: 17px;
+            }
+            .box a {
+                font-size: 16px;
+            }
+            .new-badge {
+                padding: 6px 12px;
+                font-size: 12px;
+            }
+            .main-content {
+                padding: 20px 10px;
+                margin: 20px auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .site-title {
+                font-size: 20px;
+                letter-spacing: 1px;
+            }
+            .menu-icon {
+                width: 30px;
+                height: 22px;
+            }
+            .menu-icon div {
+                height: 3px;
+            }
+            .sliding-panel {
+                width: 240px;
+            }
         }
     </style>
 </head>
 <body>
     <div id="overlay" class="overlay" onclick="togglePanel()"></div>
 
-    <div class="menu-icon" onclick="togglePanel()">
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="top-bar">
+        <div class="site-title">Quantum Nexus Labs</div>
+        <div id="menuIcon" class="menu-icon" onclick="togglePanel()">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
     </div>
 
-    <div id="slidingPanel" class="sliding-panel inactive">
-        <a href="rayen.html">About me</a>
-        <a href="admin1.html">Admin profile</a>
+    <div id="slidingPanel" class="sliding-panel">
+        <a href="rayen.html">About Rayen IA</a>
+        <a href="admin1.html">Admin Profile</a>
         <a href="foruser.html">Disclaimer</a>
         <a href="send.html">Contact Us</a>
-        <a href="statistique.html">Problems review</a>
-        <a href="game2.html">Destructive game</a>
-        <a href="play1.html">Intellectual game</a>
-        <a href="log.in.html">Log in to receive news</a>
-        <a href="news.html">News of Quantum Nexus Labs</a>
+        <a href="statistique.html">Problem Reviews</a>
+        <a href="game2.html">Destructive Game</a>
+        <a href="play1.html">Intellectual Game</a>
+        <a href="log.in.html">Log In for News</a>
+        <a href="news.html">Quantum Nexus Labs News</a>
     </div>
-<div class="container">
-        <div class="header">Rayen IA</div>
-        <div class="content">
-            <h3>This page is online on 23/2/2025</h3>
-            <div class="box">
-                <a href="gbt.html">Rayen IA</a>
-                <!-- Ajoutez d'autres liens ici -->
-            </div>
-        </div>
-    </div>
-    
-    <div class="container">
-        <div class="header">About</div>
-        <div class="content">
-            <h3>This page is online on 22/7/2024</h3>
-            <div class="box">
-                <a href="aboutversion.html">About Our new version </a>
-                <!-- Ajoutez d'autres liens ici -->
-            </div>
-        </div>
-    </div>
-  
-    <div class="container">
-        <div class="header">Privacy rule</div>
-        <div class="content">
-            <h3>This page is online on 22/7/2024</h3>
-            <div class="box">
-                <a href="confidelity.html">Privacy rule</a>
-                <!-- Ajoutez d'autres liens ici -->
-            </div>
-        </div>
-    </div>
-  
-    <div class="container">
-        <div class="header">Install our application</div>
-        <div class="content">
-            <h3>This page is online on 22/7/2024</h3>
-            <div class="box">
-                <a href="install application.html">Install our application</a>
-                <!-- Ajoutez d'autres liens ici -->
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="header">Courses and problems </div>
-        <div class="content">
-            <h3>This page is online on 1/8/2024</h3>
-            <div class="box">
-                <a href="courses and problems.html">courses and problems</a>
-                <!-- Ajoutez d'autres liens ici -->
-            </div>
-        </div>
-    </div>
-  
-    <div class="container">
-        <div class="header">New problems make a challenge with yourself!</div>
-        <div class="content">
-            <h3>This page is online on 22/7/2024</h3>
-            <div class="box">
-                <a href="probleme.html">Challenge problems with score try to get full marks!</a>
-                <!-- Ajoutez d'autres liens ici -->
-            </div>
-        </div>
-    </div>
-  
-    <div class="container">
-        <div class="header">Number Theory</div>
-        <div class="content">
-            <h3>This page is online on 22/7/2024</h3>
-            <div class="box">
-                <a href="number theory.html">Number Theory</a>
-                <!-- Ajoutez d'autres liens ici -->
-            </div>
-        </div>
-        <div class="statistics">
-            <p></p>
-            <p></p>
-        </div>
-    </div>
-  
-    <div class="container">
-        <div class="header">Combinatorics</div>
-        <div class="content">
-            <h3>This page is online on 22/7/2024</h3>
-            <div class="box">
-                <a href="combinatoire.html">Combinatorics</a>
-                <!-- Ajoutez d'autres liens ici -->
-            </div>
-        </div>
-        <div class="statistics">
-            <p></p>
-            <p></p>
-        </div>
-    </div>
-  
-    <div class="container">
-        <div class="header">Geometry</div>
-        <div class="content">
-            <h3>This page is online on 22/7/2024</h3>
-            <div class="box">
-                <a href="geometry.html">Geometry</a>
-                <!-- Ajoutez d'autres liens ici -->
-            </div>
-        </div>
-        <div class="statistics">
-            <p></p>
-            <p></p>
-        </div>
-    </div>
-  
-    <div class="container">
-        <div class="header">Functional Equations</div>
-        <div class="content">
-            <h3>This page is online on 22/7/2024</h3>
-            <div class="box">
-                <a href="functionnal equation.html">Functionnal equation</a>
-                <!-- Ajoutez d'autres liens ici -->
-            </div>
-        </div>
-        <div class="statistics">
-            <p></p>
-            <p></p>
-        </div>
-    </div>
-  <div class="container">
-        <div class="header">Forum</div>
-        <div class="content">
-            <h3>This page is online on 22/7/2024</h3>
-            <div class="box">
-                <a href="forum.html">Forum</a>
-                <!-- Ajoutez d'autres liens ici -->
-            </div>
-        </div>
-        <div class="statistics">
-            <p></p>
-            <p></p>
-        </div>
-    <div class="container">
-        <div class="header">Send your solution.</div>
-        <div class="content">
-            <h3>This page is online on 22/7/2024</h3>
-            <div class="box">
-                <a href="submitproblem.html">Send your solution</a>
-                <!-- Ajoutez d'autres liens ici -->
-            </div>
-        </div>
-    </div>
-  </div>
-    <script>
-        function togglePanel() {
-            var panel = document.getElementById("slidingPanel");
-            var overlay = document.getElementById("overlay");
-            if (panel.classList.contains("inactive")) {
-                panel.classList.remove("inactive");
-                panel.classList.add("active");
-                overlay.classList.add("active");
-            } else {
-                panel.classList.remove("active");
-                panel.classList.add("inactive");
-                overlay.classList.remove("active");
-            }
-        }
 
-        function toggleAnswer(id) {
-            var answer = document.getElementById("answer" + id);
-            answer.style.display = answer.style.display === "none" || answer.style.display === "" ? "block" : "none";
-        }
+    <div class="main-content">
+        <div class="section-grid">
+            <div class="container">
+                <div class="header">Rayen IA</div>
+                <div class="content">
+                    <h3>Online on <span class="online-date">23/02/2025</span></h3>
+                    <div class="box">
+                        <a href="gbt.html">Discover Rayen IA</a>
+                    </div>
+                </div>
+                <div class="new-badge">New!</div>
+            </div>
+
+            <div class="container">
+                <div class="header">About Us</div>
+                <div class="content">
+                    <h3>Online on <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="aboutversion.html">About Our New Version</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="header">Privacy Rule</div>
+                <div class="content">
+                    <h3>Online on <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="confidelity.html">Our Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="header">Install Our Application</div>
+                <div class="content">
+                    <h3>Online on <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="install application.html">Get the Application</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Courses & Problems</div>
+                <div class="content">
+                    <h3>Online on <span class="online-date">01/08/2024</span></h3>
+                    <div class="box">
+                        <a href="courses and problems.html">Explore Courses & Problems</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">New Challenge Problems</div>
+                <div class="content">
+                    <h3>Online on <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="probleme.html">Challenge Yourself! (Get Full Marks)</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Number Theory</div>
+                <div class="content">
+                    <h3>Online on <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="number theory.html">Dive into Number Theory</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Problems: <span>120</span> | Solved: <span>85</span></p>
+                    <p>Difficulty: <span>Medium-Hard</span></p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Combinatorics</div>
+                <div class="content">
+                    <h3>Online on <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="combinatoire.html">Explore Combinatorics</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Problems: <span>90</span> | Solved: <span>60</span></p>
+                    <p>Difficulty: <span>Medium</span></p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Geometry</div>
+                <div class="content">
+                    <h3>Online on <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="geometry.html">Master Geometry</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Problems: <span>150</span> | Solved: <span>100</span></p>
+                    <p>Difficulty: <span>Hard</span></p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Functional Equations</div>
+                <div class="content">
+                    <h3>Online on <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="functionnal equation.html">Solve Functional Equations</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Problems: <span>70</span> | Solved: <span>45</span></p>
+                    <p>Difficulty: <span>Very Hard</span></p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Community Forum</div>
+                <div class="content">
+                    <h3>Online on <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="forum.html">Join the Discussion Forum</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Total Posts: <span>5,432</span> | Active Users: <span>1,210</span></p>
+                    <p>Last Activity: <span>1 hour ago</span></p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="header">Submit Your Solution</div>
+                <div class="content">
+                    <h3>Online on <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="submitproblem.html">Submit Your Solutions Here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Quantum Nexus Labs. All rights reserved.</p>
+        <p>Innovating at the intersection of AI and Advanced Mathematics.</p>
+    </div>
+
+    <div id="scrollToTop" class="scroll-to-top" onclick="scrollToTop()">
+        &#x2191;
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function togglePanel() {
+                const panel = document.getElementById("slidingPanel");
+                const overlay = document.getElementById("overlay");
+                const menuIcon = document.getElementById("menuIcon");
+
+                panel.classList.toggle("active");
+                overlay.classList.toggle("active");
+                menuIcon.classList.toggle("active");
+            }
+
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            window.onscroll = function() {
+                const scrollToTopBtn = document.getElementById("scrollToTop");
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    scrollToTopBtn.classList.add("show");
+                } else {
+                    scrollToTopBtn.classList.remove("show");
+                }
+            };
+
+            // Expose togglePanel to global scope for onclick attributes
+            window.togglePanel = togglePanel;
+            window.scrollToTop = scrollToTop;
+        });
     </script>
 </body>
 </html>
