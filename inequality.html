@@ -4,78 +4,236 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comprehensive Course: Inequalities of Means (AM, GM, QM, HM)</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FS9YCCEDT9"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-FS9YCCEDT9');
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Lora:wght@400;600&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <style>
+        :root {
+            --primary-bg: #f8f9fa; /* Light grey/off-white */
+            --secondary-bg: #ffffff; /* Pure white for boxes */
+            --accent-blue: #007bff; /* Vibrant blue for headings/accents */
+            --accent-green: #28a745; /* Green for solutions */
+            --accent-orange: #fd7e14; /* Orange for exercises */
+            --text-dark: #343a40; /* Dark grey for body text */
+            --text-light: #6c757d; /* Lighter grey for subtle text */
+            --border-light: #e9ecef; /* Very light grey for subtle borders */
+            --code-bg: #e9ecef; /* Background for equations/code blocks */
+            --shadow-light: rgba(0, 0, 0, 0.08); /* Light shadow */
+            --shadow-medium: rgba(0, 0, 0, 0.15); /* Medium shadow for hover */
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            line-height: 1.6;
+            font-family: 'Lora', serif; /* A more elegant serif font for body */
+            background-color: var(--primary-bg);
+            color: var(--text-dark);
+            line-height: 1.8; /* Increased line height for readability */
             margin: 0;
             padding: 0;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased; /* Better font rendering */
+            -moz-osx-font-smoothing: grayscale;
         }
+
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-            padding: 20px;
+            width: 90%; /* Slightly wider container */
+            max-width: 960px; /* Max width for large screens */
+            margin: 40px auto; /* More vertical margin */
+            padding: 30px; /* More padding */
+            background-color: var(--secondary-bg);
+            border-radius: 12px; /* Softer rounded corners */
+            box-shadow: 0 8px 25px var(--shadow-light); /* More pronounced initial shadow */
         }
-        h1, h2 {
-            color: #333;
-        }
-        h1 {
-            text-align: center;
-            font-size: 2.5em;
-        }
-        p, .equation {
-            margin: 20px 0;
-            font-size: 1.2em;
-        }
-        .equation {
-            background-color: #e7e7eb;
-            padding: 10px;
-            border-radius: 8px;
-            overflow-x: auto;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        .box {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif; /* Stronger sans-serif for headings */
+            color: var(--accent-blue);
             margin-bottom: 20px;
         }
-        .exercise {
-            background-color: #ececec;
-            border-left: 6px solid #ff5722;
-            padding: 15px;
-            border-radius: 5px;
-            margin: 20px 0;
+
+        h1 {
+            text-align: center;
+            font-size: 3em; /* Larger title */
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--text-dark); /* Title might be darker for contrast */
         }
+
+        h2 {
+            font-size: 2em;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-light); /* Underline headings */
+            padding-bottom: 10px;
+            margin-top: 30px;
+        }
+
+        h3 {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: var(--accent-blue);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p, ul {
+            margin: 15px 0;
+            font-size: 1.1em; /* Slightly larger base font size */
+            color: var(--text-dark);
+        }
+
+        ul {
+            list-style: none; /* Remove default bullet points */
+            padding-left: 0;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 25px; /* Space for custom bullet */
+            margin-bottom: 10px;
+        }
+
+        ul li::before {
+            content: "•"; /* Custom bullet point */
+            color: var(--accent-blue); /* Accent color for bullets */
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+
+        .equation {
+            background-color: var(--code-bg);
+            padding: 18px; /* More padding */
+            border-radius: 10px; /* Softer corners */
+            overflow-x: auto;
+            font-family: 'Fira Code', monospace; /* Monospace font for equations/code */
+            font-size: 1.1em; /* Larger font for equations */
+            border: 1px solid var(--border-light);
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.05); /* Subtle inner shadow */
+            margin: 25px 0; /* More spacing */
+        }
+
+        /* MathJax specific styling for better appearance */
+        .MathJax {
+            font-family: 'Fira Code', monospace !important; /* Ensure MathJax uses Fira Code where possible */
+            color: var(--text-dark) !important; /* Default color for MathJax text */
+        }
+        /* Specific MathJax elements can be targeted for accent color if desired */
+        .MathJax .MJX-char[data-c^='&#x'] {
+            /* This targets characters generated by MathJax. Be careful with broad rules. */
+        }
+
+        .box {
+            background-color: var(--secondary-bg);
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 15px var(--shadow-light); /* Consistent shadow */
+            margin-bottom: 30px; /* More space between boxes */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+        }
+
+        .box:hover {
+            transform: translateY(-5px); /* Lift effect on hover */
+            box-shadow: 0 12px 30px var(--shadow-medium); /* Darker shadow on hover */
+        }
+
+        .exercise {
+            background-color: #fff3e0; /* Lighter orange background */
+            border-left: 8px solid var(--accent-orange); /* Thicker border for visual emphasis */
+            padding: 25px; /* More padding */
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 2px 10px rgba(253, 126, 20, 0.15);
+        }
+
+        .exercise h2 {
+            color: var(--accent-orange); /* Exercise title color */
+            border-bottom-color: rgba(253, 126, 20, 0.3);
+        }
+
         .solution {
-            background-color: #dff0d8;
-            border-left: 6px solid #4caf50;
-            padding: 15px;
-            border-radius: 5px;
+            background-color: #e6ffe6; /* Lighter green background */
+            border-left: 8px solid var(--accent-green); /* Thicker border */
+            padding: 25px; /* More padding */
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 2px 10px rgba(40, 167, 69, 0.15);
+        }
+
+        .solution h2 {
+            color: var(--accent-green); /* Solution title color */
+            border-bottom-color: rgba(40, 167, 69, 0.3);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+                margin: 20px auto;
+            }
+            h1 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 1.7em;
+            }
+            h3 {
+                font-size: 1.3em;
+            }
+            p, ul {
+                font-size: 1em;
+            }
+            .equation {
+                padding: 15px;
+                font-size: 1em;
+            }
+            .box {
+                padding: 20px;
+            }
+            .exercise, .solution {
+                padding: 20px;
+                border-left-width: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            h3 {
+                font-size: 1.2em;
+            }
+            p, ul {
+                font-size: 0.95em;
+            }
+            .equation {
+                padding: 12px;
+                font-size: 0.9em;
+            }
+            .box {
+                padding: 15px;
+            }
+            .exercise, .solution {
+                padding: 15px;
+                border-left-width: 5px;
+            }
         }
     </style>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css">
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: "\\(", right: "\\)", display: false},
-                    {left: "\\[", right: "\\]", display: true}
-                ]
-            });
-        });
-    </script>
 </head>
 <body>
     <div class="container">
-        <h1>Inequalities of Means: AM, GM, QM, HM</h1>
+        <h1>Comprehensive Course: Inequalities of Means (AM, GM, QM, HM)</h1>
         
         <div class="box">
             <h2>Introduction</h2>
@@ -213,15 +371,23 @@
             <p>By the AM-GM inequality applied to the reciprocals \( \frac{1}{a_1}, \frac{1}{a_2}, \dots, \frac{1}{a_n} \), we have:</p>
             <p class="equation">
                 \[
-                \frac{\frac{1}{a_1} + \frac{1}{a_2} + \dots + \frac{1}{a_n}}{n} \geq \sqrt[n]{\frac{1}{a_1} \cdot \frac{1}{a_2} \cdot \dots \cdot \frac{1}{a_n}} = \frac{1}{A_n}
+                \frac{\frac{1}{a_1} + \frac{1}{a_2} + \dots + \frac{1}{a_n}}{n} \geq \sqrt[n]{\frac{1}{a_1} \cdot \frac{1}{a_2} \cdot \dots \cdot \frac{1}{a_n}} = \frac{1}{G_n}
                 \]
             </p>
-            <p>Taking the reciprocal of both sides gives:</p>
+            <p>This is actually showing $\frac{1}{A_n^*} \ge \frac{1}{G_n^*}$ where $A_n^*$ and $G_n^*$ are the AM and GM of the reciprocals. The next step is correct but the intermediate expression $\frac{1}{A_n}$ should actually be $\frac{1}{G_n}$ to be fully precise. Let's correct that in the solution below.</p>
+            <p>Taking the reciprocal of both sides (and reversing the inequality since we're taking reciprocals of positive numbers):</p>
             <p class="equation">
                 \[
-                H_n \leq A_n
+                \frac{n}{\frac{1}{a_1} + \frac{1}{a_2} + \dots + \frac{1}{a_n}} \leq \left( \sqrt[n]{\frac{1}{a_1} \cdot \frac{1}{a_2} \cdot \dots \cdot \frac{1}{a_n}} \right)^{-1}
                 \]
             </p>
+            <p>Which simplifies to:</p>
+             <p class="equation">
+                \[
+                H_n \leq G_n
+                \]
+            </p>
+            <p>Since we know \( G_n \leq A_n \), combining these two inequalities gives \( H_n \leq G_n \leq A_n \). Therefore, \( H_n \leq A_n \).</p>
             <p>Equality holds if and only if all the numbers \( a_1, a_2, \dots, a_n \) are equal.</p>
         </div>
     </div>
