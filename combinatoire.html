@@ -10,270 +10,202 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mathematical Nightmares</title>
+    <title>Mathematical Nightmares - Advanced Problems</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@700&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&family=Play:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        /* --- ACADEMIC MINIMALIST PALETTE --- */
         :root {
-            --dark-bg: #0C0C1B; /* Very dark blue-purple for main background */
-            --container-bg: #1A1A33; /* Slightly lighter blue-purple for content containers */
-            --problem-bg: #222244; /* Even lighter, rich purple for problem boxes */
-            --enonce-bg: #2B2B55; /* Deep purple for the problem statement itself */
-            
-            --primary-accent: #88EEFF; /* Bright cyan for primary highlights (text, borders) */
-            --secondary-accent: #BB88FF; /* Soft violet for secondary accents (title glow, button) */
-            --text-color: #E0E0E0; /* Soft white for general text */
-            --button-text: #000; /* Dark text for bright buttons */
-            
-            --shadow-primary: rgba(136, 238, 255, 0.4); /* Cyan glow shadow */
-            --shadow-secondary: rgba(187, 136, 255, 0.4); /* Violet glow shadow */
+            --primary-bg: #FFFFFF; /* Clean White */
+            --secondary-bg: #F8F8F8; /* Very light grey for containers */
+            --accent-color: #A30000; /* Deep, strong Red (Main highlight) */
+            --highlight-color: #0077B6; /* Professional Blue (Secondary highlight) */
+            --text-dark: #333333; /* Dark grey for general text */
+            --text-light: #666666; /* Lighter grey for subtle text */
+            --border-color: #E0E0E0; /* Light border */
+            --table-row-hover: #FFF7F7; /* Very light red/pink for hover */
+            --shadow-subtle: rgba(0, 0, 0, 0.08); 
+            --shadow-deep: rgba(0, 0, 0, 0.15);
         }
 
+        /* Global Styles */
         body {
-            font-family: 'Roboto Mono', monospace; /* Techy, readable monospace */
-            background: var(--dark-bg);
-            color: var(--text-color);
+            font-family: 'Roboto', sans-serif; /* Clean, professional font */
+            background: var(--primary-bg);
+            color: var(--text-dark);
             margin: 0;
             padding: 0;
+            line-height: 1.7;
             overflow-x: hidden;
-            line-height: 1.6;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            animation: fadeIn 1.5s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        /* Main Title (Header) */
+        .title {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            padding: 50px 20px 30px;
+            font-size: 3.8em;
+            font-weight: 700;
+            color: var(--highlight-color); /* Blue for the main title */
+            letter-spacing: 0.08em;
+            text-shadow: 1px 1px 2px var(--shadow-subtle);
+            background: var(--secondary-bg);
+            border-bottom: 4px solid var(--accent-color); /* Strong red underline */
+            width: 100%; /* Ensure title background spans full width */
+            box-sizing: border-box;
+            margin: 0;
         }
 
+        /* Container */
         .container {
             margin: 40px auto;
-            padding: 30px;
-            max-width: 900px;
+            padding: 20px;
+            max-width: 1000px;
             width: 90%;
-            background-color: var(--container-bg);
-            border-radius: 12px;
-            box-shadow: 0 0 30px var(--shadow-primary);
-            border: 1px solid var(--primary-accent);
+            background-color: var(--primary-bg); /* Keep container background white */
+            border-radius: 0; /* No rounded border on container */
+            box-shadow: none;
+            border: none;
             position: relative;
             z-index: 1;
         }
 
+        /* Individual Problem Box (Clear Separation) */
         .probleme {
-            background-color: var(--problem-bg);
-            border: 1px solid var(--primary-accent);
-            margin-bottom: 25px;
-            padding: 25px;
+            margin-bottom: 25px; /* Clear vertical separation between problems */
+            padding: 0;
+            background: var(--primary-bg);
             border-radius: 10px;
-            box-shadow: 0 0 15px rgba(136, 238, 255, 0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px var(--shadow-subtle);
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
 
         .probleme:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px var(--shadow-primary);
-            border-color: var(--secondary-accent);
+            box-shadow: 0 6px 15px var(--shadow-deep);
+            transform: translateY(-2px);
         }
 
+        /* Problem Content Styling */
         .enonce {
-            background-color: var(--enonce-bg);
-            padding: 20px;
-            margin-top: 15px;
-            border-radius: 8px;
-            border: 1px solid var(--secondary-accent);
-            color: var(--text-color);
+            padding: 20px 25px;
+            margin: 0;
+            border-radius: 10px;
+            color: var(--text-dark);
             font-size: 1.05em;
             line-height: 1.7;
-            box-shadow: inset 0 0 10px rgba(187, 136, 255, 0.1);
-        }
-
-        /* MathJax styling */
-        .enonce .MathJax {
-            color: var(--primary-accent) !important;
-        }
-
-        .title {
-            text-align: center;
-            margin: 60px auto 40px;
-            font-family: 'Play', sans-serif; /* Dynamic, impactful font for title */
-            font-size: 5rem; /* Larger for impact */
-            font-weight: 700;
-            color: var(--primary-accent);
-            text-shadow: 0 0 15px var(--primary-accent), 0 0 30px var(--secondary-accent), 0 0 45px var(--primary-accent);
-            letter-spacing: 5px;
-            animation: titleGlow 3s infinite alternate ease-in-out;
-            max-width: 90%;
-            white-space: nowrap; /* Prevent breaking title */
-            overflow: hidden;
-            text-overflow: ellipsis; /* Add ellipsis if too wide */
-        }
-
-        @keyframes titleGlow {
-            0% { text-shadow: 0 0 15px var(--primary-accent), 0 0 30px var(--secondary-accent); }
-            100% { text-shadow: 0 0 25px var(--primary-accent), 0 0 50px var(--secondary-accent), 0 0 70px var(--primary-accent); }
-        }
-
-        .letter {
-            display: inline-block;
-            position: relative;
-            font-size: inherit; /* Inherit from .title */
-            --char-color: var(--primary-accent); /* Default, overridden by inline style */
-            color: var(--char-color);
-            text-shadow: 0 0 8px var(--char-color);
-            transition: transform 0.2s ease-out, text-shadow 0.2s ease-out;
-            animation: glitchEffect 2.5s infinite linear;
-            animation-delay: calc(var(--i) * 0.05s); /* Staggered delay for each letter */
-        }
-
-        .glitch {
-            /* Animation applied per letter now */
-        }
-
-        @keyframes glitchEffect {
-            0% { transform: translate(0, 0); }
-            2% { transform: translate(2px, -2px); }
-            4% { transform: translate(-3px, 3px); }
-            6% { transform: translate(1px, -1px); }
-            8% { transform: translate(-2px, 2px); }
-            10% { transform: translate(0, 0); }
-            100% { transform: translate(0, 0); } /* Mostly static, with occasional glitches */
-        }
-
-        button {
-            font-family: 'Play', sans-serif;
-            font-size: 20px;
-            background: linear-gradient(45deg, var(--secondary-accent), #FFBBDD); /* Gradient for the button */
-            color: var(--button-text);
-            padding: 15px 30px;
+            background-color: transparent; /* Text background same as box */
+            box-shadow: none;
             border: none;
+            
+            /* Blue vertical accent line */
+            border-left: 5px solid var(--highlight-color); 
+            border-radius: 0 10px 10px 0;
+        }
+        
+        /* Highlight on hover */
+        .probleme:hover .enonce {
+            border-left-color: var(--accent-color); /* Change accent color to red on hover */
+            background-color: var(--table-row-hover); /* Light background tint on hover */
+        }
+        
+        .enonce ul {
+            list-style-type: none;
+            padding-left: 15px;
+        }
+        .enonce ul li::before {
+            content: "•";
+            color: var(--highlight-color);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+
+
+        /* MathJax Styling (for white background) */
+        .enonce .MathJax {
+            font-family: 'Fira Code', monospace !important;
+            font-size: 1.05em !important;
+            color: var(--accent-color) !important; /* Red color for math symbols/text */
+            font-weight: 500;
+        }
+        .enonce .MathJax_Display {
+            margin: 1.5em 0 !important;
+            padding: 10px 15px;
+            background: var(--secondary-bg); /* Light grey background for block equations */
+            border-left: 5px solid var(--highlight-color); /* Blue accent line */
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+
+        /* Button */
+        button {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #FFFFFF;
+            background: var(--highlight-color);
+            border: 2px solid var(--highlight-color);
             border-radius: 8px;
             cursor: pointer;
-            text-decoration: none;
-            display: block; /* Make it a block element to center */
-            margin: 40px auto 60px; /* More margin for visual separation */
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
-            box-shadow: 0 5px 15px var(--shadow-secondary);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-        }
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px var(--shadow-deep);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
 
-        button:hover {
-            transform: translateY(-3px) scale(1.02);
-            background: linear-gradient(45deg, #FFBBDD, var(--secondary-accent));
-            box-shadow: 0 8px 25px var(--shadow-secondary);
+            display: block;
+            margin: 40px auto 60px; 
+            width: 90%;
+            max-width: 350px;
+            padding: 15px 30px;
         }
 
         button a {
-            color: var(--button-text);
+            color: inherit;
             text-decoration: none;
-            display: block; /* Make the anchor fill the button */
+            display: block;
+        }
+
+        button:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px var(--shadow-deep);
         }
 
         /* Responsive adjustments */
-        @media (max-width: 960px) {
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5em;
+                padding: 30px 15px 20px;
+            }
             .container {
-                padding: 25px;
-                margin: 30px auto;
+                padding: 15px;
             }
             .probleme {
-                padding: 20px;
                 margin-bottom: 20px;
             }
             .enonce {
-                padding: 18px;
+                padding: 15px;
                 font-size: 1em;
             }
-            .title {
-                font-size: 4rem;
-                letter-spacing: 4px;
-                margin: 50px auto 30px;
-            }
             button {
-                font-size: 18px;
-                padding: 12px 25px;
-                margin: 30px auto 50px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .title {
-                font-size: 3rem;
-                letter-spacing: 3px;
-            }
-            .container {
-                padding: 20px;
-                margin: 25px auto;
-            }
-            .probleme {
-                padding: 18px;
-            }
-            .enonce {
-                padding: 15px;
-                font-size: 0.95em;
-            }
-            button {
-                font-size: 16px;
-                padding: 10px 20px;
-                margin: 25px auto 40px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .title {
-                font-size: 2.2rem;
-                letter-spacing: 2px;
-                line-height: 1.2;
-                white-space: normal; /* Allow title to wrap on small screens */
-            }
-            .container {
-                padding: 15px;
-                margin: 20px auto;
-                width: 95%;
-            }
-            .probleme {
-                padding: 15px;
-                margin-bottom: 15px;
-            }
-            .enonce {
-                padding: 12px;
-                font-size: 0.9em;
-            }
-            button {
-                font-size: 14px;
-                padding: 8px 18px;
-                margin: 20px auto 30px;
+                font-size: 1.2em;
+                padding: 12px 20px;
             }
         }
     </style>
 </head>
 <body>
     <div class="title">
-        <span class="letter" style="--char-color: var(--primary-accent); --i:0;">M</span>
-        <span class="letter" style="--char-color: #8affc4; --i:1;">A</span>
-        <span class="letter" style="--char-color: var(--primary-accent); --i:2;">T</span>
-        <span class="letter" style="--char-color: #8affc4; --i:3;">H</span>
-        <span class="letter" style="--char-color: var(--primary-accent); --i:4;">E</span>
-        <span class="letter" style="--char-color: #8affc4; --i:5;">M</span>
-        <span class="letter" style="--char-color: var(--primary-accent); --i:6;">A</span>
-        <span class="letter" style="--char-color: #8affc4; --i:7;">T</span>
-        <span class="letter" style="--char-color: var(--primary-accent); --i:8;">I</span>
-        <span class="letter" style="--char-color: #8affc4; --i:9;">C</span>
-        <span class="letter" style="--char-color: var(--primary-accent); --i:10;">A</span>
-        <span class="letter" style="--char-color: #8affc4; --i:11;">L</span>
-        <span class="letter" style="--char-color: transparent; --i:12;">&nbsp;</span> 
-        <span class="letter" style="--char-color: var(--secondary-accent); --i:13;">N</span>
-        <span class="letter" style="--char-color: #e099ff; --i:14;">I</span>
-        <span class="letter" style="--char-color: var(--secondary-accent); --i:15;">G</span>
-        <span class="letter" style="--char-color: #e099ff; --i:16;">H</span>
-        <span class="letter" style="--char-color: var(--secondary-accent); --i:17;">T</span>
-        <span class="letter" style="--char-color: #e099ff; --i:18;">M</span>
-        <span class="letter" style="--char-color: var(--secondary-accent); --i:19;">A</span>
-        <span class="letter" style="--char-color: #e099ff; --i:20;">R</span>
-        <span class="letter" style="--char-color: var(--secondary-accent); --i:21;">E</span>
-        <span class="letter" style="--char-color: #e099ff; --i:22;">S</span>
+        Mathematical Nightmares
     </div>
     <div class="container">
         <div class="probleme">
@@ -345,3 +277,4 @@
     <button><a href="submitproblem.html">Submit your solutions</a></button>
 </body>
 </html>
+
