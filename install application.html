@@ -18,6 +18,7 @@
             --shadow-light: rgba(0, 0, 0, 0.08); /* Soft, subtle shadow */
             --success-green: #28a745; /* Green for positive indicators */
             --warning-orange: #ffc107; /* Orange for alerts/recommendations */
+            --error-red: #dc3545; /* Red for important alerts/errors */
         }
 
         /* Smooth scrolling for anchor links */
@@ -146,6 +147,33 @@
             margin-bottom: 0; /* Adjusted for section padding */
         }
 
+        /* Style for the temporarily disabled/inactive main button */
+        .btn.inactive {
+            display: inline-block;
+            padding: 15px 35px;
+            font-size: 1.1em;
+            color: #fff;
+            background-color: var(--text-muted); /* Grey out the button */
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: default; /* Change cursor to default for inactive state */
+            opacity: 0.8;
+        }
+
+        /* Remove hover effect for inactive button */
+        .btn.inactive:hover {
+            background-color: var(--text-muted);
+            transform: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Style for the link in the hero section */
         .btn {
             display: inline-block;
             padding: 15px 35px;
@@ -166,6 +194,39 @@
             background-color: var(--secondary-blue);
             transform: translateY(-3px) scale(1.02);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Alert Box for Important Updates */
+        .alert-warning {
+            background-color: #fcebeb; /* Very light red background */
+            border: 1px solid var(--error-red);
+            color: var(--error-red);
+            padding: 25px;
+            border-radius: 8px;
+            margin: 40px auto; /* Centered and spaced */
+            text-align: left;
+            font-size: 1.1em;
+            box-shadow: 0 2px 10px rgba(220, 53, 69, 0.15);
+            font-weight: 500;
+            line-height: 1.7;
+        }
+        
+        .alert-warning strong {
+            display: block;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--secondary-blue); /* Heading color for main title */
+        }
+        
+        .alert-warning p {
+            margin: 0;
+            color: var(--text-dark); /* Ensure text is readable */
+        }
+        .alert-warning .apology {
+            margin-top: 15px;
+            font-style: italic;
+            color: var(--error-red);
         }
 
         /* Info Panel / Statistics Section */
@@ -246,7 +307,7 @@
             box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Responsive Adjustments */
+        /* Responsive Adjustments (Kept as is for responsiveness) */
         @media (max-width: 768px) {
             .section {
                 padding: 60px 15px;
@@ -270,7 +331,7 @@
                 flex-direction: column;
                 gap: 15px;
             }
-            .btn {
+            .btn, .btn.inactive {
                 width: 90%;
                 font-size: 1em;
                 padding: 12px 25px;
@@ -308,7 +369,7 @@
             p {
                 font-size: 0.95em;
             }
-            .btn {
+            .btn, .btn.inactive {
                 width: 100%;
                 padding: 10px 20px;
                 font-size: 0.9em;
@@ -331,19 +392,26 @@
         <div class="container">
             <h1>Mathematics Olympiad</h1>
             <p>Empower your journey in mathematics. Access our official application for an enhanced learning experience, problem-solving tools, and community features.</p>
-            <a href="#download-section" class="btn">Get the App Now</a>
+            <a href="#download-section" class="btn inactive">Get the App Now (Temporarily Unavailable)</a>
         </div>
     </section>
 
     <section class="section" id="download-section">
         <div class="container">
             <h2>Download Our Application</h2>
-            <p>We're thrilled to offer our application across various platforms, ensuring you have the latest features and optimal performance wherever you are. Choose your preferred store below:</p>
+            <p>We are currently finalizing a major update to our application. The download links below are temporarily disabled until the new stable version is deployed.</p>
 
             <div class="btn-group">
-                <a href="https://math-olympiad.fr.uptodown.com/android" class="btn">Uptodown</a>
-                <a href="https://rebrand.ly/31rz9dy" class="btn">Appgeyser</a>
-                <a href="https://rebrand.ly/8ex58yw" class="btn">Rebrand</a>
+                <span class="btn inactive">App Store Link (Inactive)</span>
+                <span class="btn inactive">Google Play Link (Inactive)</span>
+                <span class="btn inactive">Direct Download (Inactive)</span>
+            </div>
+            
+            <div class="alert-warning">
+                <strong>Important Update and Installation Notice</strong>
+                <p>Due to a major application overhaul and the integration of new features, all existing versions of the Mathematics Olympiad app must be **uninstalled immediately**. Please check this page regularly for the official new release links.</p>
+                <p>We are working diligently to finalize the new version and aim to dispose of the updated, stable release in the near future. We will notify the community immediately upon deployment.</p>
+                <p class="apology">We are so sorry for this temporary inconvenience, and thank you for your patience and continued support!</p>
             </div>
         </div>
     </section>
@@ -361,7 +429,7 @@
                 </ul>
                 <p class="total-users">Total Active Community Members: <strong>938</strong></p>
                 <p class="recommendation">
-                    <strong>Important Note:</strong> We recommend exploring different stores as app updates may be rolled out at varying times across platforms. Apps from official stores often provide additional security features compared to direct website downloads.
+                    <strong>Note:</strong> Statistics shown reflect historical data. New user registration is paused pending the update.
                 </p>
             </div>
         </div>
