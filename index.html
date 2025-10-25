@@ -1,76 +1,692 @@
--- Footer --- */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Nexus Labs // Advanced Mathematics Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- NEW COLOR PALETTE: MINIMALIST ACADEMIC --- */
+        :root {
+            --primary-bg: #FFFFFF; /* Clean White */
+            --secondary-bg: #F8F8F8; /* Very light grey for containers */
+            --accent-color: #A30000; /* Deep, strong Red (like in the image) */
+            --accent-highlight: #0077B6; /* Professional Blue for secondary highlight */
+            --text-color-dark: #333333; /* Dark grey for body text */
+            --text-color-light: #666666; /* Lighter grey for secondary text */
+            --heading-color: var(--accent-color);
+            --border-color: #E0E0E0; /* Light border */
+            --menu-bg: #1A1A1A; /* Dark background for menu contrast */
+            --menu-text: #FFFFFF;
+            --menu-hover: #333333;
+            --shadow-subtle: rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--primary-bg); /* Solid white background */
+            color: var(--text-color-dark);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Header / Navigation (Clean and Flat) --- */
+        .top-bar {
+            background-color: var(--primary-bg);
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .site-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            color: var(--accent-highlight);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .site-title:hover {
+            color: var(--accent-color);
+        }
+        
+        /* New Quote Banner Style */
+        .quote-banner {
+            background-color: var(--accent-highlight); /* Use Blue for distinction */
+            color: white;
+            padding: 12px 30px; /* Slightly more padding */
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-style: italic;
+            font-size: 17px; /* Slightly larger font */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .quote-banner p {
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Menu Icon (Simple Lines) */
+        .menu-icon {
+            width: 30px;
+            height: 22px;
+            position: relative;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1010;
+        }
+
+        .menu-icon div {
+            width: 100%;
+            height: 3px;
+            background-color: var(--text-color-dark);
+            transition: 0.4s ease;
+            border-radius: 1px;
+        }
+
+        .menu-icon.active .bar1 {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .menu-icon.active .bar2 {
+            opacity: 0;
+        }
+
+        .menu-icon.active .bar3 {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Sliding Panel (High-Contrast, Dark) */
+        .sliding-panel {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            height: 100%;
+            background-color: var(--menu-bg);
+            color: var(--menu-text);
+            transition: left 0.3s ease-out;
+            box-shadow: 4px 0 15px var(--shadow-subtle);
+            z-index: 1005;
+            padding: 80px 0 20px;
+            overflow-y: auto;
+        }
+
+        .sliding-panel.active {
+            left: 0;
+        }
+        
+        /* Close Button Style */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: var(--menu-text);
+            font-size: 30px;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .close-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .sliding-panel a {
+            display: block;
+            padding: 15px 30px;
+            color: var(--menu-text);
+            text-decoration: none;
+            font-size: 17px;
+            border-left: 5px solid transparent;
+            transition: background-color 0.3s, border-left-color 0.3s, color 0.3s;
+        }
+
+        .sliding-panel a:hover {
+            background-color: var(--menu-hover);
+            color: var(--accent-highlight);
+            border-left-color: var(--accent-highlight);
+        }
+        
+        /* Specific menu item for achievement highlighting */
+        .menu-achievement-item {
+            font-size: 15px !important;
+            padding: 8px 40px !important;
+            color: var(--text-color-light) !important;
+            border-left: 5px solid transparent !important;
+            transition: color 0.2s ease;
+        }
+        .menu-achievement-item:hover {
+            color: var(--accent-color) !important;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-left-color: var(--accent-color) !important;
+        }
+
+        /* --- Main Content Containers --- */
+        .main-content {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 40px auto;
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .container {
+            background-color: var(--secondary-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px var(--shadow-subtle);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            background-color: var(--accent-highlight);
+            padding: 15px 25px;
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--primary-bg);
+        }
+
+        .content {
+            padding: 20px 25px;
+        }
+
+        .content h3 {
+            margin-top: 0;
+            color: var(--text-color-dark);
+            font-size: 18px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-weight: 400;
+        }
+
+        .box {
+            background-color: var(--primary-bg);
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+        }
+
+        .box a {
+            display: block;
+            color: var(--accent-color);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .box a::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 1.1em;
+            transition: transform 0.3s ease;
+        }
+
+        .box a:hover::before {
+            transform: translateX(5px);
+        }
+
+        .box a:hover {
+            color: var(--accent-highlight);
+        }
+
+        .statistics {
+            background-color: var(--primary-bg);
+            padding: 12px 25px;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-color-light);
+            font-size: 14px;
+            border-radius: 0 0 8px 8px;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .statistics p {
+            margin: 0;
+            color: var(--text-color-light);
+        }
+        
+        .statistics p span {
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+        /* --- New Badge (Simple Pill) --- */
+        .new-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        /* --- Intro/Creator Section (Foundation) --- */
+        .creator-section {
+            background-color: var(--secondary-bg);
+            padding: 40px;
+            margin: 0 auto 50px auto;
+            max-width: 800px;
+            border: 2px solid var(--accent-highlight);
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--shadow-subtle);
+        }
+
+        .creator-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--accent-color);
+            font-size: 28px;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        /* Elegant Name Representation */
+        .creator-name {
+            display: block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 38px;
+            font-weight: 700;
+            color: var(--accent-highlight);
+            margin-top: 10px;
+            padding: 5px 0;
+            border-bottom: 3px solid var(--accent-highlight);
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        .creator-section p {
+            color: var(--text-color-light);
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .achievements-list {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            display: inline-block; /* Center the list itself */
+        }
+
+        .achievements-list li {
+            background-color: var(--primary-bg);
+            border-left: 4px solid var(--accent-highlight);
+            padding: 8px 15px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: var(--text-color-dark);
+            box-shadow: 0 2px 5px var(--shadow-subtle);
+            transition: background-color 0.3s;
+        }
+
+        .achievements-list li:hover {
+            background-color: #E6F3FF; /* Light blue tint on hover */
+        }
+
+        .achievement-highlight {
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+        
+        .achievement-bronze {
+            color: #CD7F32; /* Bronze color */
+            font-weight: 700;
+        }
+        
+        .achievement-silver {
+            color: #C0C0C0; /* Silver color */
+            font-weight: 700;
+        }
+        
+        .achievement-gold {
+            color: #FFD700; /* Gold color */
+            font-weight: 700;
+        }
+
+        /* --- Footer --- */
         .footer {
             background-color: var(--secondary-bg);
-            padding: 30px;
+            padding: 20px;
             text-align: center;
-            margin-top: 80px;
-            border-top: 2px solid var(--border-color);
-            color: var(--text-color);
-            font-size: 15px;
-            box-shadow: 0 -4px 15px var(--shadow-strong);
-            font-family: 'Share Tech Mono', monospace;
+            margin-top: 50px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-color-light);
+            font-size: 14px;
         }
 
-        .footer p {
-            margin: 8px 0;
-            color: var(--heading-color);
-        }
-
-        .footer p:last-child {
-            color: var(--text-color);
-            font-size: 0.9em;
-        }
-
-        /* --- Scroll to top button --- */
+        /* --- Scroll to top button (Simple) --- */
         .scroll-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--accent-glow);
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
             color: var(--primary-bg);
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 28px;
+            font-size: 24px;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.3s ease;
-            box-shadow: 0 4px 15px var(--shadow-strong);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
             z-index: 990;
         }
 
         .scroll-to-top.show {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
         }
 
         .scroll-to-top:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 25px var(--accent-glow);
+            transform: translateY(-3px);
+            background-color: var(--accent-highlight);
         }
 
         /* --- Responsive adjustments --- */
-        @media (max-width: 992px) {
-            .section-grid {
-                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            }
+        @media (max-width: 768px) {
             .site-title {
-                font-size: 28px;
+                font-size: 24px;
+            }
+            .top-bar {
+                padding: 15px 20px;
             }
             .sliding-panel {
                 width: 280px;
             }
-        }
-
-        @media (max-width: 768px) {
-            .section-grid {
-                grid-template-columns: 1fr; /* Single column on smaller screens */
+            .main-content {
+                padding: 20px 10px;
             }
-            .site-title {
+            .creator-section {
+                padding: 30px 15px;
+            }
+            .creator-name {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="overlay" class="overlay" onclick="togglePanel()"></div>
 
-           
+    <div class="top-bar">
+        <div class="site-title">Quantum Nexus Labs</div>
+        <div id="menuIcon" class="menu-icon" onclick="togglePanel()">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+    </div>
+    
+    <div class="quote-banner">
+        <p>"The fun of life begins when we **think outside the box** and **think differently**, even from ourselves."</p>
+    </div>
+
+    <div id="slidingPanel" class="sliding-panel">
+        <div class="close-btn" onclick="togglePanel()">&times;</div>
+        <a href="rayen.html">Rayen IA Protocol</a>
+        <a href="admin1.html">Admin Profile Access</a>
+        <a href="foruser.html">Disclaimer & Policy</a>
+        <a href="send.html">Contact Us / Data-Send</a>
+        <a href="statistique.html">Problem Reviews</a>
+        <a href="game2.html">Destructive Game</a>
+        <a href="play1.html">Intellectual Game</a>
+        <a href="log.in.html">Log In for News</a>
+        <a href="news.html">Quantum Nexus News</a>
+        
+        <hr style="border-color: rgba(255,255,255,0.1); margin: 15px 30px;">
+        
+        <a href="#" style="color: #FFD700; font-weight: bold;">Creator Achievements:</a>
+        <a href="#" class="menu-achievement-item">IMO Participation: International Mathematics Olympiad</a>
+        <a href="#" class="menu-achievement-item">3 Gold Seals (Olympiad Math)</a>
+        <a href="#" class="menu-achievement-item">1 Silver Medal (Olympiad Math)</a>
+        <a href="#" class="menu-achievement-item">Honorable Mention (Olympiade Francophone)</a>
+    </div>
+
+    <div class="main-content">
+        <div class="creator-section">
+            <h2>Website Founder:</h2>
+            <span class="creator-name">Med Rayen Bouazizi</span>
+            <p>Quantum Nexus Labs is the vision of Med Rayen Bouazizi, a dedicated participant and medalist in high-level international mathematics competitions, who aims to share the rigorous challenges and beauty of advanced problem-solving.</p>
+            <h3>Olympiad Achievements:</h3>
+            <ul class="achievements-list">
+                <li><span class="achievement-highlight">Participant</span> in the **International Mathematics Olympiad (IMO)**.</li>
+                <li><span class="achievement-silver">1 Silver Medal</span> in Mathematics Olympiad.</li>
+                <li><span class="achievement-gold">3 Gold Seals</span> in Mathematics Olympiad.</li>
+                <li><span class="achievement-bronze">Honorable Mention</span> in the **Olympiade Francophone**.</li>
+            </ul>
+        </div>
+        
+        <div class="section-grid">
+            <div class="container">
+                <div class="header">Rayen IA</div>
+                <div class="content">
+                    <h3>Available Since: <span class="online-date">23/02/2025</span></h3>
+                    <div class="box">
+                        <a href="gbt.html">Discover Rayen IA</a>
+                    </div>
+                </div>
+                <div class="new-badge">New!</div>
+            </div>
+
+            <div class="container">
+                <div class="header">About Us</div>
+                <div class="content">
+                    <h3>Updated: <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="aboutversion.html">About Our New Version</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="header">Privacy Rule</div>
+                <div class="content">
+                    <h3>Policy Date: <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="confidelity.html">Our Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="header">Install Our Application</div>
+                <div class="content">
+                    <h3>App Available: <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="install application.html">Get the Application</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Courses & Problems</div>
+                <div class="content">
+                    <h3>New Content: <span class="online-date">01/08/2024</span></h3>
+                    <div class="box">
+                        <a href="courses and problems.html">Explore Courses & Problems</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">New Challenge Problems</div>
+                <div class="content">
+                    <h3>Posted: <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="probleme.html">Challenge Yourself! (Get Full Marks)</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Number Theory</div>
+                <div class="content">
+                    <h3>Active Since: <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="number theory.html">Dive into Number Theory</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Problems: <span>120</span> | Solved: <span>85</span></p>
+                    <p>Difficulty: <span>Medium-Hard</span></p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Combinatorics</div>
+                <div class="content">
+                    <h3>Active Since: <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="combinatoire.html">Explore Combinatorics</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Problems: <span>90</span> | Solved: <span>60</span></p>
+                    <p>Difficulty: <span>Medium</span></p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Geometry</div>
+                <div class="content">
+                    <h3>Active Since: <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="geometry.html">Master Geometry</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Problems: <span>150</span> | Solved: <span>100</span></p>
+                    <p>Difficulty: <span>Hard</span></p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Functional Equations</div>
+                <div class="content">
+                    <h3>Active Since: <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="functionnal equation.html">Solve Functional Equations</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Problems: <span>70</span> | Solved: <span>45</span></p>
+                    <p>Difficulty: <span>Very Hard</span></p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Community Forum</div>
+                <div class="content">
+                    <h3>Link Activated: <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="forum.html">Join the Discussion Forum</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Total Posts: <span>5,432</span> | Active Users: <span>1,210</span></p>
+                    <p>Last Activity: <span>1 hour ago</span></p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="header">Submit Your Solution</div>
+                <div class="content">
+                    <h3>Active Since: <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="submitproblem.html">Submit Your Solutions Here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>A project by Med Rayen Bouazizi - Olympiad Math Participant.</p>
+        <p>&copy; 2025 Quantum Nexus Labs. All rights reserved.</p>
+    </div>
+
+    <div id="scrollToTop" class="scroll-to-top" onclick="scrollToTop()">
+        &#x2191;
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            function togglePanel() {
+                const panel = document.getElementById("slidingPanel");
+                const overlay = document.getElementById("overlay");
+                const menuIcon = document.getElementById("menuIcon");
+
+                const isActive = panel.classList.contains("active");
+                
+                panel.classList.toggle("active");
+                overlay.classList.toggle("active");
+                menuIcon.classList.toggle("active");
+                
+                // Prevent scrolling when panel is open
+                document.body.style.overflow = isActive ? 'auto' : 'hidden';
+            }
+
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+
+            window.onscroll = function() {
+                const scrollToTopBtn = document.getElementById("scrollToTop");
+                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                    scrollToTopBtn.classList.add("show");
+                } else {
+                    scrollToTopBtn.classList.remove("show");
+                }
+            };
+
+            window.togglePanel = togglePanel;
+            window.scrollToTop = scrollToTop;
+        });
+    </script>
+</body>
+</html>
