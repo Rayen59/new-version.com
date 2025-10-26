@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Challenges: Test Your Knowledge!</title>
+    <title>Math Challenges: Testez Vos Connaissances !</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-FS9YCCEDT9"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -320,14 +320,14 @@
 
         <div class="problem" id="problem4">
             <p>4. What is the difference between the quadratic mean and the harmonic mean of 1, 10, 100, and 1000?</p>
-            <input type="number" id="answer4" placeholder="Enter your answer (e.g., 498.92)">
+            <input type="number" id="answer4" placeholder="Enter your answer ()">
             <button onclick="checkAnswer(4, 498.919)">Submit</button>
             <div id="feedback4" class="feedback"></div>
         </div>
 
         <div class="problem" id="problem5">
             <p>5. Consider three numbers \(a, b, c > 0\) with an arithmetic mean of 14. Suppose the geometric mean of \(a\) and \(b\) is 6, the geometric mean of \(a\) and \(c\) is 9, and the geometric mean of \(b\) and \(c\) is 18. What is the quadratic mean of the three numbers?</p>
-            <input type="number" id="answer5" placeholder="Enter your answer (e.g., 17.14)">
+            <input type="number" id="answer5" placeholder="Enter your answer ()">
             <button onclick="checkAnswer(5, 17.14)">Submit</button>
             <div id="feedback5" class="feedback"></div>
         </div>
@@ -383,7 +383,7 @@
 
         <div class="problem" id="problem13">
             <p>13. What is the difference between the arithmetic mean and the geometric mean of \(2, 3, 7, 21\)?</p>
-            <input type="number" id="answer13" placeholder="Enter your answer (e.g., 8.86)">
+            <input type="number" id="answer13" placeholder="Enter your answer ()">
             <button onclick="checkAnswer(13, 8.86)">Submit</button>
             <div id="feedback13" class="feedback"></div>
         </div>
@@ -401,71 +401,209 @@
             <button onclick="checkAnswer(15, 2)">Submit</button>
             <div id="feedback15" class="feedback"></div>
         </div>
-    </div> <script>
-        // Initialize score from local storage or set to 0
+    </div> 
+
+    <script>
+        // Initialize score, error counts, and timers from local storage or set defaults
         let score = parseInt(localStorage.getItem('mathChallengeScore')) || 0;
+        let problemErrors = JSON.parse(localStorage.getItem('problemErrors')) || {}; // {1: 0, 2: 1, ...}
+        let problemTimers = JSON.parse(localStorage.getItem('problemTimers')) || {}; // {1: timestamp, 2: null, ...}
+
         document.getElementById('score').innerText = 'Score: ' + score;
 
-        // Function to check the answer and update the score/UI
-        function checkAnswer(problemNumber, correctAnswer) {
-            const answerInput = document.getElementById('answer' + problemNumber);
-            const userAnswer = parseFloat(answerInput.value);
-            const submitButton = document.querySelector('#problem' + problemNumber + ' button');
-            const charismaCircle = document.getElementById('charisma-circle');
-            const feedbackDiv = document.getElementById('feedback' + problemNumber);
+        const PENALTY_DURATION_MS = 3 * 60 * 1000; // 3 minutes in milliseconds
+        const MAX_ERRORS = 3;
 
-            // Check if the problem has already been solved
-            if (localStorage.getItem('solvedProblem' + problemNumber)) {
-                feedbackDiv.innerHTML = '<span style="color: var(--accent-red);">You\'ve already answered this problem!</span>';
+        /**
+         * Checks if a user is currently locked out of a problem.
+         * @param {number} problemNumber - The ID of the problem.
+         * @returns {boolean} - True if locked out, false otherwise.
+         */
+        function isLocked(problemNumber) {
+            const unlockTime = problemTimers[problemNumber];
+            if (unlockTime) {
+                return new Date().getTime() < unlockTime;
+            }
+            return false;
+        }
+
+        /**
+         * Updates the timer display for a locked problem.
+         * @param {number} problemNumber - The ID of the problem.
+         */
+        function updateTimerDisplay(problemNumber) {
+            const feedbackDiv = document.getElementById('feedback' + problemNumber);
+            const submitButton = document.querySelector('#problem' + problemNumber + ' button');
+            const answerInput = document.getElementById('answer' + problemNumber);
+            
+            // Clear previous updates to avoid multiple setTimeouts
+            if (window['timer_' + problemNumber]) {
+                clearInterval(window['timer_' + problemNumber]);
+            }
+            
+            if (isLocked(problemNumber)) {
+                const unlockTime = problemTimers[problemNumber];
+                
+                const tick = () => {
+                    const currentTime = new Date().getTime();
+                    const remaining = unlockTime - currentTime;
+
+                    if (remaining <= 0) {
+                        // Timer expired
+                        clearInterval(window['timer_' + problemNumber]);
+                        delete problemTimers[problemNumber];
+                        localStorage.setItem('problemTimers', JSON.stringify(problemTimers));
+                        
+                        feedbackDiv.innerHTML = '<span style="color: var(--accent-blue);">you can answer another time.</span>';
+                        submitButton.disabled = false;
+                        answerInput.disabled = false;
+                        answerInput.value = ""; // Clear input after penalty
+
+                        
+                        // Clear the error count for this problem after the penalty
+                        problemErrors[problemNumber] = 0;
+                        localStorage.setItem('problemErrors', JSON.stringify(problemErrors));
+
+                    } else {
+                        // Update countdown
+                        const minutes = Math.floor(remaining / 60000);
+                        const seconds = Math.floor((remaining % 60000) / 1000);
+                        
+                        submitButton.disabled = true;
+                        answerInput.disabled = true;
+                        feedbackDiv.innerHTML = `<span style="color: var(--accent-red);">Timer : ${minutes}m ${seconds}s. (3 erreurs)</span>`;
+                    }
+                };
+
+                tick(); // Call immediately to avoid a 1-second delay on load
+                window['timer_' + problemNumber] = setInterval(tick, 1000);
+            } else if (problemErrors[problemNumber] > 0) {
+                // Ensure correct feedback when not locked but errors exist
+                 feedbackDiv.innerHTML = `<span style="color: var(--text-light);">Erreurs accumulées : ${problemErrors[problemNumber]}/${MAX_ERRORS}</span>`;
+            }
+        }
+
+
+        /**
+         * Function to check the answer and update the score/UI
+         * @param {number} problemNumber - The ID of the problem.
+         * @param {number} correctAnswer - The correct numerical answer.
+         */
+        function checkAnswer(problemNumber, correctAnswer) {
+            const problemNumberStr = String(problemNumber);
+            const answerInput = document.getElementById('answer' + problemNumberStr);
+            const userAnswer = parseFloat(answerInput.value);
+            const submitButton = document.querySelector('#problem' + problemNumberStr + ' button');
+            const charismaCircle = document.getElementById('charisma-circle');
+            const feedbackDiv = document.getElementById('feedback' + problemNumberStr);
+
+            // 1. Check if the problem is already solved
+            if (localStorage.getItem('solvedProblem' + problemNumberStr)) {
+                feedbackDiv.innerHTML = '<span style="color: var(--accent-blue);"> you have already answered this exercise correctly!</span>';
+                submitButton.disabled = true;
+                answerInput.disabled = true;
                 return;
+            }
+            
+            // 2. Check for timer lock
+            if (isLocked(problemNumber)) {
+                updateTimerDisplay(problemNumber); // Ensure the timer is displayed correctly
+                return; 
             }
 
             // Determine if the answer is correct (allowing for floating point precision)
             const isCorrect = Math.abs(userAnswer - correctAnswer) < 0.01; // Tolerance for floats
 
             if (isCorrect) {
+                // --- CORRECT ANSWER LOGIC ---
                 score++;
-                localStorage.setItem('mathChallengeScore', score); // Update score in local storage
+                localStorage.setItem('mathChallengeScore', score);
+                
+                // Mark as solved and disable further attempts
+                localStorage.setItem('solvedProblem' + problemNumberStr, true);
+                submitButton.disabled = true; 
+                answerInput.disabled = true;
+                
+                // Reset errors for this problem upon correct answer
+                problemErrors[problemNumberStr] = 0;
+                localStorage.setItem('problemErrors', JSON.stringify(problemErrors));
+                
+                // UI Feedback
                 charismaCircle.innerText = '✔️';
                 charismaCircle.classList.remove('red');
-                charismaCircle.classList.add('green', 'pop'); // Add pop animation
-                feedbackDiv.innerHTML = '<span style="color: var(--accent-green);">Correct! Well done.</span>';
+                charismaCircle.classList.add('green', 'pop');
+                feedbackDiv.innerHTML = '<span style="color: var(--accent-green);">Correct ! Outstanding! (+1 point)</span>';
+
             } else {
+                // --- INCORRECT ANSWER LOGIC ---
+                
+                // Increment error count
+                problemErrors[problemNumberStr] = (problemErrors[problemNumberStr] || 0) + 1;
+                localStorage.setItem('problemErrors', JSON.stringify(problemErrors));
+
+                // UI Feedback for incorrect attempt
                 charismaCircle.innerText = '❌';
                 charismaCircle.classList.remove('green');
-                charismaCircle.classList.add('red', 'pop'); // Add pop animation
-                feedbackDiv.innerHTML = '<span style="color: var(--accent-red);">Incorrect. Try again on a fresh start!</span>';
+                charismaCircle.classList.add('red', 'pop');
+                feedbackDiv.innerHTML = '<span style="color: var(--accent-red);">False.</span>';
+                
+                // Check for penalty
+                if (problemErrors[problemNumberStr] >= MAX_ERRORS) {
+                    // Apply 3-minute penalty
+                    const unlockTime = new Date().getTime() + PENALTY_DURATION_MS;
+                    problemTimers[problemNumberStr] = unlockTime;
+                    localStorage.setItem('problemTimers', JSON.stringify(problemTimers));
+                    
+                    // Start the timer countdown
+                    updateTimerDisplay(problemNumber); 
+                    
+                } else {
+                    // Show current error count if not locked
+                    feedbackDiv.innerHTML += `<br><span style="color: var(--accent-red);">mistakes : ${problemErrors[problemNumberStr]}/${MAX_ERRORS} </span>`;
+                }
             }
 
             document.getElementById('score').innerText = 'Score: ' + score;
-            localStorage.setItem('solvedProblem' + problemNumber, true); // Mark as solved
-            submitButton.disabled = true; // Disable the button after submission
-
+            
             // Remove pop animation class after it completes
             charismaCircle.addEventListener('animationend', () => {
                 charismaCircle.classList.remove('pop');
             }, { once: true });
         }
 
-        // Disable buttons for already solved problems on page load
+        // Disable buttons for already solved problems and start timers on page load
         document.addEventListener('DOMContentLoaded', () => {
-            for (let i = 1; i <= 15; i++) {
-                const button = document.querySelector('#problem' + i + ' button');
-                const answerInput = document.getElementById('answer' + i);
-                const feedbackDiv = document.getElementById('feedback' + i);
-                if (localStorage.getItem('solvedProblem' + i)) {
+            // Determine the total number of problems based on the container children
+            const problemContainers = document.querySelector('.problem-container').children;
+
+            for (let i = 1; i <= problemContainers.length; i++) {
+                const problemNumberStr = String(i);
+                const button = document.querySelector('#problem' + problemNumberStr + ' button');
+                const answerInput = document.getElementById('answer' + problemNumberStr);
+                const feedbackDiv = document.getElementById('feedback' + problemNumberStr);
+                
+                // Check for solved state
+                if (localStorage.getItem('solvedProblem' + problemNumberStr)) {
                     button.disabled = true;
-                    if (answerInput) { // Pre-fill if needed, or just indicate it was solved
-                        // You might want to retrieve the stored answer here if you save it
-                        // For now, just indicate it was solved
-                        answerInput.value = "Answered"; // Or fetch actual answer if stored
+                    if (answerInput) {
+                        answerInput.value = "Répondu (Correct)";
                         answerInput.disabled = true;
                     }
                     if (feedbackDiv) {
-                         feedbackDiv.innerHTML = '<span style="color: var(--accent-blue);">This problem was previously solved.</span>';
+                         feedbackDiv.innerHTML = '<span style="color: var(--accent-green);">This problem has been resolved..</span>';
                     }
+                } 
+                
+                // Check for timer lock and start countdown if necessary
+                else if (isLocked(i)) {
+                    updateTimerDisplay(i);
+                }
+                // Display accumulated errors if not solved or locked
+                else if (problemErrors[problemNumberStr] > 0) {
+                    feedbackDiv.innerHTML = `<span style="color: var(--text-light);">accumulated errors : ${problemErrors[problemNumberStr]}/${MAX_ERRORS}</span>`;
                 }
             }
+            
             // Set initial charisma icon if no problems have been answered yet
             if (document.getElementById('charisma-circle').innerText === '') {
                  document.getElementById('charisma-circle').innerText = '❓'; // Neutral initial state
