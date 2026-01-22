@@ -1,401 +1,209 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FS9YCCEDT9"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-FS9YCCEDT9');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Profile - Quantum Nexus Labs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Quantum Nexus Labs - Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary-bg: #0a0a0f; /* Deep, dark space-like background */
-            --secondary-bg: #1a1a2e; /* Slightly lighter, deep blue-purple for containers */
-            --accent-color: #00bcd4; /* Cyan/Teal for primary highlights */
-            --accent-glow: #00e5ff; /* Brighter cyan for glow effects */
-            --text-color: #e0e0e0; /* Soft white for general text */
-            --heading-color: #a7e0e3; /* Muted cyan for headings */
-            --border-color: #0d47a1; /* Darker blue for subtle borders */
-            --hover-color: #00bcd4; /* Accent color for interactive elements */
-            --menu-bg: #1c1c3a; /* Darker blue-purple for menu */
-            --menu-item-hover: #2a2a4b; /* Lighter shade for menu item hover */
-            --shadow-strong: rgba(0, 229, 255, 0.25); /* Stronger glow shadow */
-            --shadow-light: rgba(0, 188, 212, 0.15); /* Lighter glow shadow */
-        }
-
+        /* Styles Globaux */
         body {
-            font-family: 'Roboto', sans-serif;
-            background: var(--primary-bg) radial-gradient(circle at center, rgba(13, 23, 49, 0.5) 0%, rgba(10, 10, 15, 1) 70%);
-            color: var(--text-color);
             margin: 0;
             padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #ffffff; /* FOND BLANC DEMANDÉ */
+            color: #000000;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Use min-height to ensure it covers the viewport but allows scrolling */
-            animation: backgroundFadeIn 2s ease-out;
+            min-height: 100vh;
         }
 
-        @keyframes backgroundFadeIn {
-            from { background-color: #000; opacity: 0; }
-            to { background-color: var(--primary-bg); opacity: 1; }
-        }
-
-        .profile-container {
-            background-color: var(--secondary-bg);
-            border-radius: 15px;
-            box-shadow: 0 8px 30px var(--shadow-strong);
-            max-width: 600px;
-            width: 90%; /* Make it slightly more responsive */
+        /* Carte de profil */
+        .profile-card {
+            width: 100%;
+            max-width: 450px;
+            background: #ffffff;
+            border: 1px solid #f0f0f0;
+            border-radius: 40px;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.05);
             overflow: hidden;
             text-align: center;
-            border: 2px solid var(--border-color);
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
-            margin: 40px 0; /* Add margin for spacing on smaller screens */
+            padding-bottom: 40px;
         }
 
-        .profile-container:hover {
-            transform: translateY(-8px) scale(1.005);
-            box-shadow: 0 15px 50px var(--shadow-strong), 0 0 35px var(--accent-glow);
-            border-color: var(--accent-color);
-        }
-
-        .profile-header {
-            background: linear-gradient(135deg, var(--accent-color), var(--accent-glow));
-            color: var(--primary-bg); /* Dark text on bright gradient */
-            padding: 30px 20px;
+        /* Zone d'en-tête (Dégradé bleu pour l'aspect Quantum) */
+        .header-top {
+            background: linear-gradient(180deg, #00d4ff 0%, #ffffff 100%);
+            height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             position: relative;
-            z-index: 1;
         }
 
-        .profile-header::before { /* Subtle glow effect for header */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 229, 255, 0.1);
-            filter: blur(10px);
-            z-index: -1;
-            border-radius: 15px 15px 0 0;
-        }
-
-        .profile-header img {
-            width: 160px; /* Slightly larger image */
-            height: 160px;
+        .profile-avatar {
+            width: 110px;
+            height: 110px;
+            background: #ffffff;
             border-radius: 50%;
-            border: 5px solid var(--primary-bg); /* Dark border for contrast */
+            border: 5px solid #ffffff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+
+        .admin-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 0;
+            color: #000000;
+            letter-spacing: -1px;
+        }
+
+        /* Contenu principal */
+        .content {
+            padding: 20px 40px;
+        }
+
+        .welcome-msg {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        .welcome-msg strong {
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* Grille d'informations */
+        .info-grid {
+            background: #fcfcfc;
+            border-radius: 24px;
+            padding: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #f5f5f5;
+        }
+
+        .info-line {
+            display: flex;
+            align-items: center;
             margin-bottom: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Shadow for image */
-            object-fit: cover; /* Ensure image covers the circle */
+            text-align: left;
         }
 
-        /* Styling for the anonymous avatar */
-        .profile-header .anonymous-avatar {
-            /* This is a common way to represent a generic person icon */
-            background-color: #f0f0f0; /* White background for the person */
-            color: #ccc; /* Light grey for the icon itself */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 80px; /* Adjust size of the icon */
-            width: 160px; /* Match image dimensions */
-            height: 160px;
-            border-radius: 50%;
-            border: 5px solid var(--primary-bg);
-            margin: 0 auto 15px auto;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        .info-line:last-child { margin-bottom: 0; }
+
+        .icon {
+            font-size: 1.4rem;
+            margin-right: 15px;
+            background: white;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
         }
 
-        .profile-header .anonymous-avatar i {
-            /* You might need to adjust icon size within the div */
-            font-size: 100px; /* Adjust font-size to make the icon fit nicely */
-            color: #a0a0a0; /* Darker grey for the silhouette */
-        }
-
-
-        .profile-header h2 {
-            font-family: 'Orbitron', sans-serif;
-            margin: 10px 0;
-            font-size: 2.2em;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
-        }
-
-        .profile-header p {
-            font-size: 1.1em;
-            color: var(--primary-bg);
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        .profile-details {
-            padding: 25px 20px;
-            background-color: var(--menu-bg); /* Slightly different background for details */
-            border-bottom: 1px solid var(--border-color);
-            text-align: center;
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--heading-color);
-        }
-
-        .profile-details p {
-            margin: 10px 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.05em;
-        }
-
-        .profile-details img {
-            vertical-align: middle;
-            margin-right: 12px;
-            width: 25px; /* Larger icons */
-            height: 25px;
-            filter: drop-shadow(0 0 5px var(--accent-glow)); /* Glow for icons */
-        }
-
-        .profile-details span {
-            color: var(--accent-glow);
-            font-weight: bold;
-        }
-        .profile-details p:last-child {
-            color: var(--text-color); /* For the 'Quantum Nexus Labs' text */
-            margin-top: 15px;
-            font-size: 1em;
-        }
-
-        .profile-content {
-            padding: 30px;
-        }
-
-        .profile-content h3 {
-            font-family: 'Share Tech Mono', monospace;
-            color: var(--heading-color);
-            margin-top: 0;
-            font-size: 1.6em;
-            margin-bottom: 25px;
-            text-shadow: 0 0 8px rgba(167, 224, 227, 0.4);
-            border-bottom: 1px dashed var(--border-color);
-            padding-bottom: 10px;
-        }
-
-        .btn {
+        .label {
             display: block;
-            width: calc(100% - 40px);
-            margin: 15px auto;
-            padding: 18px; /* Larger padding for better touch targets */
-            font-size: 1.1em;
-            color: var(--primary-bg);
-            background-color: var(--accent-color);
-            border: none;
-            border-radius: 8px; /* Slightly more rounded */
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            text-align: center;
-            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            color: #999;
             text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .value {
+            font-weight: 600;
+            color: #000;
+        }
+
+        /* Bouton Noir (votre couleur préférée pour le confort visuel) */
+        .btn-send {
+            display: block;
+            background: #000000;
+            color: #ffffff;
+            padding: 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 700;
             letter-spacing: 1px;
-            box-shadow: 0 4px 15px var(--shadow-strong);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
         }
 
-        .btn:hover {
-            background-color: var(--accent-glow);
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 25px var(--shadow-strong), 0 0 20px var(--accent-glow);
+        .btn-send:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            background: #222;
         }
 
-        .report-container {
-            margin-top: 30px;
-            padding-top: 30px;
-            border-top: 1px dashed var(--border-color);
+        /* Selecteur de rapport */
+        .report-box {
+            margin-top: 25px;
         }
 
-        .report-container select,
-        .report-container textarea {
-            width: calc(100% - 20px); /* Adjust width for padding */
+        select {
+            width: 100%;
             padding: 12px;
-            font-size: 1em;
-            margin-bottom: 15px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            background-color: var(--primary-bg);
-            color: var(--text-color);
-            font-family: 'Roboto', sans-serif;
-            box-shadow: inset 0 0 8px rgba(0, 188, 212, 0.1);
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .report-container select:focus,
-        .report-container textarea:focus {
+            border: 1px solid #eee;
+            border-radius: 12px;
+            background: #fff;
+            color: #888;
             outline: none;
-            border-color: var(--accent-glow);
-            box-shadow: inset 0 0 15px var(--accent-glow);
+            cursor: pointer;
         }
 
-        .report-container option {
-            background-color: var(--primary-bg);
-            color: var(--text-color);
-        }
-
-        .social-media {
-            display: flex;
-            justify-content: center;
-            gap: 20px; /* More space between icons */
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px dashed var(--border-color);
-        }
-
-        .social-media a {
-            color: var(--heading-color); /* Muted color for icons normally */
-            font-size: 32px; /* Larger icons */
-            transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
-        }
-
-        .social-media a:hover {
-            color: var(--accent-glow);
-            text-shadow: 0 0 15px var(--accent-glow);
-            transform: translateY(-5px) scale(1.1);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .profile-container {
-                width: 95%;
-                margin: 20px 0;
-            }
-            .profile-header h2 {
-                font-size: 2em;
-            }
-            .profile-header p {
-                font-size: 1em;
-            }
-            .profile-header img, .profile-header .anonymous-avatar { /* Apply to anonymous too */
-                width: 140px;
-                height: 140px;
-            }
-            .profile-header .anonymous-avatar i {
-                font-size: 80px;
-            }
-            .profile-details p, .profile-details span {
-                font-size: 0.95em;
-            }
-            .profile-content {
-                padding: 20px;
-            }
-            .profile-content h3 {
-                font-size: 1.4em;
-            }
-            .btn {
-                padding: 15px;
-                font-size: 1em;
-            }
-            .social-media a {
-                font-size: 28px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .profile-header h2 {
-                font-size: 1.8em;
-            }
-            .profile-header img, .profile-header .anonymous-avatar { /* Apply to anonymous too */
-                width: 120px;
-                height: 120px;
-            }
-            .profile-header .anonymous-avatar i {
-                font-size: 70px; /* Adjust for smaller screens */
-            }
-            .profile-details p, .profile-details span {
-                font-size: 0.9em;
-            }
-            .profile-content h3 {
-                font-size: 1.2em;
-            }
-            .btn {
-                padding: 12px;
-                font-size: 0.9em;
-            }
-            .social-media a {
-                font-size: 24px;
-            }
-            .report-container select, .report-container textarea {
-                padding: 10px;
-                font-size: 0.9em;
-            }
-        }
     </style>
 </head>
 <body>
 
-<div class="profile-container">
-    <div class="profile-header">
-        <div class="anonymous-avatar">
-            <i class="fas fa-user"></i>
-        </div>
-        <h2>Admin</h2>
-        <p>Welcome to the Quantum Nexus Labs admin profile:Med Rayen Bouazizi</p>
-    </div>
-
-    <div class="profile-details">
-        <p>
-            <img src="https://img.icons8.com/ios/50/000000/home.png" alt="Home Icon">
-            <span>Current City: Sidi Bouzid, Tunisia</span>
-        </p>
-        <p>
-            <img src="https://img.icons8.com/ios/50/000000/school.png" alt="School Icon">
-            <span>School: Lycee Pilote Sidi Bouzid</span>
-        </p>
-        <p>Quantum Nexus Labs</p>
-    </div>
-
-    <div class="profile-content">
-        <h3>Contact Admin</h3>
-        <a href="mailto:matholympiad40@gmail.com" class="btn">Send a Message to Admin</a>
-
-        <div class="report-container">
-            <h3>Report an Issue</h3>
-            <select id="reportReason">
-                <option value="">Select a reason to report...</option>
-                <option value="Inappropriate Content">Inappropriate Content</option>
-                <option value="Violence-Related Issues">Violence-Related Issues</option>
-                <option value="Spam or Misleading">Spam or Misleading</option>
-                <option value="Other">Other</option>
-            </select>
-            <textarea id="reportDetails" rows="4" placeholder="Additional details..."></textarea>
-            <button class="btn" onclick="reportIssue()">Report Issue</button>
+    <div class="profile-card">
+        <div class="header-top">
+            <div class="profile-avatar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#00d4ff" stroke-width="1.5" style="padding: 20px;">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </div>
+            <h1 class="admin-title">Admin</h1>
         </div>
 
-        <div class="social-media">
-            <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <div class="content">
+            <p class="welcome-msg">
+                Welcome to the <strong>Quantum Nexus Labs</strong><br>
+                admin profile: Med Rayen Bouazizi
+            </p>
+
+            <div class="info-grid">
+                <div class="info-line">
+                    <span class="icon">🏠</span>
+                    <div>
+                        <span class="label">Current City</span>
+                        <span class="value">Sidi Bouzid, Tunisia</span>
+                    </div>
+                </div>
+                <div class="info-line">
+                    <span class="icon">🎓</span>
+                    <div>
+                        <span class="label">School</span>
+                        <span class="value">Lycée Pilote Sidi Bouzid</span>
+                    </div>
+                </div>
+            </div>
+
+            <a href="#" class="btn-send">SEND A MESSAGE TO ADMIN</a>
+
+            <div class="report-box">
+                <p style="font-size: 0.8rem; color: #bbb; margin-bottom: 8px;">Report an Issue</p>
+                <select>
+                    <option disabled selected>Select a reason to report...</option>
+                    <option>Technical issue</option>
+                    <option>Information error</option>
+                </select>
+            </div>
         </div>
     </div>
-</div>
-
-<script>
-    function reportIssue() {
-        var reason = document.getElementById('reportReason').value;
-        var details = document.getElementById('reportDetails').value;
-        if (reason) {
-            var email = 'matholympiad40@gmail.com';
-            var subject = encodeURIComponent('Site Issue Report: ' + reason);
-            var body = encodeURIComponent('I would like to report the following issue: ' + reason + '\n\nDetails: ' + details);
-            var mailtoLink = 'mailto:' + email + '?subject=' + subject + '&body=' + body;
-            window.location.href = mailtoLink;
-        } else {
-            alert('Please select a reason to report.');
-        }
-    }
-</script>
 
 </body>
 </html>
