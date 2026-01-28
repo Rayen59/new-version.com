@@ -3,443 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Quantum Nexus Labs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <title>Quantum Nexus Labs | Med Rayen Bouazizi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&family=Fira+Code:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-bg: #0a0a0f; /* Deep, dark space-like background */
-            --secondary-bg: #1a1a2e; /* Slightly lighter, deep blue-purple for containers */
-            --accent-color: #00bcd4; /* Cyan/Teal for primary highlights */
-            --accent-glow: #00e5ff; /* Brighter cyan for glow effects */
-            --text-color: #e0e0e0; /* Soft white for general text */
-            --heading-color: #a7e0e3; /* Muted cyan for headings */
-            --border-color: #0d47a1; /* Darker blue for subtle borders */
-            --hover-color: #00bcd4; /* Accent color for interactive elements */
-            --menu-bg: #1c1c3a; /* Darker blue-purple for menu */
-            --menu-item-hover: #2a2a4b; /* Lighter shade for menu item hover */
-            --shadow-strong: rgba(0, 229, 255, 0.25); /* Stronger glow shadow */
-            --shadow-light: rgba(0, 188, 212, 0.15); /* Lighter glow shadow */
+            --bg-white: #ffffff;
+            --section-bg: #f9f9f9;
+            --accent-blue: #0066ff;
+            --text-dark: #1a1a1a;
+            --text-muted: #666666;
+            --border-light: #eeeeee;
+            --transition: all 0.3s ease;
         }
+
+        * { box-sizing: border-box; }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background: var(--primary-bg) radial-gradient(circle at center, rgba(13, 23, 49, 0.5) 0%, rgba(10, 10, 15, 1) 70%);
-            color: var(--text-color);
+            background-color: var(--bg-white);
+            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            line-height: 1.6;
-            scroll-behavior: smooth;
-            animation: backgroundFadeIn 2s ease-out;
-        }
-
-        @keyframes backgroundFadeIn {
-            from { background-color: #000; opacity: 0; }
-            to { background-color: var(--primary-bg); opacity: 1; }
-        }
-
-        /* --- Header / Navigation --- */
-        .top-bar {
-            background-color: rgba(26, 26, 46, 0.8); /* Semi-transparent for depth */
-            backdrop-filter: blur(8px); /* Frosted glass effect */
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            box-shadow: 0 4px 15px var(--shadow-strong);
-            position: sticky;
-            top: 0;
-            z-index: 1000; /* Ensure it's always on top */
-        }
-
-        .site-title {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 32px;
-            color: var(--accent-glow);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 0 10px var(--accent-glow), 0 0 20px var(--accent-color);
-            transition: text-shadow 0.3s ease-in-out;
-        }
-
-        .site-title:hover {
-            text-shadow: 0 0 15px var(--accent-glow), 0 0 30px var(--accent-color), 0 0 40px var(--accent-glow);
-        }
-
-        .menu-icon {
-            width: 38px;
-            height: 28px;
-            position: relative;
-            cursor: pointer;
+            line-height: 1.8;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            z-index: 1010;
+            min-height: 100vh;
         }
 
-        .menu-icon div {
-            width: 100%;
-            height: 4px;
-            background-color: var(--accent-glow);
-            transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border-radius: 2px;
-            box-shadow: 0 0 5px var(--accent-glow);
+        /* شريط المبدع في أعلى الصفحة */
+        .creator-bar {
+            background-color: var(--text-dark);
+            color: var(--bg-white);
+            text-align: center;
+            padding: 8px 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .menu-icon.active .bar1 {
-            transform: rotate(-45deg) translate(-8px, 8px);
+        .creator-bar span {
+            color: var(--accent-blue);
+            font-weight: bold;
         }
 
-        .menu-icon.active .bar2 {
-            opacity: 0;
-            transform: translateX(20px);
-        }
-
-        .menu-icon.active .bar3 {
-            transform: rotate(45deg) translate(-8px, -8px);
-        }
-
-        .sliding-panel {
-            position: fixed;
-            top: 0;
-            left: -320px; /* Hidden by default */
-            width: 300px;
-            height: 100%;
-            background-color: var(--menu-bg);
-            color: var(--text-color);
-            transition: left 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Springy transition */
-            box-shadow: 4px 0 20px var(--shadow-strong);
-            z-index: 1005;
-            padding: 80px 0 20px; /* Space for top bar */
-            overflow-y: auto;
-            border-right: 2px solid var(--border-color);
-        }
-
-        .sliding-panel.active {
-            left: 0;
-        }
-
-        .sliding-panel a {
-            display: block;
-            padding: 18px 40px;
-            color: var(--text-color);
-            text-decoration: none;
-            font-size: 18px;
-            border-left: 5px solid transparent;
-            transition: background-color 0.3s ease, color 0.3s ease, border-left-color 0.3s ease, text-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sliding-panel a::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 188, 212, 0.1), transparent);
-            transition: left 0.4s ease;
-        }
-
-        .sliding-panel a:hover::before {
-            left: 0;
-        }
-
-        .sliding-panel a:hover {
-            background-color: var(--menu-item-hover);
-            color: var(--accent-glow);
-            border-left-color: var(--accent-glow);
-            text-shadow: 0 0 8px var(--accent-glow);
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1004;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
-        /* --- Main Content Containers --- */
         .main-content {
-            padding: 40px 20px;
-            max-width: 1000px; /* Adjusted for about page readability */
+            max-width: 900px;
             margin: 40px auto;
-            animation: fadeInScale 1s ease-out forwards;
-            opacity: 0;
-            transform: scale(0.98);
+            padding: 0 20px;
+            flex-grow: 1;
         }
 
-        @keyframes fadeInScale {
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        /* Single container for About page content */
         .about-container {
-            background-color: var(--secondary-bg);
-            border-radius: 15px;
+            background: var(--bg-white);
+            border: 1px solid var(--border-light);
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 6px 25px var(--shadow-strong);
-            border: 2px solid var(--border-color);
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease-in-out;
-            opacity: 0;
-            transform: translateY(20px);
-            animation: slideUpFadeIn 0.8s ease-out forwards;
-            padding-bottom: 30px; /* Added padding for content below sections */
-        }
-
-        @keyframes slideUpFadeIn {
-            to { opacity: 1; transform: translateY(0); }
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: var(--transition);
         }
 
         .about-container:hover {
-            transform: translateY(-8px) scale(1.005); /* Slightly less intense scale for large container */
-            box-shadow: 0 12px 40px var(--shadow-strong), 0 0 30px var(--accent-glow);
-            border-color: var(--accent-color);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
         .main-header {
-            background: linear-gradient(45deg, var(--accent-color), var(--accent-glow));
-            padding: 25px 30px;
+            padding: 50px 30px;
             text-align: center;
             font-family: 'Orbitron', sans-serif;
-            font-size: 32px;
-            font-weight: bold;
-            color: var(--primary-bg); /* Dark text on bright background */
-            border-bottom: 2px solid rgba(0, 0, 0, 0.2);
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
-            margin-bottom: 25px;
+            font-size: 2.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: var(--section-bg);
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-dark);
+        }
+
+        .main-header span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--accent-blue);
+            letter-spacing: 2px;
+            margin-top: 10px;
+            font-weight: 600;
         }
 
         .about-section {
-            padding: 0 30px 25px; /* Padding for content within the container */
+            padding: 40px 50px;
+            border-bottom: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .about-section:last-child { border-bottom: none; }
+
+        .about-section:hover {
+            background: #fafafa;
         }
 
         .about-section h3 {
-            margin-top: 30px;
-            color: var(--heading-color);
-            font-size: 24px; /* Slightly larger for main section headings */
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 15px;
-            margin-bottom: 25px;
-            font-family: 'Share Tech Mono', monospace; /* Techy monospace font */
-            text-shadow: 0 0 8px rgba(167, 224, 227, 0.4);
-            letter-spacing: 0.5px;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--text-dark);
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .about-section h3::before {
+            content: "";
+            width: 4px;
+            height: 20px;
+            background: var(--accent-blue);
+            margin-right: 15px;
+            border-radius: 2px;
         }
 
         .about-section p {
-            font-size: 1.1em;
-            line-height: 1.7;
+            color: var(--text-muted);
+            font-weight: 400;
+            font-size: 1.05rem;
             text-align: justify;
-            color: var(--text-color);
-            margin-bottom: 20px;
         }
-        
-        /* --- Footer --- */
+
         .footer {
-            background-color: var(--secondary-bg);
-            padding: 30px;
+            padding: 40px;
             text-align: center;
-            margin-top: 80px;
-            border-top: 2px solid var(--border-color);
-            color: var(--text-color);
-            font-size: 15px;
-            box-shadow: 0 -4px 15px var(--shadow-strong);
-            font-family: 'Share Tech Mono', monospace;
+            background: var(--section-bg);
+            border-top: 1px solid var(--border-light);
         }
 
         .footer p {
-            margin: 8px 0;
-            color: var(--heading-color);
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin: 5px 0;
         }
 
-        .footer p:last-child {
-            color: var(--text-color);
-            font-size: 0.9em;
-        }
-
-        /* --- Scroll to top button --- */
         .scroll-to-top {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: var(--accent-glow);
-            color: var(--primary-bg);
+            bottom: 40px;
+            right: 40px;
             width: 50px;
             height: 50px;
+            background: var(--text-dark);
+            color: var(--bg-white);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 28px;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.4s ease, visibility 0.4s ease, transform 0.3s ease;
-            box-shadow: 0 4px 15px var(--shadow-strong);
-            z-index: 990;
+            transition: var(--transition);
+            z-index: 100;
         }
 
         .scroll-to-top.show {
             opacity: 1;
             visibility: visible;
-            transform: translateY(0);
-        }
-
-        .scroll-to-top:hover {
-            transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 8px 25px var(--accent-glow);
-        }
-
-        /* --- Responsive adjustments --- */
-        @media (max-width: 992px) {
-            .site-title {
-                font-size: 28px;
-            }
-            .sliding-panel {
-                width: 280px;
-            }
         }
 
         @media (max-width: 768px) {
-            .site-title {
-                font-size: 24px;
-                letter-spacing: 2px;
-            }
-            .top-bar {
-                padding: 10px 20px;
-            }
-            .sliding-panel {
-                width: 260px;
-            }
-            .sliding-panel a {
-                padding: 15px 30px;
-                font-size: 17px;
-            }
-            .about-container {
-                border-radius: 10px;
-            }
-            .main-header {
-                font-size: 26px;
-                padding: 20px;
-            }
-            .about-section h3 {
-                font-size: 20px;
-            }
-            .about-section p {
-                font-size: 1em;
-            }
-            .main-content {
-                padding: 20px 10px;
-                margin: 20px auto;
-            }
-            .about-section {
-                padding: 0 20px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .site-title {
-                font-size: 20px;
-                letter-spacing: 1px;
-            }
-            .menu-icon {
-                width: 30px;
-                height: 22px;
-            }
-            .menu-icon div {
-                height: 3px;
-            }
-            .sliding-panel {
-                width: 240px;
-            }
-            .main-header {
-                font-size: 20px;
-            }
-            .about-section h3 {
-                font-size: 18px;
-            }
-            .about-section p {
-                font-size: 0.95em;
-            }
+            .about-section { padding: 30px; }
+            .main-header { font-size: 1.5rem; }
         }
     </style>
 </head>
 <body>
+
+    <div class="creator-bar">
+        Crafted with Excellence by <span>Med Rayen Bouazizi</span>
+    </div>
+
     <div class="main-content">
         <div class="about-container">
-            <div class="main-header">About Quantum Nexus Labs</div>
+            <div class="main-header">
+                QUANTUM NEXUS
+                <span>ADVANCED MATHEMATICAL SYSTEMS</span>
+            </div>
+            
             <div class="about-section">
                 <h3>Exciting New Design</h3>
-                <p>We are thrilled to introduce Quantum Nexus Labs, featuring a visually stunning new design that combines sophistication with cutting-edge aesthetics. Inspired by renowned entertainment platforms like Konami eFootball, our new design delivers an immersive and engaging user experience. The redesigned interface incorporates a modern and elegant layout with dynamic color schemes and intuitive navigation, ensuring every interaction is both pleasant and efficient. Our goal with this redesign is to create a captivating visual environment that not only delights users but also enhances their overall experience.</p>
+                <p>We are thrilled to introduce Quantum Nexus Labs, featuring a visually stunning new design that combines sophistication with cutting-edge aesthetics. The redesigned interface incorporates a modern and elegant layout, ensuring every interaction is both pleasant and efficient.</p>
             </div>
 
             <div class="about-section">
                 <h3>New Features and Enhancements</h3>
-                <p>Quantum Nexus Labs is packed with new features and enhancements that will take your mathematical journey to the next level. From improved problem-solving tools to more interactive challenges, every aspect of the platform has been upgraded to provide you with the best possible experience. Whether you are a seasoned participant or new to the world of advanced mathematics, this version has something for everyone. Stay tuned as we continue to roll out even more exciting updates in the near future.</p>
+                <p>Quantum Nexus Labs is packed with new features that take your mathematical journey to the next level. From improved problem-solving tools to interactive challenges, every aspect has been upgraded for the best possible experience.</p>
             </div>
 
             <div class="about-section">
-                <h3>New Platform for Problems and Exercises!</h3>
-                <p>In the world of mathematical problem-solving, the Quantum Nexus Labs platform stands as a beacon of both human excellence and technological innovation. Imagine two distinct arenas within this platform, each tailored to meet the diverse needs of its participants. In the first arena, problems are meticulously crafted and corrected by a team of seasoned professors, each a maestro in their mathematical field. Here, every problem is a carefully composed piece of art, challenging the intellect and creativity of the solver. When a participant submits their solution, it doesn’t simply vanish into a void. Instead, it enters a space of thoughtful analysis, where these professors, like skilled artisans, scrutinize every detail, understanding the nuances and approaches taken. They don’t just correct; they educate, providing personalized feedback that is as enlightening as the solution itself. This process is akin to a master class, where each correction is a lesson, each score a reflection of both effort and understanding. The human touch here is irreplaceable, turning what could be a mere transaction into a rich, learning experience that hones the solver’s skills with every problem tackled.</p>
-                <p>In the second arena, the platform leverages the power of precision automation. Here, the system is a well-oiled machine, designed to process and evaluate solutions with lightning speed. It’s as if a symphony of algorithms and logic gates dances through the submissions, checking each answer with unwavering consistency. Scores are assigned instantly, providing immediate feedback to participants, who can then gauge their performance in real-time. This automated system is like a digital mentor, unbiased and precise, offering clear and concise evaluations that drive participants to strive for perfection. It’s a space where the efficiency of technology meets the rigor of mathematics, allowing for a seamless and dynamic problem-solving experience. Together, these two arenas create a platform that caters to every kind of learner—those who seek the wisdom of experts and those who thrive in the fast-paced world of instant feedback. The Quantum Nexus Labs platform is not just a tool; it’s a journey, one where every problem solved is a step closer to mathematical mastery, guided by both the hands of experienced educators and the precision of cutting-edge technology.</p>
+                <h3>Platform for Problems and Exercises</h3>
+                <p>In the first arena, problems are meticulously crafted and corrected by a team of seasoned professors. They provide personalized feedback that is as enlightening as the solution itself, turning every correction into a valuable lesson.</p>
+                <p>In the second arena, we leverage precision automation. Our algorithms check each answer with unwavering consistency, providing instant feedback. Together, these arenas create a journey where every problem solved is a step closer to mathematical mastery.</p>
             </div>
         </div>
     </div>
 
     <div class="footer">
         <p>&copy; 2025 Quantum Nexus Labs. All rights reserved.</p>
-        <p>Innovating at the intersection of AI and Advanced Mathematics.</p>
+        <p>// Innovating at the intersection of AI and Advanced Mathematics.</p>
     </div>
 
-    <div id="scrollToTop" class="scroll-to-top" onclick="scrollToTop()">
-        &#x2191;
+    <div id="scrollToTop" class="scroll-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            function togglePanel() {
-                const panel = document.getElementById("slidingPanel");
-                const overlay = document.getElementById("overlay");
-                const menuIcon = document.getElementById("menuIcon");
-
-                panel.classList.toggle("active");
-                overlay.classList.toggle("active");
-                menuIcon.classList.toggle("active");
+        window.onscroll = function() {
+            const btn = document.getElementById("scrollToTop");
+            if (document.documentElement.scrollTop > 300) {
+                btn.classList.add("show");
+            } else {
+                btn.classList.remove("show");
             }
-
-            function scrollToTop() {
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            }
-
-            window.onscroll = function() {
-                const scrollToTopBtn = document.getElementById("scrollToTop");
-                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                    scrollToTopBtn.classList.add("show");
-                } else {
-                    scrollToTopBtn.classList.remove("show");
-                }
-            };
-
-            // Expose togglePanel to global scope for onclick attributes
-            window.togglePanel = togglePanel;
-            window.scrollToTop = scrollToTop;
-        });
+        };
     </script>
 </body>
 </html>
