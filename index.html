@@ -645,7 +645,7 @@
             </div>
             
             <div class="container">
-                <div class="header">الهندسة الرياضية المتقدمة</div>
+                <div class="header">الهندسة الرياضية Mتقدمة</div>
                 <div class="content">
                     <h3>الحالة التشغيلية: <span class="online-date">22/07/2024</span></h3>
                     <div class="box">
@@ -711,8 +711,22 @@
         &#x2191;
     </div>
 
-    <!-- البرمجة التشغيلية التفاعلية -->
+    <!-- البرمجة التشغيلية التفاعلية وحماية الموقع -->
     <script>
+        // جدار حماية لمنع استدعاء النطاق الخبيث ديناميكياً من أي ملفات ممتدة
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                mutation.addedNodes.forEach((node) => {
+                    if (node.tagName === 'SCRIPT' && node.src && node.src.includes('polyfill.io')) {
+                        node.src = ''; 
+                        node.remove();
+                        console.warn('Blocked malicious polyfill.io request execution.');
+                    }
+                });
+            });
+        });
+        observer.observe(document.documentElement, { childList: true, subtree: true });
+
         document.addEventListener('DOMContentLoaded', () => {
             function togglePanel() {
                 const panel = document.getElementById("slidingPanel");
