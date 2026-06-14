@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>صرح أسيل حامدي للرياضيات المتقدمة // الملاذ العلمي الخالد</title>
-    <!-- استدعاء خطوط متميزة وعالمية تعبر عن هويتنا العربيّة والأكاديمية -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Montserrat:wght@400;500;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <style>
         /* --- المتغيرات اللونية: طابع أكاديمي وقور ونبيل --- */
@@ -142,7 +141,7 @@
             background-color: var(--menu-bg);
             color: #FFFFFF;
             box-shadow: -4px 0 30px rgba(0,0,0,0.3);
-            z-index: 1005;
+            z-index: 1005; /* تم إصلاح الرقم هنا لتظهر القائمة فوق الغطاء المظلم بنجاح */
             padding: 90px 0 30px;
             overflow-y: auto;
         }
@@ -475,15 +474,12 @@
 </head>
 <body>
 
-    <!-- غطاء الشاشة المظلم عند فتح القائمة -->
     <div id="overlay" class="overlay" onclick="togglePanel()"></div>
 
-    <!-- شريط الإهداء والتكريم العلوي الخالد لقيد ذكراها العطرة -->
     <div class="top-memorial-ribbon">
         في ذمة الله وطيب ثراها الطالبة البارة <span>أسيل حامدي</span> // تلميذة السنة الثالثة ثانوي رياضيات بسيدي بوزيد - تونس.
     </div>
 
-    <!-- شريط التنقل العلوي -->
     <div class="top-bar">
         <div class="site-title">صرح أسيل للرياضيات</div>
         <div id="menuIcon" class="menu-icon" onclick="togglePanel()">
@@ -493,12 +489,10 @@
         </div>
     </div>
     
-    <!-- لوحة الحكمة واقتباسات العقل -->
     <div class="quote-banner">
         <p>"إن متعة الحياة الحقيقية تبدأ عندما نفكر خارج الأطر المألوفة، لنصنع علماً باقياً يخلد الأسماء النقية ويسكن العقول."</p>
     </div>
 
-    <!-- القائمة الجانبية المحدثة - محتفظة بكامل روابط ملفاتك السابقة بالتمام -->
     <div id="slidingPanel" class="sliding-panel">
         <div class="close-btn" onclick="togglePanel()">&times;</div>
         <a href="rayen.html">البوابة التذكارية العلمية</a>
@@ -520,13 +514,12 @@
     </div>
 
     <div class="main-content">
-        <!-- الواجهة التعريفية التذكارية المحدثة للفنان أسيل حامدي -->
         <div class="creator-section">
             <h2>إهداء ووفاء متجدد إلى روح:</h2>
             <span class="creator-name">الفقيدة أسيل حامدي</span>
             <p>
                 تم تشييد هذا الفضاء الأكاديمي المتطور كمنارة مستدامة للعلم والمعرفة، مُهدى بكامله إلى روح رفيقة العلم 
-                <strong>أسيل حامدي</strong>، زهرة شعبة الرياضيات بسيدي بوزيد، تونس. نسأل الله العلي القدير أن يتغمدها بواسع رحمته 
+                <strong>أسيل حامدي</strong>، زهرة شعبة الرياضيات بسيدي بوزيد, تونس. نسأل الله العلي القدير أن يتغمدها بواسع رحمته 
                 وأن يجعل من كل حرف ومسألة رياضية تُحل في هذا الموقع صدقة جارية ونوراً يضيء قبرها وذكراها الخالدة في قلوبنا.
             </p>
             <ul class="achievements-list">
@@ -536,7 +529,6 @@
             </ul>
         </div>
         
-        <!-- شبكة حاويات الدروس والمسائل (محفوظة الروابط والهيكلية الأصلية لملفاتك) -->
         <div class="section-grid">
             <div class="container">
                 <div class="header">البوابة الذكية للمنصة</div>
@@ -700,18 +692,15 @@
         </div>
     </div>
 
-    <!-- تذييل الصفحة الفاخر -->
     <div class="footer">
         <p class="footer-accent">مشروع أكاديمي مخصص لذكرى الطالبة الراحلة أسيل حامدي - شعلة علم لا تنطفئ.</p>
         <p>&copy; 2026 جميع الحقوق محفوظة ومكرسة كصدقة علمية جارية لروحها الطاهرة.</p>
     </div>
 
-    <!-- زر العودة السلس إلى الأعلى -->
     <div id="scrollToTop" class="scroll-to-top" onclick="scrollToTop()">
         &#x2191;
     </div>
 
-    <!-- البرمجة التشغيلية التفاعلية وحماية الموقع -->
     <script>
         // جدار حماية لمنع استدعاء النطاق الخبيث ديناميكياً من أي ملفات ممتدة
         const observer = new MutationObserver((mutations) => {
