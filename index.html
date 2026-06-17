@@ -1,23 +1,22 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>صرح أسيل حامدي للرياضيات المتقدمة // الملاذ العلمي الخالد</title>
+    <title>Mémorial Assil Hamdi pour les Mathématiques Avancées</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Montserrat:wght@400;500;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        /* --- المتغيرات اللونية: طابع أكاديمي وقور ونبيل --- */
         :root {
-            --bg-main: #FAFAFA;          /* خلفية بيضاء دافئة ناعمة جداً */
-            --bg-container: #FFFFFF;     /* خلفية الصناديق بيضاء ناصعة */
-            --bg-secondary: #F4F1EA;     /* رمادي ترابي خفيف للمساحات التوضيحية */
-            --accent-dark: #3E2723;      /* بني عميق ودافئ يمثل الحزن الوقور والعراقة */
-            --accent-medium: #5D4037;    /* بني متوسط للأزرار والخطوط العريضة */
-            --accent-gold: #D4AF37;      /* ذهبي ملكي خافت للمسات الفنية والذكرى الخالدة */
-            --text-dark: #2A211F;        /* لون نصوص داكن مريح جداً للقراءة */
-            --text-muted: #756865;       /* لون نصوص ثانوية خفيف */
-            --border-light: #E6E1DA;     /* حدود ناعمة وغير حادة */
-            --menu-bg: #1A1514;          /* لون غامق فخم للقائمة الجانبية */
+            --bg-main: #FAFAFA;
+            --bg-container: #FFFFFF;
+            --bg-secondary: #F4F1EA;
+            --accent-dark: #3E2723;
+            --accent-medium: #5D4037;
+            --accent-gold: #D4AF37;
+            --text-dark: #2A211F;
+            --text-muted: #756865;
+            --border-light: #E6E1DA;
+            --menu-bg: #1A1514;
             --shadow-premium: rgba(62, 39, 35, 0.05) 0px 4px 20px 0px;
             --shadow-hover: rgba(62, 39, 35, 0.12) 0px 12px 30px 0px;
         }
@@ -28,7 +27,7 @@
         }
 
         body {
-            font-family: 'Cairo', 'Montserrat', sans-serif;
+            font-family: 'Montserrat', 'Cairo', sans-serif;
             background-color: var(--bg-main);
             color: var(--text-dark);
             margin: 0;
@@ -38,16 +37,18 @@
             scroll-behavior: smooth;
         }
 
-        /* --- شريط التكريم العلوي المتحرك (لمسة وفاء أولية) --- */
+        /* شريط الترحم القرآني باللغة العربية */
         .top-memorial-ribbon {
             background-color: var(--accent-dark);
             color: #FFFFFF;
             padding: 12px 30px;
             text-align: center;
-            font-size: 15px;
+            font-size: 16px;
+            font-family: 'Cairo', sans-serif;
             font-weight: 600;
             border-bottom: 2px solid var(--accent-gold);
             letter-spacing: 0.5px;
+            direction: rtl;
         }
         
         .top-memorial-ribbon span {
@@ -56,7 +57,6 @@
             text-shadow: 0 0 4px rgba(212, 175, 55, 0.3);
         }
 
-        /* --- شريط التنقّل الرئيسي (Top Navigation) --- */
         .top-bar {
             background-color: var(--bg-container);
             padding: 20px 40px;
@@ -71,8 +71,8 @@
         }
 
         .site-title {
-            font-family: 'Orbitron', 'Cairo', sans-serif;
-            font-size: 24px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 22px;
             font-weight: 700;
             color: var(--accent-dark);
             text-transform: uppercase;
@@ -88,7 +88,6 @@
             font-size: 18px;
         }
 
-        /* أيقونة القائمة الجانبية (محدثة بالكامل) */
         .menu-icon {
             width: 32px;
             height: 24px;
@@ -110,18 +109,18 @@
             background-color: var(--accent-gold);
         }
 
-        .menu-icon.active .bar1 { transform: rotate(-45deg) translate(-6px, 7px); }
+        .menu-icon.active .bar1 { transform: rotate(45deg) translate(6px, 7px); }
         .menu-icon.active .bar2 { opacity: 0; }
-        .menu-icon.active .bar3 { transform: rotate(45deg) translate(-5px, -7px); }
+        .menu-icon.active .bar3 { transform: rotate(-45deg) translate(5px, -7px); }
 
-        /* --- لوحة اقتباسات العلم (Quote Banner) --- */
+        /* اقتباس الحكمة بالفرنسية */
         .quote-banner {
             background: linear-gradient(135deg, var(--accent-medium), var(--accent-dark));
             color: #FFFFFF;
             padding: 16px 40px;
             text-align: center;
             font-style: italic;
-            font-size: 16px;
+            font-size: 15px;
             box-shadow: inset 0 -2px 10px rgba(0,0,0,0.1);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
@@ -131,56 +130,54 @@
             letter-spacing: 0.3px;
         }
 
-        /* --- القائمة الجانبية المنزلقة عالية الفخامة (Sliding Panel) --- */
+        /* القائمة الجانبية بالفرنسية (تفتح من اليسار) */
         .sliding-panel {
             position: fixed;
             top: 0;
-            right: -340px; /* تفتح من اليمين لتناسب اللغة العربية */
+            left: -340px;
             width: 320px;
             height: 100%;
             background-color: var(--menu-bg);
             color: #FFFFFF;
-            box-shadow: -4px 0 30px rgba(0,0,0,0.3);
-            z-index: 1005; /* تم إصلاح الرقم هنا لتظهر القائمة فوق الغطاء المظلم بنجاح */
+            box-shadow: 4px 0 30px rgba(0,0,0,0.3);
+            z-index: 1005;
             padding: 90px 0 30px;
             overflow-y: auto;
         }
 
         .sliding-panel.active {
-            right: 0;
+            left: 0;
         }
         
         .close-btn {
             position: absolute;
             top: 20px;
-            left: 25px;
+            right: 25px;
             color: #FFFFFF;
             font-size: 35px;
             cursor: pointer;
         }
         .close-btn:hover { color: var(--accent-gold); }
 
-        /* روابط القائمة المحفوظة بالكامل من كودك الأصلي دون أدنى تغيير */
         .sliding-panel a {
             display: block;
             padding: 14px 30px;
             color: #E0DCD8;
             text-decoration: none;
-            font-size: 16px;
-            border-right: 4px solid transparent;
+            font-size: 15px;
+            border-left: 4px solid transparent;
             font-weight: 400;
         }
 
         .sliding-panel a:hover {
             background-color: rgba(255, 255, 255, 0.04);
             color: #FFFFFF;
-            border-right-color: var(--accent-gold);
-            padding-right: 35px;
+            border-left-color: var(--accent-gold);
+            padding-left: 35px;
         }
         
-        /* روابط التكريم المخصصة داخل القائمة */
         .menu-achievement-item {
-            font-size: 14px !important;
+            font-size: 13px !important;
             padding: 10px 40px !important;
             color: #A39B98 !important;
         }
@@ -189,7 +186,6 @@
             background-color: transparent !important;
         }
 
-        /* غطاء الخلفية المظلم عند فتح القائمة */
         .overlay {
             position: fixed;
             top: 0;
@@ -207,13 +203,13 @@
             visibility: visible;
         }
 
-        /* --- واجهة التكريم الرئيسية الفاخرة (Hero Section) --- */
         .main-content {
             padding: 40px 20px;
             max-width: 1240px;
             margin: 0 auto;
         }
 
+        /* البلوك التعريفي التذكاري */
         .creator-section {
             background-color: var(--bg-container);
             padding: 50px 40px;
@@ -227,13 +223,43 @@
             position: relative;
         }
 
+        /* التصميم الجديد والفاخر عند تفعيل حدث الـ Number Theory */
+        .creator-section.dynamic-premium {
+            background: radial-gradient(circle at top right, #2E1C1A, #1A100F);
+            border: 2px solid var(--accent-gold);
+            border-top: 8px solid var(--accent-gold);
+            box-shadow: 0px 15px 40px rgba(214, 175, 55, 0.15);
+            transform: scale(1.02);
+        }
+
+        .creator-section.dynamic-premium h2 {
+            color: var(--accent-gold) !important;
+            text-shadow: 0 0 8px rgba(214, 175, 55, 0.4);
+        }
+
+        .creator-section.dynamic-premium .creator-name {
+            color: #FFFFFF !important;
+            font-size: 46px;
+            text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+        }
+
+        .creator-section.dynamic-premium p, 
+        .creator-section.dynamic-premium .achievements-list li {
+            color: #E0DCD8 !important;
+        }
+
+        .creator-section.dynamic-premium .achievements-list li {
+            background-color: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--accent-gold);
+        }
+
         .creator-section h2 {
-            font-size: 20px;
+            font-size: 18px;
             color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin: 0 0 10px 0;
-            font-weight: 400;
+            font-weight: 500;
         }
         
         .creator-name {
@@ -244,6 +270,7 @@
             margin-bottom: 25px;
             padding-bottom: 15px;
             position: relative;
+            font-family: 'Cairo', sans-serif;
         }
         
         .creator-name::after {
@@ -257,30 +284,32 @@
             background-color: var(--accent-gold);
         }
 
-        .creator-section p {
+        /* المحتوى المكتوب باللغة العربية والقرآن */
+        .arabic-memorial-text {
+            font-family: 'Cairo', sans-serif;
+            direction: rtl;
+            text-align: center;
+            font-size: 19px;
+            line-height: 2;
             color: var(--text-dark);
-            font-size: 18px;
-            max-width: 800px;
+            max-width: 850px;
             margin: 0 auto 35px auto;
-            line-height: 1.9;
-            font-weight: 300;
         }
 
-        /* قائمة مبادئ المنصة الإرثية */
         .achievements-list {
             list-style: none;
             padding: 0;
             margin: 0 auto;
-            max-width: 700px;
-            text-align: right;
+            max-width: 750px;
+            text-align: left;
         }
 
         .achievements-list li {
             background-color: var(--bg-main);
-            border-right: 4px solid var(--accent-medium);
+            border-left: 4px solid var(--accent-medium);
             padding: 14px 20px;
             margin-bottom: 12px;
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-dark);
             border-radius: 4px;
             display: flex;
@@ -294,7 +323,6 @@
             font-size: 14px;
         }
 
-        /* --- شبكة الأقسام والحاويات التفاعلية (Section Grid) --- */
         .section-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -323,7 +351,7 @@
             background: linear-gradient(135deg, var(--accent-dark), var(--accent-medium));
             padding: 18px 25px;
             text-align: center;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             color: #FFFFFF;
             letter-spacing: 0.5px;
@@ -337,7 +365,7 @@
         .content h3 {
             margin-top: 0;
             color: var(--text-muted);
-            font-size: 14px;
+            font-size: 13px;
             border-bottom: 1px solid var(--border-light);
             padding-bottom: 10px;
             margin-bottom: 20px;
@@ -361,15 +389,15 @@
             color: var(--accent-medium);
             font-weight: 700;
             text-decoration: none;
-            font-size: 16px;
+            font-size: 15px;
             position: relative;
-            padding-right: 25px;
+            padding-left: 25px;
         }
 
         .box a::before {
-            content: '←';
+            content: '→';
             position: absolute;
-            right: 0;
+            left: 0;
             color: var(--accent-gold);
             font-size: 1.2em;
         }
@@ -379,16 +407,15 @@
         }
         
         .container:hover .box a::before {
-            transform: translateX(-5px);
+            transform: translateX(5px);
         }
 
-        /* لوحة البيانات الرقمية التوضيحية داخل المسائل */
         .statistics {
             background-color: var(--bg-secondary);
             padding: 14px 25px;
             text-align: center;
             border-top: 1px solid var(--border-light);
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-muted);
             display: flex;
             justify-content: space-around;
@@ -401,11 +428,10 @@
             font-weight: 700;
         }
 
-        /* شارة التنبيهات الصغيرة الأنيقة (Badge) */
         .new-badge {
             position: absolute;
             top: 15px;
-            left: 15px; /* تم تعديل الاتجاه ليناسب التصميم العربي */
+            right: 15px;
             background-color: var(--accent-gold);
             color: var(--accent-dark);
             padding: 4px 12px;
@@ -416,7 +442,6 @@
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
-        /* --- تذييل الصفحة الفخم (Footer) --- */
         .footer {
             background-color: var(--accent-dark);
             color: #FFFFFF;
@@ -430,11 +455,10 @@
         .footer p { margin: 8px 0; opacity: 0.8; }
         .footer .footer-accent { color: var(--accent-gold); font-weight: 600; opacity: 1; }
 
-        /* --- زر العودة للأعلى (Scroll To Top) --- */
         .scroll-to-top {
             position: fixed;
             bottom: 30px;
-            left: 30px; /* يناسب التصفح باللغة العربية */
+            right: 30px;
             background-color: var(--accent-medium);
             color: #FFFFFF;
             width: 50px;
@@ -462,11 +486,10 @@
             transform: translateY(-3px);
         }
 
-        /* --- التوافق الكامل مع مختلف الشاشات والهواتف (Responsive) --- */
         @media (max-width: 768px) {
             .top-bar { padding: 15px 20px; }
-            .site-title { font-size: 20px; }
-            .creator-name { font-size: 30px; }
+            .site-title { font-size: 18px; }
+            .creator-name { font-size: 32px; }
             .creator-section { padding: 35px 20px; }
             .section-grid { grid-template-columns: 1fr; }
         }
@@ -477,11 +500,11 @@
     <div id="overlay" class="overlay" onclick="togglePanel()"></div>
 
     <div class="top-memorial-ribbon">
-        في ذمة الله وطيب ثراها الطالبة البارة <span>أسيل حامدي</span> // تلميذة السنة الثالثة ثانوي رياضيات بسيدي بوزيد - تونس.
+        قال الله تعالى: ﴿وَبَشِّرِ الصَّابِرِينَ * الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ قَالُواْ إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ﴾ // رحِم الله الفَقيدة الطاهرة <span>أسيل حامدي</span>، زهرة شعبة الرياضيات بسيدي بوزيد - تونس.
     </div>
 
     <div class="top-bar">
-        <div class="site-title">صرح أسيل للرياضيات</div>
+        <div class="site-title">Mémorial Assil Math</div>
         <div id="menuIcon" class="menu-icon" onclick="togglePanel()">
             <div class="bar1"></div>
             <div class="bar2"></div>
@@ -490,202 +513,203 @@
     </div>
     
     <div class="quote-banner">
-        <p>"إن متعة الحياة الحقيقية تبدأ عندما نفكر خارج الأطر المألوفة، لنصنع علماً باقياً يخلد الأسماء النقية ويسكن العقول."</p>
+        <p>"Le véritable sens de la science est de bâtir un héritage éternel qui illumine les esprits et perpétue la mémoire des âmes pures."</p>
     </div>
 
     <div id="slidingPanel" class="sliding-panel">
         <div class="close-btn" onclick="togglePanel()">&times;</div>
-        <a href="rayen.html">البوابة التذكارية العلمية</a>
-        <a href="admin1.html">بوابة لوحة التحكم الإدارية</a>
-        <a href="foruser.html">اتفاقية الاستخدام والخصوصية</a>
-        <a href="send.html">إرسال البيانات والتواصل معنا</a>
-        <a href="statistique.html">مراجعة المسائل الرياضية</a>
-        <a href="game2.html">التحديات الرياضية التدميرية</a>
-        <a href="play1.html">الألعاب الفكرية العميقة</a>
-        <a href="log.in.html">تسجيل الدخول للمستجدات</a>
-        <a href="news.html">أخبار الصرح العلمي الحديثة</a>
+        <a href="rayen.html">Portail Commémoratif</a>
+        <a href="admin1.html">Tableau de Bord Admin</a>
+        <a href="foruser.html">Conditions d'Utilisation</a>
+        <a href="send.html">Contact & Transmission</a>
+        <a href="statistique.html">Statistiques des Problèmes</a>
+        <a href="game2.html">Défis Mathématiques</a>
+        <a href="play1.html">Jeux d'Esprit Avancés</a>
+        <a href="log.in.html">Connexion Membres</a>
+        <a href="news.html">Actualités du Centre</a>
         
         <hr style="border-color: rgba(255,255,255,0.08); margin: 20px 30px;">
         
-        <a href="#" style="color: var(--accent-gold); font-weight: bold;">أثر وذكرى خالدة:</a>
-        <a href="#" class="menu-achievement-item">مساحة علمية مهدة لروح الفقيدة الراقية</a>
-        <a href="#" class="menu-achievement-item">شعبة الرياضيات - تونس الفخر</a>
-        <a href="#" class="menu-achievement-item">صدقة علمية جارية لا تنقطع</a>
+        <a href="#" style="color: var(--accent-gold); font-weight: bold;">Hommage et Héritage :</a>
+        <a href="#" class="menu-achievement-item">Espace dédié à l'âme de la défunte</a>
+        <a href="#" class="menu-achievement-item">Section Mathématiques - Fierté de la Tunisie</a>
+        <a href="#" class="menu-achievement-item">Sadaqa Jariya (Science perpétuelle)</a>
     </div>
 
     <div class="main-content">
-        <div class="creator-section">
+        <div id="memorialBlock" class="creator-section">
             <h2>إهداء ووفاء متجدد إلى روح:</h2>
             <span class="creator-name">الفقيدة أسيل حامدي</span>
-            <p>
-                تم تشييد هذا الفضاء الأكاديمي المتطور كمنارة مستدامة للعلم والمعرفة، مُهدى بكامله إلى روح رفيقة العلم 
-                <strong>أسيل حامدي</strong>، زهرة شعبة الرياضيات بسيدي بوزيد, تونس. نسأل الله العلي القدير أن يتغمدها بواسع رحمته 
-                وأن يجعل من كل حرف ومسألة رياضية تُحل في هذا الموقع صدقة جارية ونوراً يضيء قبرها وذكراها الخالدة في قلوبنا.
-            </p>
+            <div class="arabic-memorial-text">
+                نسأل الله العلي القدير أن يتغمدها بواسع رحمته، وأن يتقبلها قبولاً حسناً ويسكنها فسيح جناته. 
+                تم تشييد هذا الفضاء الأكاديمي كصدقة علمية جارية ونور مستدام مهدى إلى روح رفيقة العلم 
+                <strong>أسيل حامدي</strong>، طالبة تميزت بشغفها وعلمها، لتظل ذكراها العطرة حية خالدة في قلوبنا وعقولنا. 
+                ﴿إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ﴾.
+            </div>
             <ul class="achievements-list">
-                <li>منصة تفاعلية مكرسة لنشر شغف وثقافة الرياضيات العميقة.</li>
-                <li>مسائل منتقاة بعناية لتدريب وتطوير العقول الرياضية الشابة.</li>
-                <li>إرث معرفي دائم يستلهم روح الطموح والتفوق التي فارقتنا باكراً.</li>
+                <li>Une plateforme interactive dédiée à la diffusion de la culture des mathématiques pures.</li>
+                <li>Des problèmes rigoureusement sélectionnés pour l'entraînement des esprits brillants.</li>
+                <li>Un héritage de connaissances inspiré par l'ambition d'une jeunesse partie trop tôt.</li>
             </ul>
         </div>
         
         <div class="section-grid">
             <div class="container">
-                <div class="header">البوابة الذكية للمنصة</div>
+                <div class="header">Portail Intelligent</div>
                 <div class="content">
-                    <h3>تاريخ التفعيل الفوري: <span class="online-date">23/02/2025</span></h3>
+                    <h3>Activation immédiate : <span class="online-date">23/02/2025</span></h3>
                     <div class="box">
-                        <a href="gbt.html">اكتشف البوابة الذكية المطورة</a>
+                        <a href="gbt.html">Découvrir le portail IA développé</a>
                     </div>
                 </div>
-                <div class="new-badge">جديد!</div>
+                <div class="new-badge">New!</div>
             </div>
 
             <div class="container">
-                <div class="header">حول هذا الصرح الرقمي</div>
+                <div class="header">À Propos du Centre</div>
                 <div class="content">
-                    <h3>تاريخ التحديث الأخير: <span class="online-date">22/07/2024</span></h3>
+                    <h3>Dernière mise à jour : <span class="online-date">22/07/2024</span></h3>
                     <div class="box">
-                        <a href="aboutversion.html">اطلع على تفاصيل النسخة الجديدة</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="header">قواعد خصوصية البيانات</div>
-                <div class="content">
-                    <h3>تاريخ اعتماد السياسة: <span class="online-date">22/07/2024</span></h3>
-                    <div class="box">
-                        <a href="confidelity.html">مراجعة البنود والخصوصية الأمنية</a>
+                        <a href="aboutversion.html">Consulter les détails de la version</a>
                     </div>
                 </div>
             </div>
 
             <div class="container">
-                <div class="header">تحميل التطبيق الرسمي</div>
+                <div class="header">Confidentialité des Données</div>
                 <div class="content">
-                    <h3>حالة توفر التطبيق: <span class="online-date">22/07/2024</span></h3>
+                    <h3>Politique approuvée : <span class="online-date">22/07/2024</span></h3>
                     <div class="box">
-                        <a href="install application.html">الحصول على ملف التثبيت المباشر</a>
+                        <a href="confidelity.html">Revoir les clauses de sécurité</a>
                     </div>
-                </div>
-            </div>
-            
-            <div class="container">
-                <div class="header">المناهج والمسائل التدريبية</div>
-                <div class="content">
-                    <h3>إضافة محتويات تدريبية: <span class="online-date">01/08/2024</span></h3>
-                    <div class="box">
-                        <a href="courses and problems.html">تصفح مستودع الدروس الشامل</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="container">
-                <div class="header">مسائل التحدي الأولمبية</div>
-                <div class="content">
-                    <h3>تاريخ النشر والتحيين: <span class="online-date">22/07/2024</span></h3>
-                    <div class="box">
-                        <a href="probleme.html">ابدأ التحدي واكتسب العلامة الكاملة</a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="container">
-                <div class="header">نظرية الأعداد المعمقة</div>
-                <div class="content">
-                    <h3>الحالة التشغيلية: <span class="online-date">22/07/2024</span></h3>
-                    <div class="box">
-                        <a href="number theory.html">الإبحار في فضاء نظرية الأعداد</a>
-                    </div>
-                </div>
-                <div class="statistics">
-                    <p>المسائل المتاحة: <span>120</span></p>
-                    <p>المسائل المحلولة: <span>85</span></p>
-                    <p>مستوى الصعوبة: <span>متقدم</span></p>
-                </div>
-            </div>
-            
-            <div class="container">
-                <div class="header">التحليلات والتراكيب (Combinatorics)</div>
-                <div class="content">
-                    <h3>الحالة التشغيلية: <span class="online-date">22/07/2024</span></h3>
-                    <div class="box">
-                        <a href="combinatoire.html">استكشاف قواعد التراكيب والعد</a>
-                    </div>
-                </div>
-                <div class="statistics">
-                    <p>المسائل المتاحة: <span>90</span></p>
-                    <p>المسائل المحلولة: <span>60</span></p>
-                    <p>مستوى الصعوبة: <span>متوسط</span></p>
                 </div>
             </div>
 
             <div class="container">
-                <div class="header">المتباينات الرياضية الشاملة</div>
+                <div class="header">Application Officielle</div>
                 <div class="content">
-                    <h3>تاريخ إتاحة القسم الفرعي: <span class="online-date">28/10/2025</span></h3>
+                    <h3>Disponibilité : <span class="online-date">22/07/2024</span></h3>
                     <div class="box">
-                        <a href="inequality1">دراسة معمقة للمتباينات</a>
+                        <a href="install application.html">Télécharger le fichier d'installation</a>
                     </div>
-                </div>
-                <div class="statistics">
-                    <p>المسائل المتاحة: <span>70</span></p>
-                    <p>المسائل المحلولة: <span>45</span></p>
-                    <p>مستوى الصعوبة: <span>معقد جداً</span></p>
                 </div>
             </div>
             
             <div class="container">
-                <div class="header">الهندسة الرياضية Mتقدمة</div>
+                <div class="header">Programmes & Exercices</div>
                 <div class="content">
-                    <h3>الحالة التشغيلية: <span class="online-date">22/07/2024</span></h3>
+                    <h3>Ajout de contenus : <span class="online-date">01/08/2024</span></h3>
                     <div class="box">
-                        <a href="geometry.html">إتقان براهين الهندسة المستوية والفضائية</a>
+                        <a href="courses and problems.html">Parcourir le répertoire complet</a>
                     </div>
-                </div>
-                <div class="statistics">
-                    <p>المسائل المتاحة: <span>150</span></p>
-                    <p>المسائل المحلولة: <span>100</span></p>
-                    <p>مستوى الصعوبة: <span>صعب</span></p>
                 </div>
             </div>
             
             <div class="container">
-                <div class="header">المعادلات الوظيفية (Functional Equations)</div>
+                <div class="header">Olympiades & Défis</div>
                 <div class="content">
-                    <h3>الحالة التشغيلية: <span class="online-date">22/07/2024</span></h3>
+                    <h3>Publication : <span class="online-date">22/07/2024</span></h3>
                     <div class="box">
-                        <a href="functionnal equation.html">فك شفرات المعادلات الوظيفية</a>
+                        <a href="probleme.html">Relever le défi et viser l'excellence</a>
                     </div>
-                </div>
-                <div class="statistics">
-                    <p>المسائل المتاحة: <span>70</span></p>
-                    <p>المسائل المحلولة: <span>45</span></p>
-                    <p>مستوى الصعوبة: <span>معقد جداً</span></p>
                 </div>
             </div>
             
             <div class="container">
-                <div class="header">منتدى الحوار العلمي التفاعلي</div>
+                <div class="header">Théorie des Nombres</div>
                 <div class="content">
-                    <h3>تاريخ تفعيل الرابط التشاركي: <span class="online-date">22/07/2024</span></h3>
+                    <h3>Statut opérationnel : <span class="online-date">22/07/2024</span></h3>
                     <div class="box">
-                        <a href="forum.html">انضم الآن إلى مجتمع النقاشات الأكاديمي</a>
+                        <a href="#number-theory" id="ntLink">S'immerger dans l'arithmétique avancée</a>
                     </div>
                 </div>
                 <div class="statistics">
-                    <p>المشاركات: <span>5,432</span></p>
-                    <p>الأعضاء النشطين: <span>1,210</span></p>
+                    <p>Disponibles: <span>120</span></p>
+                    <p>Résolus: <span>85</span></p>
+                    <p>Difficulté: <span>Avancé</span></p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Combinatoire & Dénombrement</div>
+                <div class="content">
+                    <h3>Statut opérationnel : <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="combinatoire.html">Explorer les règles de dénombrement</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Disponibles: <span>90</span></p>
+                    <p>Résolus: <span>60</span></p>
+                    <p>Difficulté: <span>Moyen</span></p>
                 </div>
             </div>
 
             <div class="container">
-                <div class="header">لوحة تقديم وإرسال المسائل</div>
+                <div class="header">Inégalités Mathématiques</div>
                 <div class="content">
-                    <h3>الحالة التشغيلية: <span class="online-date">22/07/2024</span></h3>
+                    <h3>Disponibilité : <span class="online-date">28/10/2025</span></h3>
                     <div class="box">
-                        <a href="submitproblem.html">منتدى إرسال واستعراض التمارين</a>
+                        <a href="inequality1">Étude approfondie des inégalités</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Disponibles: <span>70</span></p>
+                    <p>Résolus: <span>45</span></p>
+                    <p>Difficulté: <span>Complexe</span></p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Géométrie Avancée</div>
+                <div class="content">
+                    <h3>Statut opérationnel : <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="geometry.html">Maîtriser les démonstrations géométriques</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Disponibles: <span>150</span></p>
+                    <p>Résolus: <span>100</span></p>
+                    <p>Difficulté: <span>Difficile</span></p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Équations Fonctionnelles</div>
+                <div class="content">
+                    <h3>Statut opérationnel : <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="functionnal equation.html">Décoder les équations fonctionnelles</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Disponibles: <span>70</span></p>
+                    <p>Résolus: <span>45</span></p>
+                    <p>Difficulté: <span>Complexe</span></p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="header">Forum Interactif</div>
+                <div class="content">
+                    <h3>Lien communautaire : <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="forum.html">Rejoindre la communauté académique</a>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <p>Messages: <span>5,432</span></p>
+                    <p>Membres actifs: <span>1,210</span></p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="header">Soumission de Problèmes</div>
+                <div class="content">
+                    <h3>Statut opérationnel : <span class="online-date">22/07/2024</span></h3>
+                    <div class="box">
+                        <a href="submitproblem.html">Proposer et examiner des exercices</a>
                     </div>
                 </div>
             </div>
@@ -693,8 +717,8 @@
     </div>
 
     <div class="footer">
-        <p class="footer-accent">مشروع أكاديمي مخصص لذكرى الطالبة الراحلة أسيل حامدي - شعلة علم لا تنطفئ.</p>
-        <p>&copy; 2026 جميع الحقوق محفوظة ومكرسة كصدقة علمية جارية لروحها الطاهرة.</p>
+        <p class="footer-accent">Projet Académique dédié à la mémoire d'Assil Hamdi - Une flamme de science éternelle.</p>
+        <p>&copy; 2026 Tous droits réservés. Dédié comme Sadaqa Jariya à son âme pure.</p>
     </div>
 
     <div id="scrollToTop" class="scroll-to-top" onclick="scrollToTop()">
@@ -702,33 +726,17 @@
     </div>
 
     <script>
-        // جدار حماية لمنع استدعاء النطاق الخبيث ديناميكياً من أي ملفات ممتدة
-        const observer = new MutationObserver((mutations) => {
-            mutations.forEach((mutation) => {
-                mutation.addedNodes.forEach((node) => {
-                    if (node.tagName === 'SCRIPT' && node.src && node.src.includes('polyfill.io')) {
-                        node.src = ''; 
-                        node.remove();
-                        console.warn('Blocked malicious polyfill.io request execution.');
-                    }
-                });
-            });
-        });
-        observer.observe(document.documentElement, { childList: true, subtree: true });
-
         document.addEventListener('DOMContentLoaded', () => {
             function togglePanel() {
                 const panel = document.getElementById("slidingPanel");
                 const overlay = document.getElementById("overlay");
                 const menuIcon = document.getElementById("menuIcon");
-
                 const isActive = panel.classList.contains("active");
                 
                 panel.classList.toggle("active");
                 if(overlay) overlay.classList.toggle("active");
                 if(menuIcon) menuIcon.classList.toggle("active");
                 
-                // منع التمرير الخلفي للشاشة عند فتح القائمة للمزيد من الاحترافية
                 document.body.style.overflow = isActive ? 'auto' : 'hidden';
             }
 
@@ -747,6 +755,23 @@
                     scrollToTopBtn.classList.remove("show");
                 }
             };
+
+            // حدث الضغط على رابط "Théorie des Nombres" لتعديل مظهر البلوك التذكاري بشكل فاخر ومبهر
+            const ntLink = document.getElementById('ntLink');
+            const memorialBlock = document.getElementById('memorialBlock');
+
+            if(ntLink && memorialBlock) {
+                ntLink.addEventListener('click', (e) => {
+                    e.preventDefault(); // منع السلوك الافتراضي للرابط للتجربة التفاعلية
+                    memorialBlock.classList.add('dynamic-premium');
+                    
+                    // تمرير سلس إلى الأعلى لرؤية التحول الفخم للبلوك
+                    window.scrollTo({
+                        top: memorialBlock.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                });
+            }
 
             window.togglePanel = togglePanel;
             window.scrollToTop = scrollToTop;
